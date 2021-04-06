@@ -1,0 +1,10 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.button{
+    -fx-background-color: black;
+}
+.button:hover{
+    -fx-background-color: grey;
+}

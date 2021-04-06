@@ -1,0 +1,13 @@
+input[type=text] {
+    -fx-border-style:  none;
+    -fx-border-bottom: 2px solid black;
+}
+input[type=text]:focus {
+    -fx-background-color: lightblue;
+}
+.button{
+    -fx-background-color: black;
+}
+.button:hover{
+    -fx-background-color: grey;
+}
