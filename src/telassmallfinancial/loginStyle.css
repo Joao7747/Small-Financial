@@ -7,6 +7,7 @@ input[type=text]:focus {
 }
 .button{
     -fx-background-color: black;
+    -fx-background-radius: 20px;
 }
 .button:hover{
     -fx-background-color: grey;

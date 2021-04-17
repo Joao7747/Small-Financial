@@ -10,13 +10,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
     <children>
         <Label fx:id="lblContas" layoutX="294.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
          <font>
             <Font size="17.0" />
          </font></Label>
-      <TableView fx:id="tvContas" editable="true" layoutX="35.0" layoutY="147.0" prefHeight="200.0" prefWidth="641.0">
+      <TableView fx:id="tvContas" editable="true" layoutX="35.0" layoutY="147.0" prefHeight="200.0" prefWidth="641.0" stylesheets="@TableStyle.css">
         <columns>
           <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
           <TableColumn fx:id="tcDescricao" prefWidth="75.0" text="Descrição" />
@@ -35,7 +35,7 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="555.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="555.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" stylesheets="@buttonStyle.css" text="Voltar">
          <font>
             <Font size="17.0" />
          </font>
