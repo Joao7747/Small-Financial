@@ -7,8 +7,38 @@ input[type=text]:focus {
 }
 .button{
     -fx-background-color: black;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
 }
 .button:hover{
-    -fx-background-color: grey;
+    -fx-background-color: #302E2D;
+}
+
+.button:pressed{
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.registrarStyle {
+    -fx-background-color: white;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
+}
+
+.registrarStyle:hover{
+    -fx-background-color: lightgray;
+}
+
+.registrarStyle:pressed{
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.fundo{
+    -fx-background-color: white;
 }

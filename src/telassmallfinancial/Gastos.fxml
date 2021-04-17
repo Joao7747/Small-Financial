@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.GastosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="754.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.GastosController">
     <children>
       <TableView fx:id="tvGastos" layoutX="284.0" layoutY="145.0" prefHeight="200.0" prefWidth="440.0">
         <columns>
@@ -28,12 +28,15 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="62.0" layoutY="184.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="162.0" stylesheets="@loginStyle.css" text="Inserir Gastos" textFill="WHITE">
+      <Button layoutX="62.0" layoutY="184.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="177.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir Gastos" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="647.0" layoutY="32.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="25.0" prefWidth="77.0" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="602.0" layoutY="32.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="40.0" prefWidth="122.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <Line endX="-100.0" endY="-193.0" layoutX="870.0" layoutY="196.0" startX="-100.0" startY="205.0" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-172.0" layoutX="875.0" layoutY="175.0" startX="-100.0" startY="226.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-181.0" layoutX="880.0" layoutY="184.0" startX="-100.0" startY="217.0" stroke="#db3b14" strokeWidth="5.0" />
