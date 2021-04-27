@@ -7,11 +7,11 @@
 -senha: smallfinancial@123456
 
 # Banco
--Server: sql10.freemysqlhosting.net
+-Server: db4free.net 
 
--Name: sql10405971
+-Name: smallfinancial
 
--Username: sql10405971
+-Username: smallfinancial
 
 -Password: YDdshe2Cnm
 
