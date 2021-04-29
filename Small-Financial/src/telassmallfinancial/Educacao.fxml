@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.EducacaoController">
+    <children>
+      <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0">
+        <columns>
+          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
+          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
+            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
+        </columns>
+      </TableView>
+      <Label layoutX="361.0" layoutY="14.0" text="Educação">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="452.0" layoutY="258.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Calculadora de Juros" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVoltar" layoutX="612.0" layoutY="22.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="30.0" prefWidth="108.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
+      <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="85.0" layoutY="83.0" startX="321.3333435058594" startY="-4.0" strokeWidth="2.0" />
+      <Line endX="-100.0" endY="-172.0" layoutX="875.0" layoutY="175.0" startX="-100.0" startY="226.0" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-181.0" layoutX="880.0" layoutY="184.0" startX="-100.0" startY="217.0" stroke="#db3b14" strokeWidth="5.0" />
+      <Label layoutX="40.0" layoutY="52.0" text="Explore e Aprenda">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="60.0" layoutY="-56.0" startX="-28.333335876464844" startY="274.3333435058594" strokeWidth="2.0" />
+      <Button layoutX="631.0" layoutY="258.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Siglas e Nomenclaturas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="61.0" layoutY="231.0" text="Cursos Online">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="438.0" layoutY="-57.0" startX="-3.333343505859375" startY="274.33331298828125" strokeWidth="2.0" />
+      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="215.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="201.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="619.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tvGanhos1" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0">
+         <columns>
+            <TableColumn fx:id="tcCategoria1" prefWidth="134.0" text="Curso" />
+            <TableColumn fx:id="tcPreco1" prefWidth="88.33334350585938" text="Link" />
+            <TableColumn fx:id="tcData1" prefWidth="104.66665649414062" text="Prazo de Inscrição" />
+         </columns>
+      </TableView>
+      <Label layoutX="548.0" layoutY="69.0" text="Vídeos">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="533.0" layoutY="104.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="133.0" stylesheets="@loginStyle.css" text="Vídeo 2" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="430.0" layoutY="126.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="91.0" stylesheets="@loginStyle.css" text="Vídeo 1" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="91.0" stylesheets="@loginStyle.css" text="Vídeo 3" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children> 
+</AnchorPane>
