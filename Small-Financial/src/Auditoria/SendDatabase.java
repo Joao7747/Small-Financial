@@ -25,9 +25,7 @@ public class SendDatabase extends Thread {
                 String msg = GerenciadorAuditoria.getInstancia().retiraMsgAuditoria();
                 if (msg != null) {
                     enviaMensagemParaSistemaAuditoria(msg);
-                    System.out.println(GerenciadorAuditoria.getInstancia().filaMensagens);
                 }
-                Thread.sleep(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SendDatabase.class.getName()).log(Level.SEVERE, null, ex);
             }

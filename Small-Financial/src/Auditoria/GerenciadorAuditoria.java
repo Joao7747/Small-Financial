@@ -43,14 +43,14 @@ public class GerenciadorAuditoria {
         return msg;
     }
     
-    void ativar(){
+    public void ativar(){
         if (thread == null){
             thread = new SendDatabase();
             thread.start();
         }
     }
     
-    void desativar(){
+    public void desativar(){
         if (thread != null) {
             thread.setStatus(false);
             try {

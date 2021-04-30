@@ -5,6 +5,7 @@
  */
 package telassmallfinancial;
 
+import Auditoria.MainThread;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,7 +48,13 @@ public class MenuController implements Initializable {
     }    
 
     @FXML
-    private void Metas(ActionEvent event) throws IOException {
+    private void Metas(ActionEvent event) throws IOException,InterruptedException {
+        
+        //auditoria
+        MainThread auditoria = new MainThread();
+        auditoria.StartThread("Metas");
+        //fim auditoria
+        
         Parent metas = FXMLLoader.load(getClass().getResource("Metas.fxml"));
         Scene metasScene = new Scene(metas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -56,7 +63,13 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void Gastos(ActionEvent event) throws IOException {
+    private void Gastos(ActionEvent event) throws IOException,InterruptedException {
+        
+        //auditoria
+        MainThread auditoria = new MainThread();
+        auditoria.StartThread("Gastos");
+        //fim auditoria
+        
         Parent gastos = FXMLLoader.load(getClass().getResource("Gastos.fxml"));
         Scene gastosScene = new Scene(gastos);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -65,7 +78,13 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private void Contas(ActionEvent event) throws IOException {
+    private void Contas(ActionEvent event) throws IOException,InterruptedException{
+        
+        //auditoria
+        MainThread auditoria = new MainThread();
+        auditoria.StartThread("Contas");
+        //fim auditoria
+        
         Parent contas = FXMLLoader.load(getClass().getResource("Contas.fxml"));
         Scene contasScene = new Scene(contas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -74,7 +93,13 @@ public class MenuController implements Initializable {
     }
     
     @FXML
-    private void Ganhos(ActionEvent event) throws IOException {
+    private void Ganhos(ActionEvent event) throws IOException,InterruptedException{
+        
+        //auditoria
+        MainThread auditoria = new MainThread();
+        auditoria.StartThread("Ganhos");
+        //fim auditoria
+        
         Parent ganhos = FXMLLoader.load(getClass().getResource("Ganhos.fxml"));
         Scene ganhosScene = new Scene(ganhos);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -82,7 +107,13 @@ public class MenuController implements Initializable {
         window.show(); 
     }
     @FXML
-    private void Educacao(ActionEvent event) throws IOException {
+    private void Educacao(ActionEvent event) throws IOException,InterruptedException{
+        
+        //auditoria
+        MainThread auditoria = new MainThread();
+        auditoria.StartThread("Educacao");
+        //fim auditoria
+        
         Parent educacao = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
         Scene educacaoScene = new Scene(educacao);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
