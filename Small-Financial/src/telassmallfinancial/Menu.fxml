@@ -6,12 +6,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="btnContas" prefHeight="491.0" prefWidth="849.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MenuController">
+<AnchorPane id="AnchorPane" fx:id="btnContas" prefHeight="491.0" prefWidth="849.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MenuController">
    <children>
       <Line endX="-100.0" endY="-197.0" layoutX="936.0" layoutY="200.0" startX="-100.0" startY="290.5" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-178.0" layoutX="941.0" layoutY="179.0" startX="-100.0" startY="312.5" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-185.0" layoutX="946.0" layoutY="188.0" startX="-100.0" startY="303.5" stroke="#db3b14" strokeWidth="5.0" />
-      <Label layoutX="29.0" layoutY="14.0" prefHeight="22.0" prefWidth="137.0" text="Boa Noite Junior " wrapText="true">
+      <Label fx:id="lblSaudacao" layoutX="29.0" layoutY="14.0" prefHeight="22.0" prefWidth="81.0" text="Saudação" wrapText="true">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
@@ -33,5 +33,10 @@
             <Font size="10.0" />
          </font>
       </Button>
+      <Label fx:id="lblNome" layoutX="101.0" layoutY="14.0" prefHeight="22.0" prefWidth="46.0" text="nome" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
