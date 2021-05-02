@@ -12,11 +12,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.EducacaoController">
     <children>
-      <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0">
+      <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
-          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
-            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Artigo" />
+          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Autor" />
+            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Publicação" />
         </columns>
       </TableView>
       <Label layoutX="361.0" layoutY="14.0" text="Educação">
@@ -65,11 +65,11 @@
             <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tvGanhos1" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0">
+      <TableView fx:id="tvGanhos1" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcCategoria1" prefWidth="134.0" text="Curso" />
-            <TableColumn fx:id="tcPreco1" prefWidth="88.33334350585938" text="Link" />
-            <TableColumn fx:id="tcData1" prefWidth="104.66665649414062" text="Prazo de Inscrição" />
+            <TableColumn fx:id="tcCategoria1" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Curso" />
+            <TableColumn fx:id="tcPreco1" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Link" />
+            <TableColumn fx:id="tcData1" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Prazo de Inscrição" />
          </columns>
       </TableView>
       <Label layoutX="548.0" layoutY="69.0" text="Vídeos">
