@@ -30,7 +30,7 @@
          </font></Button>
       <ImageView fitHeight="638.0" fitWidth="759.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Login.png" />
+            <Image url="@resource/Login.png" />
          </image>
       </ImageView>
    </children>

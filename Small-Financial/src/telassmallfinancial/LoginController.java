@@ -68,7 +68,9 @@ public class LoginController implements Initializable {
         auditoria.user = txtUser.getText();
         auditoria.StartThread("Menu");
         //fim do inicio a auditoria
-        
+        if(usuario.consultar() == null){
+            System.out.println("OI");
+        }
         Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene menuScene = new Scene(menu);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

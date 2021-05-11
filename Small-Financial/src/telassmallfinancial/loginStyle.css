@@ -42,3 +42,9 @@ input[type=text]:focus {
 .fundo{
     -fx-background-color: white;
 }
+
+.imgView {
+    -fx-background-color: black;
+    -fx-background-radius: 40px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
+}

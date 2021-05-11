@@ -17,6 +17,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -26,19 +29,33 @@ import javafx.stage.Stage;
  * @author jr13f
  */
 public class MenuController implements Initializable {
+    @FXML
+    private AnchorPane pane;
 
     @FXML
-    private Button btnMetas;  
+    private Label lblSaudacao;
+
+    @FXML
+    private Button btnMetas;
+
     @FXML
     private Button btnRelatorios;
+
     @FXML
     private Button btnGastos;
+
     @FXML
     private Button btnGanhos;
+
     @FXML
     private Button btnEducacao;
-    @FXML
 
+    @FXML
+    private Button btnContas;
+
+    @FXML
+    private Label lblNome;
+    
     /**
      * Initializes the controller class.
      */
