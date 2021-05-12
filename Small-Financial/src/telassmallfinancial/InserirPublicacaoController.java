@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 public class InserirPublicacaoController implements Initializable {
 
     /**
+     * teste
      * Initializes the controller class.
      */
     @Override
