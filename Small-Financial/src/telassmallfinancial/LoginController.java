@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 /**
  *
@@ -35,6 +36,8 @@ public class LoginController implements Initializable {
     @FXML
     private TextField txtSenha;
     
+    @FXML
+    private WebView testeyoutube;
     
     @FXML
     private Button btnLogin;
@@ -47,7 +50,7 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        testeyoutube.getEngine().load("https://www.youtube.com/embed/WZIGwN-5Ioo");
     }    
     
     @FXML
