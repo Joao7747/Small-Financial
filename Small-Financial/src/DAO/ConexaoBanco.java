@@ -13,7 +13,7 @@ public class ConexaoBanco {
     private Connection conexao;
 
     public ConexaoBanco() {
-        this.servidor = "db4free.net";
+        this.servidor = "db4free.net:3306";
         this.banco = "smallfinancial";
         this.usuario = "smallfinancial";
         this.senha = "YDdshe2Cnm";
