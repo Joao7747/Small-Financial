@@ -56,6 +56,8 @@ public class MetasController implements Initializable {
     private TextField txtPesquisa;
     @FXML
     private Button btnVoltar;
+    @FXML
+    private Button btnInserir;
 
     /**
      * Initializes the controller class.
@@ -68,6 +70,15 @@ public class MetasController implements Initializable {
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene voltarScene = new Scene(voltar);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(voltarScene);
+        window.show();
+    }
+    
+    @FXML
+    private void telaInserir(ActionEvent event) throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("InserirMeta.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
