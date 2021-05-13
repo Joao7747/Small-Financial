@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author Caio
+ * @author Caio o grande
  */
 public class GastosInsertController implements Initializable {
 
