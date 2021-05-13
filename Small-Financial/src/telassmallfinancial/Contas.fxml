@@ -35,7 +35,7 @@
       </Label>
       <ComboBox fx:id="cbCategoria" layoutX="169.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
       <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="14.0" layoutY="110.0" promptText="Pesquisa..." stylesheets="@loginStyle.css" />
-      <Button layoutX="28.0" layoutY="28.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir" textFill="WHITE">
+      <Button layoutX="28.0" layoutY="28.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
