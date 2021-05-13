@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Dell
+ * @author Dell teste
  */
 public class GanhosController implements Initializable {
 

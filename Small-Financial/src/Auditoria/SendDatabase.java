@@ -26,6 +26,7 @@ public class SendDatabase extends Thread {
                 if (msg != null) {
                     enviaMensagemParaSistemaAuditoria(msg);
                 }
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(SendDatabase.class.getName()).log(Level.SEVERE, null, ex);
             }
