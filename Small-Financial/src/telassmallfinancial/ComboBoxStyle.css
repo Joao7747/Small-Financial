@@ -1,0 +1,11 @@
+.combo-box {
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+
+.combo-box .cell{
+    -fx-font: 12px "Book Antiqua";
+    -fx-alignment: center;
+}

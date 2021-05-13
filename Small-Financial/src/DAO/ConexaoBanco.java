@@ -13,10 +13,10 @@ public class ConexaoBanco {
     private Connection conexao;
 
     public ConexaoBanco() {
-        this.servidor = "";
-        this.banco = "";
-        this.usuario = "";
-        this.senha = "";
+        this.servidor = "db4free.net";
+        this.banco = "smallfinancial";
+        this.usuario = "smallfinancial";
+        this.senha = "YDdshe2Cnm";
     }
 
     public boolean conectar() {
@@ -27,7 +27,6 @@ public class ConexaoBanco {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-
     }
 
     public Connection getConnection() {

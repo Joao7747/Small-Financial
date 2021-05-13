@@ -12,17 +12,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="754.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.GastosController">
     <children>
-      <TableView fx:id="tvGastos" layoutX="284.0" layoutY="145.0" prefHeight="200.0" prefWidth="440.0">
+      <TableView fx:id="tvGastos" layoutX="284.0" layoutY="145.0" prefHeight="200.0" prefWidth="440.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
-          <TableColumn fx:id="tcPreco" prefWidth="75.0" text="Preço(R$)" />
-            <TableColumn fx:id="tcData" prefWidth="75.0" text="Data" />
-            <TableColumn fx:id="tcObservacao" prefWidth="75.0" text="Observação" />
-            <TableColumn fx:id="tcAcao" prefWidth="139.0" text="Ação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="75.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Categoria" />
+          <TableColumn fx:id="tcPreco" prefWidth="75.0" style="-fx-background-color: black;" text="Preço(R$)" />
+            <TableColumn fx:id="tcData" prefWidth="75.0" style="-fx-background-color: black;" text="Data" />
+            <TableColumn fx:id="tcObservacao" prefWidth="75.0" style="-fx-background-color: black;" text="Observação" />
+            <TableColumn fx:id="tcAcao" prefWidth="139.0" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Ação" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cbCategoria" layoutX="344.0" layoutY="109.0" prefWidth="150.0" promptText="Categoria" />
-      <TextField layoutX="186.0" layoutY="109.0" promptText="Pesquise..." />
+      <ComboBox fx:id="cbCategoria" layoutX="429.0" layoutY="109.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
+      <TextField alignment="CENTER" layoutX="274.0" layoutY="109.0" promptText="Pesquise..." stylesheets="@loginStyle.css" />
       <Label layoutX="361.0" layoutY="14.0" text="Gastos">
          <font>
             <Font size="20.0" />

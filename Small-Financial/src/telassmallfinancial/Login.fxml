@@ -7,24 +7,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane id="AnchorPane" prefHeight="638.0" prefWidth="1145.0" styleClass="fundo" stylesheets="@loginStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.LoginController">
    <children>
-      <TextField fx:id="txtUser" alignment="CENTER" layoutX="810.0" layoutY="158.0" prefHeight="71.0" prefWidth="227.0" promptText="Usuário">
+      <TextField fx:id="txtUser" alignment="CENTER" layoutX="746.0" layoutY="158.0" prefHeight="71.0" prefWidth="320.0" promptText="Usuário">
          <font>
             <Font name="Book Antiqua" size="27.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="txtSenha" alignment="CENTER" layoutX="810.0" layoutY="259.0" prefHeight="71.0" prefWidth="227.0" promptText="Senha">
+      <PasswordField fx:id="txtSenha" alignment="CENTER" layoutX="747.0" layoutY="259.0" prefHeight="71.0" prefWidth="320.0" promptText="Senha">
          <font>
             <Font name="Book Antiqua" size="27.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btnCadastrar" layoutX="753.0" layoutY="391.0" mnemonicParsing="false" onAction="#changeScreen" prefHeight="71.0" prefWidth="158.0" styleClass="registrarStyle" stylesheets="@loginStyle.css" text="Registre-se" textAlignment="CENTER" textFill="#171616">
+      <Button fx:id="btnCadastrar" layoutX="729.0" layoutY="391.0" mnemonicParsing="false" onAction="#changeScreen" prefHeight="71.0" prefWidth="158.0" styleClass="registrarStyle" stylesheets="@loginStyle.css" text="Registre-se" textAlignment="CENTER" textFill="#171616">
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="btnLogin" layoutX="951.0" layoutY="391.0" mnemonicParsing="false" onAction="#menu" prefHeight="71.0" prefWidth="158.0" stylesheets="@loginStyle.css" text="Login" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="btnLogin" layoutX="926.0" layoutY="391.0" mnemonicParsing="false" onAction="#menu" prefHeight="71.0" prefWidth="158.0" stylesheets="@loginStyle.css" text="Login" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Button>
@@ -33,5 +34,6 @@
             <Image url="@Login.png" />
          </image>
       </ImageView>
+      <WebView fx:id="testeyoutube" layoutX="671.0" prefHeight="155.0" prefWidth="430.0" />
    </children>
 </AnchorPane>

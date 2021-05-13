@@ -45,10 +45,10 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <TextField layoutX="178.0" layoutY="90.0" prefHeight="26.0" prefWidth="250.0" />
-      <TextField layoutX="178.0" layoutY="157.0" prefHeight="26.0" prefWidth="250.0" promptText="exemplo@exemplo.com" />
-      <PasswordField layoutX="181.0" layoutY="224.0" prefHeight="26.0" prefWidth="250.0" />
-      <PasswordField layoutX="180.0" layoutY="291.0" prefHeight="26.0" prefWidth="250.0" />
+      <TextField layoutX="178.0" layoutY="90.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
+      <TextField layoutX="178.0" layoutY="157.0" prefHeight="26.0" prefWidth="250.0" promptText="exemplo@exemplo.com" stylesheets="@loginStyle.css" />
+      <PasswordField layoutX="181.0" layoutY="224.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
+      <PasswordField layoutX="180.0" layoutY="291.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
       <Button layoutX="147.0" layoutY="333.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="125.0" stylesheets="@loginStyle.css" text="Salvar" textFill="WHITE">
          <font>
             <Font size="20.0" />
