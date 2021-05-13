@@ -44,10 +44,8 @@ public class GerenciadorAuditoria {
     }
     
     public void ativar(){
-        if (thread == null){
-            thread = new SendDatabase();
-            thread.start();
-        }
+         thread = new SendDatabase();
+         thread.start();
     }
     
     public void desativar(){
