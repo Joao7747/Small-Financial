@@ -5,6 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
 
@@ -113,7 +119,7 @@ public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
                     curso_Online.setDescricao(resultadoSentenca.getString("Descricao"));
                     curso_Online.setDataLimite(resultadoSentenca.getDate("Data_Limite"));
                     curso_Online.setLink(resultadoSentenca.getString("Link"));
-                    curso_Online.setStatusCursoOnline(resultadoSentenca.getBoolean("Link"));
+                    curso_Online.setStatusCursoOnline(resultadoSentenca.getBoolean("Status_Curso_Online"));
                     
                     listaCurso_Online.add(curso_Online);
                 }

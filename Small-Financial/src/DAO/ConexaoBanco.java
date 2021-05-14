@@ -13,12 +13,13 @@ public class ConexaoBanco {
     private Connection conexao;
 
     public ConexaoBanco() {
-        this.servidor = "db4free.net:3306";
-        this.banco = "smallfinancial";
-        this.usuario = "smallfinancial";
-        this.senha = "YDdshe2Cnm";
+        this.servidor = "remotemysql.com";
+        this.banco = "YHGRTERuKs";
+        this.usuario = "YHGRTERuKs";
+        this.senha = "9N457QFFcy";
     }
 
+    
     public boolean conectar() {
         try {
             this.conexao = DriverManager.getConnection("jdbc:mysql://" + this.servidor +
