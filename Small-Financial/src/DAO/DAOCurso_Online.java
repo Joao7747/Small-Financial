@@ -113,7 +113,7 @@ public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
                     curso_Online.setDescricao(resultadoSentenca.getString("Descricao"));
                     curso_Online.setDataLimite(resultadoSentenca.getDate("Data_Limite"));
                     curso_Online.setLink(resultadoSentenca.getString("Link"));
-                    curso_Online.setStatusCursoOnline(resultadoSentenca.getBoolean("Link"));
+                    curso_Online.setStatusCursoOnline(resultadoSentenca.getBoolean("Status_Curso_Online"));
                     
                     listaCurso_Online.add(curso_Online);
                 }
