@@ -5,9 +5,13 @@
  */
 package telassmallfinancial;
 
+import DAO.DAOGanhos;
+import MODEL.Ganhos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -29,17 +36,17 @@ import javafx.stage.Stage;
 public class GanhosController implements Initializable {
 
     @FXML
-    private TableView<?> tvGanhos;
+    private TableView<Ganhos> tvGanhos;
     @FXML
-    private TableColumn<?, ?> tcCategoria;
+    private TableColumn<Ganhos, String> tcCategoria;
     @FXML
-    private TableColumn<?, ?> tcPreco;
+    private TableColumn<Ganhos, Double> tcPreco;
     @FXML
-    private TableColumn<?, ?> tcData;
+    private TableColumn<Ganhos, java.sql.Date> tcData;
     @FXML
-    private TableColumn<?, ?> tcObservacao;
+    private TableColumn<Ganhos, String> tcObservacao;
     @FXML
-    private TableColumn<?, ?> tcAcao;
+    private TableColumn<Ganhos, Void> tcAcao;
     @FXML
     private ComboBox<?> cbCategoria;
     @FXML
@@ -50,7 +57,14 @@ public class GanhosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcPreco.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        tcData.setCellValueFactory(new PropertyValueFactory<>("dataGanho"));
+        tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+        DAOGanhos ganho = new DAOGanhos();
+        ObservableList<Ganhos> ganhos = FXCollections.observableArrayList(ganho.consultar());
+        tvGanhos.setItems(ganhos);
     }    
 
     @FXML
@@ -59,6 +73,15 @@ public class GanhosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
+        window.show();
+    }
+    
+    @FXML
+    private void InserirGanho(ActionEvent event) throws IOException {
+        Parent inserirganho = FXMLLoader.load(getClass().getResource("InserirGanho.fxml"));
+        Scene inserirganhoScene = new Scene(inserirganho);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(inserirganhoScene);
         window.show();
     }
     

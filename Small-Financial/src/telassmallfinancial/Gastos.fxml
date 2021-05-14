@@ -28,7 +28,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="62.0" layoutY="184.0" mnemonicParsing="false" prefHeight="111.0" prefWidth="177.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir Gastos" textFill="WHITE">
+      <Button layoutX="62.0" layoutY="184.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="111.0" prefWidth="177.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir Gastos" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>

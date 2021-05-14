@@ -74,4 +74,12 @@ public class GastosController implements Initializable {
         window.show();
     }
     
+    @FXML
+    private void Inserir(ActionEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("GastosInsert.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.show();
+    }
 }
