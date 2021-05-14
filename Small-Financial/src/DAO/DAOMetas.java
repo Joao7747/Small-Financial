@@ -38,7 +38,7 @@ public class DAOMetas implements DAOGenerica<Metas> {
                 sentenca.setString(5, metas.getCategoria());
                 sentenca.setString(6, metas.getObservacao());
                 sentenca.setDouble(7, metas.getValorGuardado());
-                sentenca.setBoolean(8, metas.isStatusMeta());
+                sentenca.setByte(8, metas.isStatusMeta());
                 sentenca.setDouble(9, metas.getValorIdealPoupar());
                 sentenca.setInt(10, metas.getIdUsuario());
 
@@ -69,7 +69,8 @@ public class DAOMetas implements DAOGenerica<Metas> {
                 sentenca.setString(5, metas.getCategoria());
                 sentenca.setString(6, metas.getObservacao());
                 sentenca.setDouble(7, metas.getValorGuardado());
-                sentenca.setBoolean(8, metas.isStatusMeta());
+//                sentenca.setBoolean(8, metas.isStatusMeta());
+                sentenca.setByte(8, metas.isStatusMeta());
                 sentenca.setDouble(9, metas.getValorIdealPoupar());
                 sentenca.setInt(10, metas.getIdUsuario());
                 sentenca.setInt(11, metas.getIdMetas());
@@ -133,7 +134,7 @@ public class DAOMetas implements DAOGenerica<Metas> {
                     metas.setCategoria(resultadoSentenca.getString("Categoria"));
                     metas.setObservacao(resultadoSentenca.getString("Observacao"));
                     metas.setValorGuardado(resultadoSentenca.getDouble("ValorGuardado"));
-                    metas.setStatusMeta(resultadoSentenca.getBoolean("Status_Meta"));
+                    metas.setStatusMeta(resultadoSentenca.getByte("Status_Meta"));
                     metas.setValorIdealPoupar(resultadoSentenca.getDouble("Valor_Ideal_Poupar"));
                     metas.setIdUsuario(resultadoSentenca.getInt("idUsuario"));
                     
