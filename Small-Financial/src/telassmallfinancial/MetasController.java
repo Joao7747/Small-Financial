@@ -5,9 +5,14 @@
  */
 package telassmallfinancial;
 
+import DAO.DAOMetas;
+import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -33,23 +39,20 @@ public class MetasController implements Initializable {
     @FXML
     private Label lblContas;
     @FXML
-    private TableView<?> tvContas;
+    private TableView<Metas> tvContas;
     @FXML
-    private TableColumn<?, ?> tcCategoria;
+    private TableColumn<Metas, String> tcCategoria;
     @FXML
-    private TableColumn<?, ?> tcDescricao;
+    private TableColumn<Metas, String> tcDescricao;
     @FXML
-    private TableColumn<?, ?> tcValor;
+    private TableColumn<Metas, Double> tcValor;
     @FXML
-    private TableColumn<?, ?> tcParcelas;
+    private TableColumn<Metas, Date> tcParcelas;
     @FXML
-    private TableColumn<?, ?> tcVencimentos;
+    private TableColumn<Metas, String> tcVencimentos;
     @FXML
-    private TableColumn<?, ?> tcObservacao;
-    @FXML
-    private TableColumn<?, ?> tcStatus;
-    @FXML
-    private TableColumn<?, ?> tcAcao;
+    private TableColumn<Metas, Byte> tcStatus;
+    
     @FXML
     private ComboBox<?> cbCategoria;
     @FXML
@@ -64,7 +67,16 @@ public class MetasController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
+        tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
+        tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        
+        DAOMetas dao = new DAOMetas();
+        ObservableList<Metas> metas = FXCollections.observableArrayList(dao.consultar());
+        tvContas.setItems(metas);
     }    
 
     @FXML
