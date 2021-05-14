@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="697.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="697.0" styleClass="fundo" stylesheets="@TableStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
     <children>
         <Label fx:id="lblContas" layoutX="294.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
          <font>
@@ -18,13 +18,13 @@
          </font></Label>
       <TableView fx:id="tvContas" editable="true" layoutX="35.0" layoutY="147.0" prefHeight="200.0" prefWidth="641.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Categoria" />
-          <TableColumn fx:id="tcDescricao" prefWidth="75.0" style="-fx-background-color: black;" text="Descrição" />
-            <TableColumn fx:id="tcValor" prefWidth="75.0" style="-fx-background-color: black;" text="Preço(R$)" />
-            <TableColumn fx:id="tcParcelas" prefWidth="75.0" style="-fx-background-color: black;" text="Realização" />
-            <TableColumn fx:id="tcVencimentos" prefWidth="114.0" style="-fx-background-color: black;" text="Observação" />
-            <TableColumn fx:id="tcStatus" prefWidth="117.0" style="-fx-background-color: black;" text="Status" />
-            <TableColumn fx:id="tcAcao" prefWidth="109.0" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Ação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
+          <TableColumn fx:id="tcDescricao" prefWidth="75.0" text="Descrição" />
+            <TableColumn fx:id="tcValor" prefWidth="75.0" text="Preço(R$)" />
+            <TableColumn fx:id="tcParcelas" prefWidth="75.0" text="Realização" />
+            <TableColumn fx:id="tcVencimentos" prefWidth="114.0" text="Observação" />
+            <TableColumn fx:id="tcStatus" prefWidth="117.0" text="Status" />
+            <TableColumn fx:id="tcAcao" prefWidth="109.0" text="Ação" />
         </columns>
       </TableView>
       <ComboBox fx:id="cbCategoria" layoutX="185.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
