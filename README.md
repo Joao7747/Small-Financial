@@ -7,12 +7,12 @@
 -senha: smallfinancial@123456
 
 # Banco
--Server: db4free.net 
+-Server: remotemysql.com
 
--Name: smallfinancial
+-Name: YHGRTERuKs
 
--Username: smallfinancial
+-Username:  YHGRTERuKs
 
--Password: YDdshe2Cnm
+-Password: 9N457QFFcy
 
 -Port number: 3306
