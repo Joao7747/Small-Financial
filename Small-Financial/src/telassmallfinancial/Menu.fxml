@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="btnContas" prefHeight="491.0" prefWidth="849.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MenuController">
+   <children>
+      <Line endX="-100.0" endY="-197.0" layoutX="936.0" layoutY="200.0" startX="-100.0" startY="290.5" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-178.0" layoutX="941.0" layoutY="179.0" startX="-100.0" startY="312.5" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-185.0" layoutX="946.0" layoutY="188.0" startX="-100.0" startY="303.5" stroke="#db3b14" strokeWidth="5.0" />
+      <Label fx:id="lblSaudacao" layoutX="29.0" layoutY="14.0" prefHeight="22.0" prefWidth="81.0" text="Saudação" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+      <Button id="btnSaldo" layoutX="397.0" layoutY="13.0" mnemonicParsing="false" stylesheets="@loginStyle.css" text="Saldo" textFill="WHITE" textOverrun="CLIP" />
+      <Label layoutX="539.0" layoutY="18.0" prefHeight="22.0" prefWidth="166.0" text="Dollar - 5,76 | Euro - 6,67" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnMetas" layoutX="68.0" layoutY="100.0" mnemonicParsing="false" onAction="#Metas" prefHeight="162.0" prefWidth="329.0" stylesheets="@loginStyle.css" text="Metas" textFill="WHITE" />
+      <Button fx:id="btnRelatorios" layoutX="451.0" layoutY="100.0" mnemonicParsing="false" prefHeight="162.0" prefWidth="329.0" stylesheets="@loginStyle.css" text="Relatorios e Dicas" textFill="WHITE" />
+      <Button fx:id="btnGastos" layoutX="251.0" layoutY="303.0" mnemonicParsing="false" onAction="#Gastos" prefHeight="112.0" prefWidth="157.0" stylesheets="@loginStyle.css" text="Gastos" textFill="WHITE" />
+      <Button fx:id="btnGanhos" layoutX="451.0" layoutY="303.0" mnemonicParsing="false" onAction="#Ganhos" prefHeight="112.0" prefWidth="157.0" stylesheets="@loginStyle.css" text="Ganhos" textFill="WHITE" />
+      <Button fx:id="btnEducacao" layoutX="648.0" layoutY="303.0" mnemonicParsing="false" onAction="#Educacao" prefHeight="112.0" prefWidth="157.0" stylesheets="@loginStyle.css" text="Educação" textFill="#fcf9f9" />
+      <Button fx:id="btnContas" layoutX="68.0" layoutY="303.0" mnemonicParsing="false" onAction="#Contas" prefHeight="112.0" prefWidth="157.0" stylesheets="@loginStyle.css" text="Contas" textFill="WHITE" />
+      <Button id="btnSaldo" layoutX="767.0" layoutY="13.0" minHeight="15.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="54.0" stylesheets="@loginStyle.css" text="CONFIG" textFill="WHITE" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblNome" layoutX="101.0" layoutY="14.0" prefHeight="22.0" prefWidth="46.0" text="nome" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
