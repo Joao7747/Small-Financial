@@ -14,9 +14,9 @@
     <children>
       <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Artigo" />
-          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Autor" />
-            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Publicação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
+          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
+            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
         </columns>
       </TableView>
       <Label layoutX="361.0" layoutY="14.0" text="Educação">
@@ -67,9 +67,9 @@
       </ImageView>
       <TableView fx:id="tvCursos" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcCurso" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Curso" />
-            <TableColumn fx:id="tcLink" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Link" />
-            <TableColumn fx:id="tcPrazo" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Prazo de Inscrição" />
+            <TableColumn fx:id="tcCurso" prefWidth="134.0" styleClass="TableStyle" text="Curso" />
+            <TableColumn fx:id="tcLink" prefWidth="88.33334350585938" styleClass="TableStyle" text="Link" />
+            <TableColumn fx:id="tcPrazo" prefWidth="104.66665649414062" styleClass="TableStyle" text="Prazo de Inscrição" />
          </columns>
       </TableView>
       <Label layoutX="543.0" layoutY="50.0" text="Vídeos">
@@ -81,8 +81,8 @@
       <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#InserirCurso" text="INSERIR CURSOS" />
       <TableView fx:id="tvVideos" layoutX="432.0" layoutY="86.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcDescricaoVideo" prefWidth="117.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Descrição" />
-            <TableColumn fx:id="tcLinkVideo" prefWidth="212.0" style="-fx-background-color: black;" text="Link" />
+            <TableColumn fx:id="tcDescricaoVideo" prefWidth="117.0" styleClass="TableStyle" text="Descrição" />
+            <TableColumn fx:id="tcLinkVideo" prefWidth="212.0" styleClass="TableStyle" text="Link" />
          </columns>
       </TableView>
    </children> 

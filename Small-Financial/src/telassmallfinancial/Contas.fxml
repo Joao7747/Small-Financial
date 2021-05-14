@@ -18,14 +18,14 @@
          </font></Label>
       <TableView fx:id="tvContas" editable="true" layoutX="28.0" layoutY="147.0" prefHeight="200.0" prefWidth="641.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Categoria" />
-          <TableColumn fx:id="tcDescricao" prefWidth="75.0" style="-fx-background-color: black;" text="Descrição" />
-            <TableColumn fx:id="tcValor" prefWidth="75.0" style="-fx-background-color: black;" text="Valor(R$)" />
-            <TableColumn fx:id="tcParcelas" prefWidth="75.0" style="-fx-background-color: black;" text="Parcelas" />
-            <TableColumn fx:id="tcVencimentos" prefWidth="75.0" style="-fx-background-color: black;" text="Vencimento" />
-            <TableColumn fx:id="tcObservacao" prefWidth="75.0" style="-fx-background-color: black;" text="Observação" />
-            <TableColumn fx:id="tcStatus" prefWidth="75.0" style="-fx-background-color: black;" text="Status" />
-            <TableColumn fx:id="tcAcao" prefWidth="115.0" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Ação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
+          <TableColumn fx:id="tcDescricao" prefWidth="75.0" text="Descrição" />
+            <TableColumn fx:id="tcValor" prefWidth="75.0" text="Valor(R$)" />
+            <TableColumn fx:id="tcParcelas" prefWidth="75.0" text="Parcelas" />
+            <TableColumn fx:id="tcVencimentos" prefWidth="75.0" text="Vencimento" />
+            <TableColumn fx:id="tcObservacao" prefWidth="75.0" text="Observação" />
+            <TableColumn fx:id="tcStatus" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="tcAcao" prefWidth="115.0" text="Ação" />
         </columns>
       </TableView>
       <Label fx:id="lblTotal" layoutX="517.0" layoutY="122.0" text="Total: R$ 4200,00">
