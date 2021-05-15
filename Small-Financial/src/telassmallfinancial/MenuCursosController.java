@@ -92,7 +92,9 @@ public class MenuCursosController implements Initializable {
     @FXML
     private Button btnVoltar;
     
-    public Curso_Online selecionado;
+    public static Curso_Online selecionado;
+    
+    public static boolean validacaoEditar = false;
 
     
     @FXML
@@ -160,12 +162,15 @@ public class MenuCursosController implements Initializable {
     @FXML
     void EditarCurso(ActionEvent event) throws IOException {
         
+        validacaoEditar = true;
+        
         Parent insere = FXMLLoader.load(getClass().getResource("InserirCurso.fxml"));
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.show();
         
+        /*
         String nome = selecionado.getNome();
         String descricao = selecionado.getDescricao();
         String link = selecionado.getLink();
@@ -179,7 +184,9 @@ public class MenuCursosController implements Initializable {
         i.dtDataCurso.setValue(data.toLocalDate());
         i.verificaCaso = true;
         
+        
         i.initCurso(selecionado);
+        */
     }
    
    /* @FXML

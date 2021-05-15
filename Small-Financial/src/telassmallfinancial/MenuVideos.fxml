@@ -13,13 +13,11 @@
         <URL value="@cadastroStyle.css" />
     </stylesheets>
    <children>
-      <TableView fx:id="tvVideos" editable="true" layoutX="45.0" layoutY="125.0" prefHeight="200.0" prefWidth="530.0" stylesheets="@TableStyle.css">
+      <TableView fx:id="tvVideos" editable="true" layoutX="36.0" layoutY="125.0" prefHeight="200.0" prefWidth="515.0" stylesheets="@TableStyle.css">
          <columns>
             <TableColumn fx:id="tcIdVideo" prefWidth="42.0" text="Id" />
-            <TableColumn fx:id="tcDescricao" prefWidth="165.0" text="Descrição" />
-            <TableColumn fx:id="tcLink" prefWidth="200.0" text="Link" />
-            <TableColumn fx:id="tcEditar" prefWidth="63.0" />
-            <TableColumn fx:id="tcExcluir" prefWidth="59.0" />
+            <TableColumn fx:id="tcDescricao" prefWidth="282.0" text="Descrição" />
+            <TableColumn fx:id="tcLink" prefWidth="214.0" text="Link" />
          </columns>
       </TableView>
       <Button fx:id="btnInserir" layoutX="37.0" layoutY="23.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir" textFill="WHITE">
@@ -32,10 +30,12 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Label fx:id="lblContas" layoutX="276.0" layoutY="30.0" minHeight="16" minWidth="69" prefHeight="48.0" prefWidth="83.0" text="Vídeos">
+      <Label fx:id="lblContas" layoutX="269.0" layoutY="30.0" minHeight="16" minWidth="69" prefHeight="48.0" prefWidth="83.0" text="Vídeos">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Button fx:id="btnEditar" layoutX="35.0" layoutY="334.0" mnemonicParsing="false" onAction="#EditarVideo" prefHeight="27.0" prefWidth="264.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Editar" textFill="WHITE" />
+      <Button fx:id="btnExcluir" layoutX="306.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleta" prefHeight="27.0" prefWidth="241.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Excluir" textFill="WHITE" />
    </children>
 </AnchorPane>
