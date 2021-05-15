@@ -5,14 +5,22 @@
  */
 package telassmallfinancial;
 
+import DAO.DAOUsuario;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,6 +34,9 @@ public class ConfiguracaoContaController implements Initializable {
      */
      @FXML
     private Label lblNome;
+
+    @FXML
+    private TextField txtNome;
 
     @FXML
     private TextField txtEmail;
@@ -51,9 +62,30 @@ public class ConfiguracaoContaController implements Initializable {
     @FXML
     private Button btnSalvar;
     
+    @FXML
+    private Button btnVoltar;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
+    @FXML
+    private void Voltar(ActionEvent event) throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene voltarScene = new Scene(voltar);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(voltarScene);
+        window.show();
+    }
+    
+//    private void Listagem(){
+//        
+//    }
+//    
+//    @FXML
+//    private void Salvar() {
+//        DAOUsuario usuario = new DAOUsuario();
+//        
+//    }
 }
