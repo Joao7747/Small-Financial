@@ -43,7 +43,7 @@ public class InserirVideoController implements Initializable {
     
     @FXML
         private void Voltar(ActionEvent event) throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
@@ -67,6 +67,8 @@ public class InserirVideoController implements Initializable {
                 
                     DAOVideo dao = new DAOVideo();    
                     dao.inserir(v);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo salvo com sucesso!", ButtonType.OK);
+                    alerta.show();
                 }
             }
             catch(Exception e)

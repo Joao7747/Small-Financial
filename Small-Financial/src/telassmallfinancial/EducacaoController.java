@@ -96,8 +96,8 @@ public class EducacaoController implements Initializable {
         window.show();
     }
     @FXML
-    private void InserirCurso(ActionEvent event) throws IOException {
-        Parent insere = FXMLLoader.load(getClass().getResource("InserirCurso.fxml"));
+    private void MenuCursos(ActionEvent event) throws IOException {
+        Parent insere = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
@@ -105,8 +105,8 @@ public class EducacaoController implements Initializable {
     }
     
     @FXML
-    private void InserirVideo(ActionEvent event) throws IOException {
-        Parent insereVideo = FXMLLoader.load(getClass().getResource("InserirVideo.fxml"));
+    private void MenuVideos(ActionEvent event) throws IOException {
+        Parent insereVideo = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
         Scene insereVideoScene = new Scene(insereVideo);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereVideoScene);

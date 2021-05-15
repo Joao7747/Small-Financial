@@ -77,8 +77,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#InserirVideo" text="INSERIRVIDEO" />
-      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#InserirCurso" text="INSERIR CURSOS" />
+      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
+      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
       <TableView fx:id="tvVideos" layoutX="432.0" layoutY="86.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
             <TableColumn fx:id="tcDescricaoVideo" prefWidth="117.0" styleClass="TableStyle" text="Descrição" />
