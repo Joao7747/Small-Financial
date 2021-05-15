@@ -106,10 +106,10 @@ public class EducacaoController implements Initializable {
     
     @FXML
     private void MenuVideos(ActionEvent event) throws IOException {
-        Parent insereVideo = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
-        Scene insereVideoScene = new Scene(insereVideo);
+        Parent insere = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
+        Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(insereVideoScene);
+        window.setScene(insereScene);
         window.show();
     }
 }
