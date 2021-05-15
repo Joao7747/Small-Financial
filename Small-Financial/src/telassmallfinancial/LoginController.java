@@ -19,8 +19,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 /**
  *
@@ -36,12 +34,12 @@ public class LoginController implements Initializable {
     @FXML
     private TextField txtSenha;
     
- 
     @FXML
     private Button btnLogin;
+    
     @FXML
-
     private Button btnCadastrar;
+    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
     }
@@ -53,12 +51,20 @@ public class LoginController implements Initializable {
     
     @FXML
     public void changeScreen(ActionEvent event) throws IOException {
-        
+        verificaLogin();
         Parent cadastro = FXMLLoader.load(getClass().getResource("Cadastro.fxml"));
         Scene cadastroScene = new Scene(cadastro);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(cadastroScene);
         window.show();
+    }
+    
+    @FXML
+    public Boolean verificaLogin(){
+        String email = txtUser.getText();
+        String senha = txtSenha.getText();
+        usuario.UsuarioLogado(email, senha);
+        return true;
     }
     
     @FXML

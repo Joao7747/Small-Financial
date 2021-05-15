@@ -133,27 +133,28 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     
     
     }
-    public void UsuarioLogado(String email)
+    public Boolean UsuarioLogado(String email, String senha)
     {
-        String sql = email;
-//        try
-//        {
-//            if(this.conexao.conectar())
-//            {
-//                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-//                
-//                
-//                ResultSet resultadoSentenca = sentenca.executeQuery();
-//                System.out.println(resultadoSentenca);
-//
-//                sentenca.close();
-//                this.conexao.getConnection().close();
-//            }
-//        }
-//        catch(SQLException ex)
-//        {
-//           throw new RuntimeException(ex);
-//        }
+        String sql = "select count(Nome) from Usuario where email = " + email + " and senha = " + senha;
+        try
+        {
+            if(this.conexao.conectar())
+            {
+                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
+                
+                
+                ResultSet resultadoSentenca = sentenca.executeQuery();
+                System.out.println(resultadoSentenca);
+
+                sentenca.close();
+                this.conexao.getConnection().close();
+            }
+            return true;
+        }
+        catch(SQLException ex)
+        {
+           throw new RuntimeException(ex);
+        }
 
     }
 
