@@ -26,9 +26,7 @@
                 <TableColumn fx:id="tcParcelas" prefWidth="95.0" text="Realização" />
                 <TableColumn fx:id="tcVencimentos" prefWidth="182.0" text="Observação" />
                 <TableColumn fx:id="tcStatus" prefWidth="104.0" text="Status" />
-            <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
-            
-
+                <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
             </columns>
         </TableView>
         <ComboBox fx:id="cbCategoria" layoutX="185.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />

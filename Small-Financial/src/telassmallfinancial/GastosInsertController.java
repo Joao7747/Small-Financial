@@ -7,15 +7,22 @@ package telassmallfinancial;
 
 import DAO.DAOGastos;
 import MODEL.Gastos;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,5 +76,13 @@ public class GastosInsertController implements Initializable {
             JOptionPane.showConfirmDialog(null, e.toString(), "Ops, algo deu errado", JOptionPane.DEFAULT_OPTION);
             System.out.println(e);
         }
+    }
+     @FXML
+    private void Voltar(ActionEvent event) throws IOException{
+        Parent voltar = FXMLLoader.load(getClass().getResource("Gastos.fxml"));
+        Scene voltarScene = new Scene(voltar);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(voltarScene);
+        window.show();
     }
 }

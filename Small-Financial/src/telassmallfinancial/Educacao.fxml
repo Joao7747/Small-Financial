@@ -67,9 +67,9 @@
       </ImageView>
       <TableView fx:id="tvCursos" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcCurso" prefWidth="134.0" styleClass="TableStyle" text="Curso" />
-            <TableColumn fx:id="tcLink" prefWidth="88.33334350585938" styleClass="TableStyle" text="Link" />
-            <TableColumn fx:id="tcPrazo" prefWidth="104.66665649414062" styleClass="TableStyle" text="Prazo de Inscrição" />
+            <TableColumn fx:id="tcCurso" prefWidth="328.0" styleClass="TableStyle" text="Curso" />
+            <TableColumn fx:id="tcLink" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
+            <TableColumn fx:id="tcPrazo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Prazo de Inscrição" />
          </columns>
       </TableView>
       <Label layoutX="543.0" layoutY="50.0" text="Vídeos">
@@ -77,12 +77,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#InserirVideo" text="INSERIRVIDEO" />
-      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#InserirCurso" text="INSERIR CURSOS" />
+      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
+      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
       <TableView fx:id="tvVideos" layoutX="432.0" layoutY="86.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcDescricaoVideo" prefWidth="117.0" styleClass="TableStyle" text="Descrição" />
-            <TableColumn fx:id="tcLinkVideo" prefWidth="212.0" styleClass="TableStyle" text="Link" />
+            <TableColumn fx:id="tcDescricaoVideo" prefWidth="329.0" styleClass="TableStyle" text="Descrição" />
+            <TableColumn fx:id="tcLinkVideo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
          </columns>
       </TableView>
    </children> 

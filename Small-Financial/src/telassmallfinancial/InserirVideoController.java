@@ -32,6 +32,7 @@ public class InserirVideoController implements Initializable {
 
     public TextField txtTituloVideo;
     public TextField txtLinkVideo;
+    MenuVideosController menuVideos = new MenuVideosController();
     
     /**
      * Initializes the controller class.
@@ -39,11 +40,22 @@ public class InserirVideoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+       if (menuVideos.validacaoEditarVideo == true) {
+
+            String descricao = menuVideos.selecionadoVideo.getDescricao();
+            String link = menuVideos.selecionadoVideo.getLink();
+            
+
+            txtTituloVideo.setText(descricao);
+            txtLinkVideo.setText(link);
+            
+        }
     }  
     
     @FXML
         private void Voltar(ActionEvent event) throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
@@ -56,27 +68,37 @@ public class InserirVideoController implements Initializable {
             String titulo = txtTituloVideo.getText();
             String link = txtLinkVideo.getText();
                     
-            try            
-            {
-                if(!titulo.equals("") && !link.equals(""))
-                {
-                     Video v = new Video();
-            
-                    v.setDescricao(txtTituloVideo.getText());
-                    v.setLink(txtLinkVideo.getText());
-                
-                    DAOVideo dao = new DAOVideo();    
-                    dao.inserir(v);
-                }
-            }
-            catch(Exception e)
-            {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
-                    alerta.show();    
-            }
+            DAOVideo dao = new DAOVideo();
 
-            
-            
+
+        if (!titulo.equals("") || !link.equals("") ) {
+
+            if (menuVideos.validacaoEditarVideo == true) {
+
+                menuVideos.selecionadoVideo.setDescricao(titulo);
+                menuVideos.selecionadoVideo.setLink(link);
+                
+                dao.alterar(menuVideos.selecionadoVideo);
+                menuVideos.validacaoEditarVideo = false;
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo atualizado com sucesso!", ButtonType.OK);
+                alerta.show();
+                
+            } else {
+                Video v = new Video();
+
+                v.setLink(link);
+                v.setDescricao(titulo);
+                dao.inserir(v);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo salvo com sucesso!", ButtonType.OK);
+                alerta.show();
+                menuVideos.validacaoEditarVideo = false;
+
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
+            alerta.show();
+
+        }
             
     }  
 }
