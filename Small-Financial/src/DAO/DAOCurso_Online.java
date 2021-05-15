@@ -69,7 +69,7 @@ public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
 
     @Override
     public void excluir(int id) {
-        String sql = "DELETE FROM Curso_Online WHERE id = ?";
+        String sql = "DELETE FROM Curso_Online WHERE idCurso_Online = ?";
 
         try {
             if (this.conexao.conectar()) {
