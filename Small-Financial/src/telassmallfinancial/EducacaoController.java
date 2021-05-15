@@ -49,6 +49,9 @@ public class EducacaoController implements Initializable {
     private Button btnVoltar;
     
     @FXML
+    private Button btnSiglas;
+    
+    @FXML
     public TableView<Curso_Online> tvCursos;
     @FXML
     public TableColumn<Curso_Online, String> tcCurso;
@@ -108,6 +111,15 @@ public class EducacaoController implements Initializable {
     private void InserirVideo(ActionEvent event) throws IOException {
         Parent insereVideo = FXMLLoader.load(getClass().getResource("InserirVideo.fxml"));
         Scene insereVideoScene = new Scene(insereVideo);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(insereVideoScene);
+        window.show();
+    }
+    
+    @FXML
+    private void siglas(ActionEvent event) throws IOException {
+        Parent telaSiglas = FXMLLoader.load(getClass().getResource("Siglas_e_Nomeclaturas.fxml"));
+        Scene insereVideoScene = new Scene(telaSiglas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereVideoScene);
         window.show();
