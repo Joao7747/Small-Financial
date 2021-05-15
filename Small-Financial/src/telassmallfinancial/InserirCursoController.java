@@ -41,7 +41,7 @@ public class InserirCursoController implements Initializable {
      public TextField txtLinkDoCurso;
      public DatePicker dtDataCurso;
      public TextField txtDescCurso;
-     
+     public boolean verificaCaso = false;
      
      
      /**
@@ -50,13 +50,27 @@ public class InserirCursoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       
-// TODO
+        
+    }
+    
+    public void initCurso(Curso_Online selecionado)
+    {   
+                
+        String nome = selecionado.getNome();
+        String descricao = selecionado.getDescricao();
+        String link = selecionado.getLink();
+        Date data = selecionado.getDataLimite();
+    
+        txtNomeCurso.setText(nome);
+        txtDescCurso.setText(descricao);
+        txtLinkDoCurso.setText(link);
+        dtDataCurso.setValue(data.toLocalDate());
+    
     }
 
         @FXML
         private void Voltar(ActionEvent event) throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
@@ -87,9 +101,20 @@ public class InserirCursoController implements Initializable {
                     c.setDescricao(descricao);
                 
                   DAOCurso_Online dao = new DAOCurso_Online();    
-         
+                    
+                  if(verificaCaso == false){
                     dao.inserir(c);
-                }
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso salvo com sucesso!", ButtonType.OK);
+                   alerta.show(); 
+                  }else
+                  {
+                    dao.alterar(c);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
+                   alerta.show(); 
+                  }
+                    
+                   
+                } 
             }
             catch(Exception e)
             {
