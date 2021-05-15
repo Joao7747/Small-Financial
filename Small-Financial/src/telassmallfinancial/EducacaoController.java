@@ -5,9 +5,19 @@
  */
 package telassmallfinancial;
 
+import DAO.DAOCurso_Online;
+import DAO.DAOVideo;
+import MODEL.Curso_Online;
+import MODEL.Video;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -28,29 +39,51 @@ import javafx.stage.Stage;
 public class EducacaoController implements Initializable {
 
     @FXML
-    private TableView<?> tvGanhos;
+    private TableView<Video> tvVideos;
     @FXML
-    private TableColumn<?, ?> tcCategoria;
+    private TableColumn<Video, String> tcDescricaoVideo;
     @FXML
-    private TableColumn<?, ?> tcPreco;
-    @FXML
-    private TableColumn<?, ?> tcData;
+    private TableColumn<Video, String> tcLinkVideo;
+
     @FXML
     private Button btnVoltar;
+    
     @FXML
-    private TableView<?> tvGanhos1;
+    public TableView<Curso_Online> tvCursos;
     @FXML
-    private TableColumn<?, ?> tcCategoria1;
+    public TableColumn<Curso_Online, String> tcCurso;
     @FXML
-    private TableColumn<?, ?> tcPreco1;
+    public TableColumn<Curso_Online, String> tcLink;
     @FXML
-    private TableColumn<?, ?> tcData1;
+    public TableColumn<Curso_Online, Date> tcPrazo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //LISTAR CURSO
+        tcCurso.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
+        tcPrazo.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
+       
+        DAOCurso_Online daoCurso = new DAOCurso_Online();
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar());
+        tvCursos.setItems(curso);
+        
+        //LISTAR VÍDEO
+        tcDescricaoVideo.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcLinkVideo.setCellValueFactory(new PropertyValueFactory<>("link"));
+       
+       
+        DAOVideo daoVideo = new DAOVideo();
+        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
+        tvVideos.setItems(video);
+        
+        
+        
+        
         // TODO
     }    
 
@@ -62,5 +95,21 @@ public class EducacaoController implements Initializable {
         window.setScene(voltarScene);
         window.show();
     }
+    @FXML
+    private void MenuCursos(ActionEvent event) throws IOException {
+        Parent insere = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
+        Scene insereScene = new Scene(insere);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(insereScene);
+        window.show();
+    }
     
+    @FXML
+    private void MenuVideos(ActionEvent event) throws IOException {
+        Parent insere = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
+        Scene insereScene = new Scene(insere);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(insereScene);
+        window.show();
+    }
 }

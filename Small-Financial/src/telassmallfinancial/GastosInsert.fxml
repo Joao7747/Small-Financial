@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <Button fx:id="btnSalvar" layoutX="185.0" layoutY="334.0" mnemonicParsing="false" onAction="#inserir" prefHeight="39.0" prefWidth="83.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Salvar" textFill="WHITE" />
-      <Button fx:id="btnVoltar" layoutX="301.0" layoutY="334.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="301.0" layoutY="334.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="39.0" prefWidth="83.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
       <TextField fx:id="cbCategoria" layoutX="35.0" layoutY="113.0" />
    </children>
 </AnchorPane>

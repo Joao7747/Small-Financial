@@ -14,9 +14,9 @@
     <children>
       <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Artigo" />
-          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Autor" />
-            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Publicação" />
+          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
+          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
+            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
         </columns>
       </TableView>
       <Label layoutX="361.0" layoutY="14.0" text="Educação">
@@ -29,7 +29,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="612.0" layoutY="22.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="30.0" prefWidth="108.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="638.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="30.0" prefWidth="108.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
       <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="85.0" layoutY="83.0" startX="321.3333435058594" startY="-4.0" strokeWidth="2.0" />
       <Line endX="-100.0" endY="-172.0" layoutX="875.0" layoutY="175.0" startX="-100.0" startY="226.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-181.0" layoutX="880.0" layoutY="184.0" startX="-100.0" startY="217.0" stroke="#db3b14" strokeWidth="5.0" />
@@ -60,37 +60,30 @@
             <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="619.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="622.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tvGanhos1" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
+      <TableView fx:id="tvCursos" layoutX="32.0" layoutY="266.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
-            <TableColumn fx:id="tcCategoria1" prefWidth="134.0" style="-fx-background-radius: 20 0 0 0; -fx-background-color: black;" text="Curso" />
-            <TableColumn fx:id="tcPreco1" prefWidth="88.33334350585938" style="-fx-background-color: black;" text="Link" />
-            <TableColumn fx:id="tcData1" prefWidth="104.66665649414062" style="-fx-background-radius: 0 20 0 0; -fx-background-color: black;" text="Prazo de Inscrição" />
+            <TableColumn fx:id="tcCurso" prefWidth="328.0" styleClass="TableStyle" text="Curso" />
+            <TableColumn fx:id="tcLink" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
+            <TableColumn fx:id="tcPrazo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Prazo de Inscrição" />
          </columns>
       </TableView>
-      <Label layoutX="548.0" layoutY="69.0" text="Vídeos">
+      <Label layoutX="543.0" layoutY="50.0" text="Vídeos">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="533.0" layoutY="104.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="133.0" stylesheets="@loginStyle.css" text="Vídeo 2" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="430.0" layoutY="126.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="91.0" stylesheets="@loginStyle.css" text="Vídeo 1" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="678.0" layoutY="128.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="91.0" stylesheets="@loginStyle.css" text="Vídeo 3" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
+      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
+      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
+      <TableView fx:id="tvVideos" layoutX="432.0" layoutY="86.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
+         <columns>
+            <TableColumn fx:id="tcDescricaoVideo" prefWidth="329.0" styleClass="TableStyle" text="Descrição" />
+            <TableColumn fx:id="tcLinkVideo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
+         </columns>
+      </TableView>
    </children> 
 </AnchorPane>
