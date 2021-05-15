@@ -10,41 +10,53 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="697.0" styleClass="fundo" stylesheets="@TableStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="466.0" prefWidth="770.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
     <children>
-        <Label fx:id="lblContas" layoutX="294.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
-         <font>
-            <Font size="17.0" />
-         </font></Label>
-      <TableView fx:id="tvContas" editable="true" layoutX="35.0" layoutY="147.0" prefHeight="200.0" prefWidth="530.0" stylesheets="@TableStyle.css">
-        <columns>
-
-          <TableColumn fx:id="tcCategoria" prefWidth="75.0" text="Categoria" />
-          <TableColumn fx:id="tcDescricao" prefWidth="75.0" text="Descrição" />
-            <TableColumn fx:id="tcValor" prefWidth="75.0" text="Preço(R$)" />
-            <TableColumn fx:id="tcParcelas" prefWidth="75.0" text="Realização" />
-            <TableColumn fx:id="tcVencimentos" prefWidth="114.0" text="Observação" />
-            <TableColumn fx:id="tcStatus" prefWidth="117.0" text="Status" />
-
-        </columns>
-      </TableView>
-      <ComboBox fx:id="cbCategoria" layoutX="185.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
-      <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="21.0" layoutY="110.0" promptText="Pesquisa..." stylesheets="@loginStyle.css">
-         <font>
-            <Font name="Book Antiqua" size="12.0" />
-         </font></TextField>
-      <Button fx:id="btnInserir" layoutX="35.0" layoutY="28.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir" textFill="WHITE">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnVoltar" layoutX="555.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Button>
-      <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="199.0" startX="-100.0" startY="233.0" stroke="#1231dd" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-178.0" layoutX="107.0" layoutY="178.0" startX="-100.0" startY="253.75" stroke="#f5f509" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-187.0" layoutX="112.0" layoutY="187.0" startX="-100.0" startY="244.75" stroke="#db3b14" strokeWidth="5.0" />
+        <Label fx:id="lblContas" layoutX="324.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Label>
+        <TableView fx:id="tvContas" editable="true" layoutX="24.0" layoutY="150.0" prefHeight="203.0" prefWidth="733.0" stylesheets="@TableStyle.css">
+            <columns>
+                <TableColumn fx:id="tcId" prefWidth="64.0" text="Id" />
+                <TableColumn fx:id="tcCategoria" minWidth="0.0" prefWidth="121.0" text="Categoria" />
+                <TableColumn fx:id="tcDescricao" minWidth="0.0" prefWidth="86.0" text="Descrição" />
+                <TableColumn fx:id="tcValor" prefWidth="81.0" text="Preço(R$)" />
+                <TableColumn fx:id="tcParcelas" prefWidth="95.0" text="Realização" />
+                <TableColumn fx:id="tcVencimentos" prefWidth="182.0" text="Observação" />
+                <TableColumn fx:id="tcStatus" prefWidth="104.0" text="Status" />
+                <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
+            </columns>
+        </TableView>
+        <ComboBox fx:id="cbCategoria" layoutX="185.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
+        <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="21.0" layoutY="110.0" promptText="Pesquisa..." stylesheets="@loginStyle.css">
+            <font>
+                <Font name="Book Antiqua" size="12.0" />
+            </font>
+        </TextField>
+        <Button fx:id="btnInserir" layoutX="35.0" layoutY="28.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Inserir" textFill="WHITE">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Button fx:id="btnVoltar" layoutX="628.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
+            <font>
+                <Font size="17.0" />
+            </font>
+        </Button>
+        <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="199.0" startX="-100.0" startY="253.5" stroke="#1231dd" strokeWidth="5.0" />
+        <Line endX="-100.0" endY="-178.0" layoutX="107.0" layoutY="178.0" startX="-100.0" startY="278.4644775390625" stroke="#f5f509" strokeWidth="5.0" />
+        <Line endX="-100.0" endY="-187.0" layoutX="112.0" layoutY="187.0" startX="-100.0" startY="269.0" stroke="#db3b14" strokeWidth="5.0" />
+        <Button fx:id="btnEditar" layoutX="69.0" layoutY="360.0" mnemonicParsing="false" onAction="#editar" prefHeight="27.0" prefWidth="298.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Editar" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="btnExcluir" layoutX="413.0" layoutY="360.0" mnemonicParsing="false" onAction="#excluir" prefHeight="33.0" prefWidth="289.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Excluir" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Button>
     </children>
 </AnchorPane>

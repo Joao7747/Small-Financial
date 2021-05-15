@@ -39,7 +39,7 @@
          </font>
       </Label>
       <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="60.0" layoutY="-56.0" startX="-28.333335876464844" startY="274.3333435058594" strokeWidth="2.0" />
-      <Button layoutX="631.0" layoutY="258.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Siglas e Nomenclaturas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnSiglas" layoutX="631.0" layoutY="258.0" mnemonicParsing="false" onAction="#siglas" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Siglas e Nomenclaturas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
