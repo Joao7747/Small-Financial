@@ -12,10 +12,7 @@ import MODEL.Video;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,6 +53,20 @@ public class EducacaoController implements Initializable {
     public TableColumn<Curso_Online, String> tcLink;
     @FXML
     public TableColumn<Curso_Online, Date> tcPrazo;
+    @FXML
+    private TableView<?> tvGanhos;
+    @FXML
+    private TableColumn<?, ?> tcCategoria;
+    @FXML
+    private TableColumn<?, ?> tcPreco;
+    @FXML
+    private TableColumn<?, ?> tcData;
+    @FXML
+    private Button btnInserirCurso;
+    @FXML
+    private Button btnMenuVideo;
+    @FXML
+    private Button btnMenuPublicacoes;
 
     /**
      * Initializes the controller class.
@@ -80,10 +91,6 @@ public class EducacaoController implements Initializable {
         DAOVideo daoVideo = new DAOVideo();
         ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
         tvVideos.setItems(video);
-        
-        
-        
-        
         // TODO
     }    
 
@@ -107,6 +114,15 @@ public class EducacaoController implements Initializable {
     @FXML
     private void MenuVideos(ActionEvent event) throws IOException {
         Parent insere = FXMLLoader.load(getClass().getResource("MenuVideos.fxml"));
+        Scene insereScene = new Scene(insere);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(insereScene);
+        window.show();
+    }
+
+    @FXML
+    private void MenuPublicacao(ActionEvent event) throws IOException {
+        Parent insere = FXMLLoader.load(getClass().getResource("MenuPublicacoes.fxml"));
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);

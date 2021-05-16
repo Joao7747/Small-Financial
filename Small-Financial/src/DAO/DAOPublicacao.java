@@ -69,7 +69,7 @@ public class DAOPublicacao implements DAOGenerica<Publicacao> {
 
     @Override
     public void excluir(int id) {
-        String sql = "DELETE FROM Publicacao WHERE id = ?";
+        String sql = "DELETE FROM Publicacao WHERE idPublicacao = ?";
 
         try {
             if (this.conexao.conectar()) {

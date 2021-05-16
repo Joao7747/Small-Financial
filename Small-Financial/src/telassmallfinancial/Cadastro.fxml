@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.CadastroController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.CadastroController">
     <stylesheets>
         <URL value="@cadastroStyle.css" />
     </stylesheets>
@@ -45,11 +45,11 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <TextField layoutX="178.0" layoutY="90.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
-      <TextField layoutX="178.0" layoutY="157.0" prefHeight="26.0" prefWidth="250.0" promptText="exemplo@exemplo.com" stylesheets="@loginStyle.css" />
-      <PasswordField layoutX="181.0" layoutY="224.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
-      <PasswordField layoutX="180.0" layoutY="291.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
-      <Button layoutX="147.0" layoutY="333.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="125.0" stylesheets="@loginStyle.css" text="Salvar" textFill="WHITE">
+      <TextField fx:id="txtNome" layoutX="178.0" layoutY="90.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
+      <TextField fx:id="txtEmail" layoutX="178.0" layoutY="157.0" prefHeight="26.0" prefWidth="250.0" promptText="exemplo@exemplo.com" stylesheets="@loginStyle.css" />
+      <PasswordField fx:id="txtSenha" layoutX="181.0" layoutY="224.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
+      <PasswordField fx:id="txtConfirmarSenha" layoutX="180.0" layoutY="291.0" prefHeight="26.0" prefWidth="250.0" stylesheets="@loginStyle.css" />
+      <Button fx:id="btnSalvar" layoutX="147.0" layoutY="333.0" mnemonicParsing="false" onAction="#Cadastrar" prefHeight="47.0" prefWidth="125.0" stylesheets="@loginStyle.css" text="Salvar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
