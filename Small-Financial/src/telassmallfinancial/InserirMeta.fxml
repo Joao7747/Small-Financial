@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="454.0" prefWidth="774.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.InserirMetaController">
    <children>
-      <Label layoutX="280.0" layoutY="23.0" text="Insira sua meta ou desejo">
+      <Label fx:id="lblDesejo" layoutX="280.0" layoutY="23.0" text="Insira sua meta ou desejo">
          <font>
             <Font size="20.0" />
          </font>
@@ -20,7 +20,7 @@
       <TextField fx:id="txtDescricao" layoutX="101.0" layoutY="101.0" prefHeight="31.0" prefWidth="225.0" promptText="Breve Descrição, usaremos como título" stylesheets="@loginStyle.css" />
       <TextField fx:id="txtCusto" layoutX="101.0" layoutY="225.0" prefHeight="31.0" prefWidth="225.0" promptText="R$" stylesheets="@loginStyle.css" text="R$ " />
       <ComboBox fx:id="cbCategoria" layoutX="471.0" layoutY="101.0" prefHeight="31.0" prefWidth="200.0" promptText="Selecione..." stylesheets="@ComboBoxStyle.css" />
-      <TextArea fx:id="txtObservacao" layoutX="471.0" layoutY="225.0" prefHeight="86.0" prefWidth="200.0" stylesheets="@loginStyle.css" />
+      <TextArea fx:id="txtObservacao" layoutX="471.0" layoutY="225.0" prefHeight="86.0" prefWidth="200.0" stylesheets="@loginStyle.css" wrapText="true" />
       <Line endX="-99.99998474121094" endY="-207.0" layoutX="103.0" layoutY="201.0" startX="-99.99996948242188" startY="261.0" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-180.0" layoutX="108.0" layoutY="180.0" startX="-100.0" startY="279.4644775390625" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-189.0" layoutX="113.0" layoutY="189.0" startX="-100.0" startY="270.4644775390625" stroke="#db3b14" strokeWidth="5.0" />
@@ -59,7 +59,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <TextArea fx:id="txtValorGuardado" disable="true" layoutX="101.0" layoutY="268.0" prefHeight="78.0" prefWidth="225.0" style="-fx-background-color: transparent;">
+      <TextArea fx:id="txtValorGuardado" disable="true" layoutX="101.0" layoutY="268.0" prefHeight="115.0" prefWidth="225.0" style="-fx-background-color: transparent;" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>

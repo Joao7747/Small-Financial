@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +22,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -52,6 +56,16 @@ public class MetasController implements Initializable {
     private TableColumn<Metas, String> tcVencimentos;
     @FXML
     private TableColumn<Metas, Byte> tcStatus;
+    @FXML
+    private TableColumn<Metas, Integer> tcId;
+    @FXML
+    private TableColumn<Metas, Date> tcDataInserido;
+    
+    @FXML
+    private Button btnEditar;
+
+    @FXML
+    private Button btnExcluir;
     
     @FXML
     private ComboBox<?> cbCategoria;
@@ -61,22 +75,24 @@ public class MetasController implements Initializable {
     private Button btnVoltar;
     @FXML
     private Button btnInserir;
+    
+    public static boolean verificaEditar = false;
+    
+    public static Metas selecionado;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
-        tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
-        tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        listar();
         
-        DAOMetas dao = new DAOMetas();
-        ObservableList<Metas> metas = FXCollections.observableArrayList(dao.consultar());
-        tvContas.setItems(metas);
+        tvContas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue){
+                selecionado = (Metas)newValue;
+            }
+        });
     }    
 
     @FXML
@@ -95,6 +111,56 @@ public class MetasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+    }
+    
+    private void listar(){
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
+        tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
+        tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        tcId.setCellValueFactory(new PropertyValueFactory<>("idMetas"));
+        tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
+        
+        DAOMetas dao = new DAOMetas();
+        ObservableList<Metas> metas = FXCollections.observableArrayList(dao.consultar());
+        tvContas.setItems(metas);
+    }
+    
+    @FXML
+    private void excluir(ActionEvent event) {
+        if(selecionado != null){
+            try{
+                DAOMetas meta = new DAOMetas();
+                meta.excluir(selecionado.getIdMetas());
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta excluido com sucesso!", ButtonType.OK);
+                alerta.show();
+                listar();
+            } catch (Exception e){
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Não foi possível deletar a Meta!", ButtonType.OK);
+                alerta.show();
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma meta para excluir!", ButtonType.OK);
+            alerta.show();
+        }
+    }
+    
+    @FXML
+    public void editar(ActionEvent event) throws IOException {
+        if(selecionado != null){
+            verificaEditar = true;
+            
+            Parent voltar = FXMLLoader.load(getClass().getResource("InserirMeta.fxml"));
+            Scene voltarScene = new Scene(voltar);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(voltarScene);
+            window.show();
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma meta para poder editar!", ButtonType.OK);
+            alerta.show();
+        }
     }
     
 }
