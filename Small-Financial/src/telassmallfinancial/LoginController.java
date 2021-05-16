@@ -51,7 +51,6 @@ public class LoginController implements Initializable {
     
     @FXML
     public void changeScreen(ActionEvent event) throws IOException {
-        verificaLogin();
         Parent cadastro = FXMLLoader.load(getClass().getResource("Cadastro.fxml"));
         Scene cadastroScene = new Scene(cadastro);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
