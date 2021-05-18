@@ -135,21 +135,29 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     }
     public Boolean UsuarioLogado(String email, String senha)
     {
-        String sql = "select count(Nome) from Usuario where email = " + email + " and senha = " + senha;
+        Boolean retorno = false;
+        String sql = "select count(idUsuario) as total from Usuario where email = ? and senha = ?";
         try
         {
             if(this.conexao.conectar())
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-                
+                sentenca.setString(1, email);
+                sentenca.setString(2, senha);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
-                System.out.println(resultadoSentenca);
-
+                while(resultadoSentenca.next()) 
+                {
+                    if(resultadoSentenca.getInt("total") > 0){
+                        retorno = true;
+                    }
+                }
+                
                 sentenca.close();
                 this.conexao.getConnection().close();
             }
-            return true;
+            
+            return retorno;
         }
         catch(SQLException ex)
         {
