@@ -95,6 +95,14 @@ public class InserirCursoController implements Initializable {
                 menu.validacaoEditar = false;
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Curso
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
             } else {
                 Curso_Online c = new Curso_Online();
 
@@ -105,6 +113,13 @@ public class InserirCursoController implements Initializable {
                 dao.inserir(c);
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso salvo com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Curso
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
 
             }
         } else {

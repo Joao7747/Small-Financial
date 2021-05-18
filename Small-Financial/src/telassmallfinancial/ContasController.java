@@ -6,10 +6,12 @@
 package telassmallfinancial;
 
 import DAO.DAODividas;
+import DAO.DAOMetas;
 import MODEL.Dividas;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -32,6 +34,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import static telassmallfinancial.MenuPublicacoesController.selecionadoPubli;
 
 /**
  * FXML Controller class
@@ -137,21 +140,29 @@ public class ContasController implements Initializable {
             try
             {
                 DAODividas dao = new DAODividas();
-                dao.excluir(selecionado.getIdDividas());
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso deletado com sucesso!", ButtonType.OK);
-                alerta.show();
-                Listagem();
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Confirmação");
+                alerta.setHeaderText("O dado sera prmanentemente excluido!!");
+                alerta.setContentText("tem certeza que deseja excluir?");
+
+                Optional<ButtonType> result = alerta.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    dao.excluir(selecionadoPubli.getIdPublicacao());
+                    Listagem();
+                } else {
+                    alerta.close();
+                }
             
             }
             catch(Exception e)
             {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Curso NÃO deletado!", ButtonType.OK);
+                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Divida NÃO deletada!", ButtonType.OK);
                     alerta.show(); 
             }
         }
         else
         {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Curso!", ButtonType.OK);
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma divida!", ButtonType.OK);
             alerta.show(); 
         }
         

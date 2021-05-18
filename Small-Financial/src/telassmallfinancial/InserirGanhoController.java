@@ -89,7 +89,7 @@ public class InserirGanhoController implements Initializable {
     }
     
     @FXML
-    private void Inserir(ActionEvent event) {
+    private void Inserir(ActionEvent event) throws IOException {
         
         DAOGanhos inserirganho = new DAOGanhos();
         Ganhos ganho = new Ganhos();
@@ -99,7 +99,7 @@ public class InserirGanhoController implements Initializable {
         String observacao = (txtObservacoes.getText());
 
 
-        if (!(data == null) && !valor.equals("") && !observacao.equals("")) {
+        if (!(data == null) && !valor.equals("") && !observacao.equals("") && cbCategoria.getSelectionModel().getSelectedItem() == null) {
 
             if (telaganho.validacaoEditarGanho == true) {
 
@@ -113,6 +113,14 @@ public class InserirGanhoController implements Initializable {
                 telaganho.validacaoEditarGanho = false;
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Ganho atualizado com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Ganhos
+                Parent voltar = FXMLLoader.load(getClass().getResource("Ganhos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
             } else {
                 
                 ganho.setIdUsuario(1);
@@ -125,6 +133,13 @@ public class InserirGanhoController implements Initializable {
                 inserirganho.inserir(ganho);
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Ganho salvo com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Ganhos
+                Parent voltar = FXMLLoader.load(getClass().getResource("Ganhos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
 
             }
         } else {

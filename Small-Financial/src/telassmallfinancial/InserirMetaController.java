@@ -8,21 +8,15 @@ package telassmallfinancial;
 import Classes.Categoria;
 import DAO.DAOMetas;
 import MODEL.Metas;
-import java.awt.event.InputMethodEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-//import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -216,6 +210,8 @@ public class InserirMetaController implements Initializable {
                 cont.verificaEditar = false;
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta atualizado com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Metas
                 Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -225,8 +221,10 @@ public class InserirMetaController implements Initializable {
                 Date data = Date.valueOf(hoje);
                 m.setDataPrevista(data);
                 dao.inserir(m);
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta salvo com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta salva com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Metas
                 Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
