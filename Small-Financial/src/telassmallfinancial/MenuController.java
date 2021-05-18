@@ -38,7 +38,7 @@ public class MenuController implements Initializable {
     @FXML
     private Button btnEducacao;
     @FXML
-
+    private Button btnConfig;
     /**
      * Initializes the controller class.
      */
@@ -121,4 +121,12 @@ public class MenuController implements Initializable {
         window.show(); 
     }
     
+    @FXML
+    private void Configuracao(ActionEvent event) throws IOException,InterruptedException{
+        Parent config = FXMLLoader.load(getClass().getResource("ConfiguracaoConta.fxml"));
+        Scene configScene = new Scene(config);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(configScene);
+        window.show(); 
+    }
 }

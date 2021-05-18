@@ -44,7 +44,7 @@ public class DAOGanhos implements DAOGenerica<Ganhos> {
     @Override
     public void alterar(Ganhos ganhos) {
         String sql = "UPDATE Ganhos SET Categoria = ? , Valor = ? , Data_Ganho = ?, "
-                + "Observacao = ?, idUsuario = ? WHERE idGastos = ?";
+                + "Observacao = ?, idUsuario = ? WHERE idGanhos = ?";
 
         try {
             if (this.conexao.conectar()) {
@@ -69,7 +69,7 @@ public class DAOGanhos implements DAOGenerica<Ganhos> {
 
     @Override
     public void excluir(int id) {
-        String sql = "DELETE FROM Ganhos WHERE idGastos = ?";
+        String sql = "DELETE FROM Ganhos WHERE idGanhos = ?";
 
         try {
             if (this.conexao.conectar()) {

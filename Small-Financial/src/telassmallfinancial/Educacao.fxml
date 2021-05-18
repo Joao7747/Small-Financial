@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.EducacaoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.EducacaoController">
     <children>
       <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="84.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
         <columns>
@@ -39,7 +39,7 @@
          </font>
       </Label>
       <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="60.0" layoutY="-56.0" startX="-28.333335876464844" startY="274.3333435058594" strokeWidth="2.0" />
-      <Button layoutX="631.0" layoutY="258.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Siglas e Nomenclaturas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="btnSiglas" layoutX="631.0" layoutY="258.0" mnemonicParsing="false" onAction="#siglas" prefHeight="87.0" prefWidth="121.0" stylesheets="@loginStyle.css" text="Siglas e Nomenclaturas" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -77,13 +77,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="666.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
-      <Button fx:id="btnInserirCurso" layoutX="249.0" layoutY="234.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
+      <Button fx:id="btnMenuVideo" layoutX="673.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
+      <Button fx:id="btnInserirCurso" layoutX="262.0" layoutY="234.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
       <TableView fx:id="tvVideos" layoutX="432.0" layoutY="86.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@TableStyle.css">
          <columns>
             <TableColumn fx:id="tcDescricaoVideo" prefWidth="329.0" styleClass="TableStyle" text="Descrição" />
             <TableColumn fx:id="tcLinkVideo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
          </columns>
       </TableView>
+      <Button fx:id="btnMenuPublicacoes" layoutX="237.0" layoutY="53.0" mnemonicParsing="false" onAction="#MenuPublicacao" text="MENU PUBLICAÇÃO" />
    </children> 
 </AnchorPane>

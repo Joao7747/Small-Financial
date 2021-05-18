@@ -11,10 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import static java.time.temporal.TemporalQueries.localDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +37,6 @@ public class InserirCursoController implements Initializable {
     public TextField txtLinkDoCurso;
     public DatePicker dtDataCurso;
     public TextField txtDescCurso;
-    public boolean verificaCaso = false;
     MenuCursosController menu = new MenuCursosController();
 
     /**
@@ -71,6 +67,7 @@ public class InserirCursoController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        menu.validacaoEditar = false;
     }
 
     @FXML
@@ -85,7 +82,7 @@ public class InserirCursoController implements Initializable {
         LocalDate localDataAux = dtDataCurso.getValue();
         Date dataAux = Date.valueOf(localDataAux);
 
-        if (!nome.equals("") || !link.equals("") || !descricao.equals("") || dataAux != null) {
+        if (!nome.equals("") && !link.equals("") && !descricao.equals("") && dataAux != null) {
 
             if (menu.validacaoEditar == true) {
 
