@@ -9,8 +9,7 @@ import DAO.DAOCurso_Online;
 import MODEL.Curso_Online;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.util.HashSet;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -124,10 +123,19 @@ public class MenuCursosController implements Initializable {
             try
             {
                 DAOCurso_Online dao = new DAOCurso_Online();
-                dao.excluir(selecionado.getIdCurso_Online());
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso deletado com sucesso!", ButtonType.OK);
-                alerta.show();
-                Listagem();
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Confirmação");
+                alerta.setHeaderText("O dado sera prmanentemente excluido!!");
+                alerta.setContentText("tem certeza que deseja excluir?");
+
+                Optional<ButtonType> result = alerta.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    dao.excluir(selecionado.getIdCurso_Online());
+                    Listagem();
+                    alerta.close();
+                } else {
+                    alerta.close();
+                }
             
             }
             catch(Exception e)

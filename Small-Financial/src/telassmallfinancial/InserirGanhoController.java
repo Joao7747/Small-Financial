@@ -20,7 +20,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -46,6 +48,8 @@ public class InserirGanhoController implements Initializable {
     private TextArea txtObservacoes;
     @FXML
     private ComboBox<String> cbCategoria;
+    
+    GanhosController telaganho = new GanhosController();
 
     /**
      * Initializes the controller class.
@@ -53,6 +57,16 @@ public class InserirGanhoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carregarCategoria();
+        if (telaganho.validacaoEditarGanho == true) {
+
+            Date datarecebimento = telaganho.selecionadoGanho.getDataGanho();
+            Double valor = telaganho.selecionadoGanho.getValor();
+            String observacao = telaganho.selecionadoGanho.getObservacao();
+            
+            txtDataRecebimento.setValue(datarecebimento.toLocalDate());
+            txtValor.setText(valor.toString());
+            txtObservacoes.setText(observacao); 
+        }
     } 
     
     public void carregarCategoria(){ 
@@ -71,20 +85,54 @@ public class InserirGanhoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        telaganho.validacaoEditarGanho = false;
     }
     
     @FXML
     private void Inserir(ActionEvent event) {
-        Ganhos ganho = new Ganhos();
-        ganho.setIdUsuario(1);
-        ganho.setCategoria(cbCategoria.getSelectionModel().getSelectedItem());
-        Date dataganho = java.sql.Date.valueOf(txtDataRecebimento.getValue());
-        ganho.setDataGanho(dataganho);
-        ganho.setObservacao(txtObservacoes.getText());
-        ganho.setValor(Double.valueOf(txtValor.getText()));
         
         DAOGanhos inserirganho = new DAOGanhos();
-        inserirganho.inserir(ganho);  
+        Ganhos ganho = new Ganhos();
+
+        Date data = java.sql.Date.valueOf(txtDataRecebimento.getValue());
+        Double valor  = Double.valueOf(txtValor.getText());
+        String observacao = (txtObservacoes.getText());
+
+
+        if (!(data == null) && !valor.equals("") && !observacao.equals("")) {
+
+            if (telaganho.validacaoEditarGanho == true) {
+
+                telaganho.selecionadoGanho.setDataGanho(data);
+                telaganho.selecionadoGanho.setValor(valor);
+                telaganho.selecionadoGanho.setObservacao(observacao);
+                telaganho.selecionadoGanho.setIdUsuario(1);
+                telaganho.selecionadoGanho.setCategoria(cbCategoria.getSelectionModel().getSelectedItem());
+
+                inserirganho.alterar(telaganho.selecionadoGanho);
+                telaganho.validacaoEditarGanho = false;
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Ganho atualizado com sucesso!", ButtonType.OK);
+                alerta.show();
+            } else {
+                
+                ganho.setIdUsuario(1);
+                ganho.setCategoria(cbCategoria.getSelectionModel().getSelectedItem());
+                Date dataganho = java.sql.Date.valueOf(txtDataRecebimento.getValue());
+                ganho.setDataGanho(dataganho);
+                ganho.setObservacao(txtObservacoes.getText());
+                ganho.setValor(Double.valueOf(txtValor.getText()));
+
+                inserirganho.inserir(ganho);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Ganho salvo com sucesso!", ButtonType.OK);
+                alerta.show();
+
+            }
+        } else {
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
+            alerta.show();
+
+        }
+          
     }
     
     

@@ -46,10 +46,8 @@ public class InserirVideoController implements Initializable {
             String descricao = menuVideos.selecionadoVideo.getDescricao();
             String link = menuVideos.selecionadoVideo.getLink();
             
-
             txtTituloVideo.setText(descricao);
-            txtLinkVideo.setText(link);
-            
+            txtLinkVideo.setText(link);     
         }
     }  
     
@@ -60,6 +58,7 @@ public class InserirVideoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        menuVideos.validacaoEditarVideo = false;
     }    
     
          @FXML
@@ -71,7 +70,7 @@ public class InserirVideoController implements Initializable {
             DAOVideo dao = new DAOVideo();
 
 
-        if (!titulo.equals("") || !link.equals("") ) {
+        if (!titulo.equals("") && !link.equals("") ) {
 
             if (menuVideos.validacaoEditarVideo == true) {
 
@@ -85,14 +84,11 @@ public class InserirVideoController implements Initializable {
                 
             } else {
                 Video v = new Video();
-
                 v.setLink(link);
                 v.setDescricao(titulo);
                 dao.inserir(v);
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo salvo com sucesso!", ButtonType.OK);
                 alerta.show();
-                menuVideos.validacaoEditarVideo = false;
-
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);

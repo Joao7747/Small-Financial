@@ -5,9 +5,8 @@
  */
 package telassmallfinancial;
 
-
-import DAO.DAOVideo;
-import MODEL.Video;
+import DAO.DAOPublicacao;
+import MODEL.Publicacao;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -26,72 +25,67 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-
 /**
  * FXML Controller class
  *
- * @author Dell
+ * @author jr13f
  */
-public class MenuVideosController implements Initializable {
+public class MenuPublicacoesController implements Initializable {
+
+    @FXML
+    private Button btnInserir;
+    @FXML
+    private Button btnVoltar;
+    @FXML
+    private Button btnEditar;
+    @FXML
+    private Button btnExcluir;
+    @FXML
+    private TableView<Publicacao> tvPublicacao;
+    @FXML
+    private TableColumn<Publicacao, Integer> tcIdPubli;
+    @FXML
+    private TableColumn<Publicacao, String> tcTitulo;
+    @FXML
+    private TableColumn<Publicacao, String> tcAutor;
+    @FXML
+    private TableColumn<Publicacao, java.sql.Date> tcDataPubli;
 
     /**
      * Initializes the controller class.
      */
+    public static Publicacao selecionadoPubli;
+    public static boolean validacaoEditarPubli = false;
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ListarPubli();
         
-        ListarVideos();
-        
-        tvVideos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+        tvPublicacao.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             
             @Override 
             public void changed(ObservableValue observable, Object oldValue, Object newValue){
             
-                selecionadoVideo = (Video)newValue;
+                selecionadoPubli = (Publicacao)newValue;
             }
-        });   
+        });
+    }    
+
+    @FXML
+    private void telaInserir(ActionEvent event) throws IOException {
+        Parent inserePubli = FXMLLoader.load(getClass().getResource("InserirPublicacao.fxml"));
+        Scene inserePubliScene = new Scene(inserePubli);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(inserePubliScene);
+        window.show();
     }
-    
-  @FXML
-    public TableView<Video> tvVideos;
 
     @FXML
-    public TableColumn<Video, String> tcIdVideo;
-
-    @FXML
-    public TableColumn<Video, String> tcDescricao;
-
-    @FXML
-    public TableColumn<Video, String> tcLink;
-
-    @FXML
-    private Button btnInserir;
-
-    @FXML
-    private Button btnVoltar;
-    
-    @FXML
-    private Label lblContas;
-    
-     @FXML
-    private Button btnEditar;
-
-    @FXML
-    private Button btnExcluir;
-    
-    
-    public static Video selecionadoVideo;
-    public static boolean validacaoEditarVideo = false;
-
-    @FXML
-    void Voltar(ActionEvent event) throws IOException  {
-        
+    private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -100,34 +94,35 @@ public class MenuVideosController implements Initializable {
     }
 
     @FXML
-    void telaInserir(ActionEvent event) throws IOException {
-        Parent insereVideo = FXMLLoader.load(getClass().getResource("InserirVideo.fxml"));
-        Scene insereVideoScene = new Scene(insereVideo);
+    private void Editar(ActionEvent event) throws IOException {
+        validacaoEditarPubli = true;
+        
+        Parent insere = FXMLLoader.load(getClass().getResource("InserirPublicacao.fxml"));
+        Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(insereVideoScene);
+        window.setScene(insereScene);
         window.show();
     }
     
     @FXML
-    public void ListarVideos()
+    public void ListarPubli()
     {
-        tcIdVideo.setCellValueFactory(new PropertyValueFactory<>("idVideo"));
-        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
+        tcIdPubli.setCellValueFactory(new PropertyValueFactory<>("idPublicacao"));
+        tcTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        tcAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        tcDataPubli.setCellValueFactory(new PropertyValueFactory<>("dataPublicacao"));
        
-       
-        DAOVideo daoVideo = new DAOVideo();
-        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
-        tvVideos.setItems(video);
-    
+        DAOPublicacao daoPubli = new DAOPublicacao();
+        ObservableList<Publicacao> publi = FXCollections.observableArrayList(daoPubli.consultar());
+        tvPublicacao.setItems(publi);
     }
-    
+
     @FXML
-    public void deleta(){
-        if(selecionadoVideo != null){
+    private void Deletar(ActionEvent event) {
+        if(selecionadoPubli != null){
             try
             {
-                DAOVideo dao = new DAOVideo();
+                DAOPublicacao dao = new DAOPublicacao();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
                 alerta.setHeaderText("O dado sera prmanentemente excluido!!");
@@ -135,8 +130,8 @@ public class MenuVideosController implements Initializable {
 
                 Optional<ButtonType> result = alerta.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    dao.excluir(selecionadoVideo.getIdVideo());
-                    ListarVideos();
+                    dao.excluir(selecionadoPubli.getIdPublicacao());
+                    ListarPubli();
                 } else {
                     alerta.close();
                 }
@@ -153,20 +148,6 @@ public class MenuVideosController implements Initializable {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Video!", ButtonType.OK);
             alerta.show(); 
         }
-        
     }
-    
-    @FXML
-    void EditarVideo(ActionEvent event) throws IOException {
-        
-        validacaoEditarVideo = true;
-        
-        Parent insere = FXMLLoader.load(getClass().getResource("InserirVideo.fxml"));
-        Scene insereScene = new Scene(insere);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(insereScene);
-        window.show();
-    }
-    
     
 }
