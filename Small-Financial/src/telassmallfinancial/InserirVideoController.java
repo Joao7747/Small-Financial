@@ -82,6 +82,13 @@ public class InserirVideoController implements Initializable {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo atualizado com sucesso!", ButtonType.OK);
                 alerta.show();
                 
+                //Voltar para Video
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuVideo.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
             } else {
                 Video v = new Video();
                 v.setLink(link);
@@ -89,6 +96,14 @@ public class InserirVideoController implements Initializable {
                 dao.inserir(v);
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo salvo com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Video
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuVideo.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);

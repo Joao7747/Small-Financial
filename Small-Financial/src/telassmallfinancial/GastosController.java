@@ -7,10 +7,10 @@ package telassmallfinancial;
 
 import MODEL.Gastos;
 import DAO.DAOGastos;
-import MODEL.Curso_Online;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -117,22 +117,30 @@ public class GastosController implements Initializable {
         if(selecionado != null){
             try
             {
-                DAOGastos gastos = new DAOGastos();
-                gastos.excluir(selecionado.getIdGastos());
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso deletado com sucesso!", ButtonType.OK);
+                DAOGastos dao = new DAOGastos();
+                
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Confirmação");
+                alerta.setHeaderText("O dado sera prmanentemente excluido!!");
+                alerta.setContentText("tem certeza que deseja excluir?");
+
+                Optional<ButtonType> result = alerta.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    dao.excluir(selecionado.getIdGastos());
+                    Listagem();
+                    alerta.close();
+                } else {
+                    alerta.close();
+                }
+
+            } catch (Exception e) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Gasto NÃO deletado!", ButtonType.OK);
                 alerta.show();
-                Listagem();
-            
-            }
-            catch(Exception e)
-            {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Curso NÃO deletado!", ButtonType.OK);
-                    alerta.show(); 
             }
         }
         else
         {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Curso!", ButtonType.OK);
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Gasto!", ButtonType.OK);
             alerta.show(); 
         }
         

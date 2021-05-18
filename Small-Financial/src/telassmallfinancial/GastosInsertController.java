@@ -74,7 +74,7 @@ public class GastosInsertController implements Initializable {
     }
 
     @FXML
-    public void inserir() {
+    public void inserir(ActionEvent event) throws IOException{
         try {
             DAOGastos gastos = new DAOGastos();
             String categoria = cbCategoria.getText();
@@ -93,8 +93,15 @@ public class GastosInsertController implements Initializable {
                 
                 gastos.alterar(menu.selecionado);
                 menu.validacaoEditar = false;
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Gasto atualizado com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Gastos
+                Parent voltar = FXMLLoader.load(getClass().getResource("Gastos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
             }
             else{
                 Gastos gasto = new Gastos();
@@ -104,7 +111,14 @@ public class GastosInsertController implements Initializable {
                 gasto.setObservacao(txtObservacoes.getText());
                 gasto.setPreco(Double.parseDouble(txtValor.getText()));
                 gastos.inserir(gasto);
-                JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);     
+                JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);
+                
+                //Voltar para Gastos
+                Parent voltar = FXMLLoader.load(getClass().getResource("Gastos.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
             }
             
         }

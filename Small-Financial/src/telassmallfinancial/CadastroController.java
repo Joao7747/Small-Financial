@@ -46,14 +46,14 @@ public class CadastroController implements Initializable {
     private PasswordField txtSenha;
     @FXML
     private PasswordField txtConfirmarSenha;
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
@@ -63,7 +63,7 @@ public class CadastroController implements Initializable {
         window.setScene(voltarScene);
         window.show();
     }
-    
+
     @FXML
     private void Cadastrar(ActionEvent event) throws IOException {
         DAOUsuario dao = new DAOUsuario();
@@ -73,24 +73,30 @@ public class CadastroController implements Initializable {
         String confirmacaoSenha = txtConfirmarSenha.getText();
 
         if (!nome.equals("") && !email.equals("") && !senha.equals("") && !confirmacaoSenha.equals("")) {
-              if(senha.equals(confirmacaoSenha)){
+            if (senha.equals(confirmacaoSenha)) {
                 Usuario u = new Usuario();
                 u.setNome(nome);
                 u.setEmail(email);
                 u.setSenha(senha);
                 dao.inserir(u);
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso salvo com sucesso!", ButtonType.OK);
-                alerta.show(); 
-              }        
-              else{
-                  Alert alerta = new Alert(Alert.AlertType.WARNING, "Senhas não coincidem", ButtonType.OK);
-                  alerta.show();
-              }
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Cadastrado com sucesso!", ButtonType.OK);
+                alerta.show();
+                
+                //voltar para login
+                Parent voltar = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
+            } else {
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Senhas não coincidem", ButtonType.OK);
+                alerta.show();
+            }
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
             alerta.show();
         }
     }
-    
-    
+
 }

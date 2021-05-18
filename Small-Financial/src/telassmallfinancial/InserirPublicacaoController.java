@@ -79,7 +79,7 @@ public class InserirPublicacaoController implements Initializable {
     }
     
     @FXML
-    private void Inserir(ActionEvent event) {
+    private void Inserir(ActionEvent event) throws IOException {
         
         DAOPublicacao inserirPubli = new DAOPublicacao();
         Publicacao publicacao = new Publicacao();
@@ -101,8 +101,15 @@ public class InserirPublicacaoController implements Initializable {
 
                 inserirPubli.alterar(telaPubli.selecionadoPubli);
                 telaPubli.validacaoEditarPubli = false;
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Ganho atualizado com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Publicacao atualizada com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Publicacoes
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuPublicacoes.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
             } else {
                 
                 publicacao.setTitulo(txtTitulo.getText());
@@ -113,8 +120,16 @@ public class InserirPublicacaoController implements Initializable {
 
                 DAOPublicacao inserirpubli = new DAOPublicacao();
                 inserirpubli.inserir(publicacao);
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Vídeo salvo com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Publicacao salva com sucesso!", ButtonType.OK);
                 alerta.show();
+                
+                //Voltar para Publicacoes
+                Parent voltar = FXMLLoader.load(getClass().getResource("MenuPublicacoes.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+                
 
             }
         } else {

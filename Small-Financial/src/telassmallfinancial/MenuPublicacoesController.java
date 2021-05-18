@@ -139,13 +139,13 @@ public class MenuPublicacoesController implements Initializable {
             }
             catch(Exception e)
             {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Video NÃO deletado!", ButtonType.OK);
+                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Publicação NÃO deletado!", ButtonType.OK);
                     alerta.show(); 
             }
         }
         else
         {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Video!", ButtonType.OK);
+            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma Publicação!", ButtonType.OK);
             alerta.show(); 
         }
     }

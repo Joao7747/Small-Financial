@@ -82,8 +82,7 @@ public class ContasInsertController implements Initializable {
             Double valor = menu.selecionado.getValor();
             Date data = menu.selecionado.getVencimento();
             String observacoes = menu.selecionado.getObservacao();
-            
-            
+
             cbCategoria.setText(categoria);
             txtDescricao.setText(descricao);
             txtNumParcela.setText(parcelas.toString());
@@ -94,7 +93,7 @@ public class ContasInsertController implements Initializable {
     }
 
     @FXML
-    public void inserir() {
+    public void inserir(ActionEvent event) throws IOException {
         try {
             DAODividas dividas = new DAODividas();
             String categoria = cbCategoria.getText();
@@ -104,7 +103,7 @@ public class ContasInsertController implements Initializable {
             Date dataAux = Date.valueOf(localDataAux);
             String valor = txtValor.getText();
             String observacao = txtObservacoes.getText();
-            
+
             if (menu.validacaoEditar == true) {
                 menu.selecionado.setCategoria(categoria);
                 menu.selecionado.setVencimento(dataAux);
@@ -112,11 +111,11 @@ public class ContasInsertController implements Initializable {
                 menu.selecionado.setDescricao(descricao);
                 menu.selecionado.setValor(Double.parseDouble(valor));
                 menu.selecionado.setObservacao(observacao);
-                if(rbFixa.isSelected()){
+                if (rbFixa.isSelected()) {
                     menu.selecionado.setFixa(true);
                     menu.selecionado.setParcelado(false);
                     menu.selecionado.setNumeroParcelas(1);
-                }else{
+                } else {
                     menu.selecionado.setFixa(false);
                     menu.selecionado.setParcelado(true);
                     menu.selecionado.setNumeroParcelas(Integer.parseInt(parcelas));
@@ -124,19 +123,27 @@ public class ContasInsertController implements Initializable {
 
                 dividas.alterar(menu.selecionado);
                 menu.validacaoEditar = false;
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Conta atualizada com sucesso!", ButtonType.OK);
                 alerta.show();
+
+                //Voltar para Contas
+                Parent voltar = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
+
             } else {
                 Dividas divida = new Dividas();
                 divida.setCategoria(categoria);
                 divida.setDescricao(descricao);
                 divida.setIdUsuario(1);
                 divida.setVencimento(dataAux);
-                if(rbFixa.isSelected()){
+                if (rbFixa.isSelected()) {
                     divida.setFixa(true);
                     divida.setParcelado(false);
                     divida.setNumeroParcelas(1);
-                }else{
+                } else {
                     divida.setFixa(false);
                     divida.setParcelado(true);
                     divida.setNumeroParcelas(Integer.parseInt(parcelas));
@@ -144,7 +151,14 @@ public class ContasInsertController implements Initializable {
                 divida.setObservacao(observacao);
                 divida.setValor(Double.parseDouble(valor));
                 dividas.inserir(divida);
-                JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);  
+                JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);
+
+                //Voltar para Contas
+                Parent voltar = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+                Scene voltarScene = new Scene(voltar);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(voltarScene);
+                window.show();
             }
 
         } catch (Exception e) {
@@ -161,4 +175,5 @@ public class ContasInsertController implements Initializable {
         window.setScene(voltarScene);
         window.show();
     }
+
 }
