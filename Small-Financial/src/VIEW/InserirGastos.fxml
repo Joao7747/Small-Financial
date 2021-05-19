@@ -18,9 +18,9 @@
       <Label layoutX="361.0" layoutY="83.0" text="Data" />
       <TextArea fx:id="txtObservacoes" layoutX="362.0" layoutY="161.0" prefHeight="93.0" prefWidth="186.0" />
       <Label layoutX="361.0" layoutY="144.0" text="Observações" />
-      <ImageView fitHeight="104.0" fitWidth="124.0" layoutX="226.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="104.0" fitWidth="124.0" layoutX="223.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Resources/Gastos.PNG" />
+            <Image url="@../Resources/GastosOpaco.png" />
          </image>
       </ImageView>
       <Button fx:id="btnSalvar" layoutX="185.0" layoutY="334.0" mnemonicParsing="false" onAction="#inserir" prefHeight="39.0" prefWidth="83.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Salvar" textFill="WHITE" />

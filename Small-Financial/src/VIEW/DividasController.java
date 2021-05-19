@@ -40,7 +40,7 @@ import static VIEW.MenuPublicacoesController.selecionadoPubli;
  *
  * @author jr13f
  */
-public class ContasController implements Initializable {
+public class DividasController implements Initializable {
 
     @FXML
     private Label lblContas;

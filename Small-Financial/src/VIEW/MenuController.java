@@ -84,7 +84,7 @@ public class MenuController implements Initializable {
         auditoria.StartThread("Contas");
         //fim auditoria
         
-        Parent contas = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+        Parent contas = FXMLLoader.load(getClass().getResource("Dividas.fxml"));
         Scene contasScene = new Scene(contas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(contasScene);
