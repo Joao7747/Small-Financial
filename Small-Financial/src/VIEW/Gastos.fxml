@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -27,7 +29,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="62.0" layoutY="184.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="111.0" prefWidth="177.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Inserir Gastos" textFill="WHITE">
+      <Button layoutX="62.0" layoutY="217.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="111.0" prefWidth="177.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Inserir Gastos" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
@@ -49,5 +51,10 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <ImageView fitHeight="102.0" fitWidth="96.0" layoutX="105.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/GastosPreto.png" />
+         </image>
+      </ImageView>
    </children> 
 </AnchorPane>

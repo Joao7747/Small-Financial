@@ -33,7 +33,7 @@ import javax.swing.JOptionPane;
  *
  * @author Caio
  */
-public class InserirContasController implements Initializable {
+public class InserirDividasController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -68,7 +68,7 @@ public class InserirContasController implements Initializable {
     @FXML
     private RadioButton rbFixa;
 
-    ContasController menu = new ContasController();
+    DividasController menu = new DividasController();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -125,7 +125,7 @@ public class InserirContasController implements Initializable {
                 alerta.show();
 
                 //Voltar para Contas
-                Parent voltar = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+                Parent voltar = FXMLLoader.load(getClass().getResource("Dividas.fxml"));
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
@@ -152,7 +152,7 @@ public class InserirContasController implements Initializable {
                 JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);
 
                 //Voltar para Contas
-                Parent voltar = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+                Parent voltar = FXMLLoader.load(getClass().getResource("Dividas.fxml"));
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
@@ -167,7 +167,7 @@ public class InserirContasController implements Initializable {
 
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
-        Parent voltar = FXMLLoader.load(getClass().getResource("Contas.fxml"));
+        Parent voltar = FXMLLoader.load(getClass().getResource("Dividas.fxml"));
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
