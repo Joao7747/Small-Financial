@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.InserirGastosController">
+   <children>
+      <Label layoutX="243.0" layoutY="14.0" text="Insira seu gasto" />
+      <Label layoutX="34.0" layoutY="87.0" text="Qual a categoria do gasto" />
+      <Label layoutX="34.0" layoutY="144.0" text="Valor" />
+      <TextField fx:id="txtValor" layoutX="35.0" layoutY="161.0" />
+      <Label layoutX="361.0" layoutY="83.0" text="Data" />
+      <TextArea fx:id="txtObservacoes" layoutX="362.0" layoutY="161.0" prefHeight="93.0" prefWidth="186.0" />
+      <Label layoutX="361.0" layoutY="144.0" text="Observações" />
+      <ImageView fitHeight="104.0" fitWidth="124.0" layoutX="226.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/Gastos.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnSalvar" layoutX="185.0" layoutY="334.0" mnemonicParsing="false" onAction="#inserir" prefHeight="39.0" prefWidth="83.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="301.0" layoutY="334.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="39.0" prefWidth="83.0" styleClass="buttonWhite" stylesheets="@CSS/buttonStyle.css" text="Voltar" />
+      <TextField fx:id="cbCategoria" layoutX="35.0" layoutY="113.0" />
+      <DatePicker fx:id="txtData" layoutX="354.0" layoutY="101.0" />
+   </children>
+</AnchorPane>
