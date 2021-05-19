@@ -90,6 +90,7 @@ public class GastosController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -99,6 +100,7 @@ public class GastosController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.show();
+        window.centerOnScreen();
     }
     
     private void Listagem(){
@@ -154,5 +156,6 @@ public class GastosController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.show();
+        window.centerOnScreen();
     }
 }

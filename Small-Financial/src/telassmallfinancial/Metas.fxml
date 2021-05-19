@@ -10,14 +10,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="466.0" prefWidth="770.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.MetasController">
     <children>
-        <Label fx:id="lblContas" layoutX="324.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
+        <Label fx:id="lblContas" layoutX="367.0" layoutY="15.0" minHeight="16" minWidth="69" text="Metas e Desejos">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <TableView fx:id="tvContas" editable="true" layoutX="24.0" layoutY="150.0" prefHeight="203.0" prefWidth="733.0" stylesheets="@TableStyle.css">
+        <TableView fx:id="tvContas" editable="true" layoutX="47.0" layoutY="150.0" prefHeight="203.0" prefWidth="733.0" stylesheets="@TableStyle.css">
             <columns>
                 <TableColumn fx:id="tcId" prefWidth="64.0" text="Id" />
                 <TableColumn fx:id="tcCategoria" minWidth="0.0" prefWidth="121.0" text="Categoria" />
@@ -29,8 +29,8 @@
                 <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
             </columns>
         </TableView>
-        <ComboBox fx:id="cbCategoria" layoutX="185.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
-        <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="21.0" layoutY="110.0" promptText="Pesquisa..." stylesheets="@loginStyle.css">
+        <ComboBox fx:id="cbCategoria" layoutX="211.0" layoutY="112.0" prefWidth="150.0" promptText="Categoria" stylesheets="@ComboBoxStyle.css" />
+        <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="47.0" layoutY="112.0" promptText="Pesquisa..." stylesheets="@loginStyle.css">
             <font>
                 <Font name="Book Antiqua" size="12.0" />
             </font>
@@ -40,20 +40,20 @@
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button fx:id="btnVoltar" layoutX="628.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
+        <Button fx:id="btnVoltar" layoutX="655.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="199.0" startX="-100.0" startY="253.5" stroke="#1231dd" strokeWidth="5.0" />
-        <Line endX="-100.0" endY="-178.0" layoutX="107.0" layoutY="178.0" startX="-100.0" startY="278.4644775390625" stroke="#f5f509" strokeWidth="5.0" />
-        <Line endX="-100.0" endY="-187.0" layoutX="112.0" layoutY="187.0" startX="-100.0" startY="269.0" stroke="#db3b14" strokeWidth="5.0" />
-        <Button fx:id="btnEditar" layoutX="69.0" layoutY="360.0" mnemonicParsing="false" onAction="#editar" prefHeight="27.0" prefWidth="298.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Editar" textFill="WHITE">
+        <Line endX="-100.0" endY="-198.75" layoutX="103.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+        <Line endX="-100.0" endY="-198.75" layoutX="108.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
+        <Line endX="-100.0" endY="-198.75" layoutX="113.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
+        <Button fx:id="btnEditar" layoutX="47.0" layoutY="360.0" mnemonicParsing="false" onAction="#editar" prefHeight="33.0" prefWidth="346.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Editar" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btnExcluir" layoutX="413.0" layoutY="360.0" mnemonicParsing="false" onAction="#excluir" prefHeight="33.0" prefWidth="289.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Excluir" textFill="WHITE">
+        <Button fx:id="btnExcluir" layoutX="447.0" layoutY="360.0" mnemonicParsing="false" onAction="#excluir" prefHeight="33.0" prefWidth="332.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Excluir" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font>

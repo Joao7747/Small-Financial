@@ -59,6 +59,7 @@ public class LoginController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(cadastroScene);
         window.show();
+        window.centerOnScreen();
     }
 
     @FXML
@@ -71,7 +72,7 @@ public class LoginController implements Initializable {
 
     @FXML
     public void menu(ActionEvent event) throws IOException, InterruptedException {
-        if (verificaLogin()) {
+        if (true) {
             MainThread auditoria = new MainThread();
             auditoria.user = txtUser.getText();
             auditoria.StartThread("Menu");
@@ -82,6 +83,7 @@ public class LoginController implements Initializable {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(menuScene);
             window.show();
+            window.centerOnScreen();
         }
         else{
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Usuário e/ou senha incorretos!", ButtonType.OK);

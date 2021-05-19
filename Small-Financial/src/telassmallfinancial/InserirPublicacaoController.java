@@ -74,6 +74,7 @@ public class InserirPublicacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
         telaPubli.validacaoEditarPubli = false;
         
     }
@@ -110,6 +111,7 @@ public class InserirPublicacaoController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
                 window.show();
+                window.centerOnScreen();
             } else {
                 
                 publicacao.setTitulo(txtTitulo.getText());
@@ -129,7 +131,7 @@ public class InserirPublicacaoController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
                 window.show();
-                
+                window.centerOnScreen();
 
             }
         } else {

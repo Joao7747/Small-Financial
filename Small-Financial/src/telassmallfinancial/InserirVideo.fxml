@@ -9,39 +9,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="682.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.InserirVideoController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.InserirVideoController">
     <stylesheets>
         <URL value="@cadastroStyle.css" />
     </stylesheets>
    <children>
-      <Label layoutX="197.0" layoutY="130.0" text="Título do Vídeo">
+      <Label layoutX="261.0" layoutY="130.0" text="Título do Vídeo">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTituloVideo" layoutX="197.0" layoutY="156.0" prefHeight="8.0" prefWidth="288.0" promptText="Insira o Título do Vídeo" stylesheets="@loginStyle.css" />
-      <Label layoutX="197.0" layoutY="224.0" text="Link">
+      <TextField fx:id="txtTituloVideo" layoutX="261.0" layoutY="156.0" prefHeight="8.0" prefWidth="288.0" promptText="Insira o Título do Vídeo" stylesheets="@loginStyle.css" />
+      <Label layoutX="261.0" layoutY="229.0" text="Link">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txtLinkVideo" layoutX="197.0" layoutY="250.0" prefHeight="8.0" prefWidth="288.0" promptText="Insira o Link do Vídeo" stylesheets="@loginStyle.css" />
-      <Button fx:id="btnSalvar" layoutX="193.0" layoutY="362.0" mnemonicParsing="false" onAction="#InserirVideo" prefHeight="47.0" prefWidth="125.0" stylesheets="@loginStyle.css" text="Salvar" textFill="WHITE">
+      <TextField fx:id="txtLinkVideo" layoutX="261.0" layoutY="255.0" prefHeight="8.0" prefWidth="288.0" promptText="Insira o Link do Vídeo" stylesheets="@loginStyle.css" />
+      <Button fx:id="btnSalvar" layoutX="216.0" layoutY="361.0" mnemonicParsing="false" onAction="#InserirVideo" prefHeight="47.0" prefWidth="156.0" stylesheets="@loginStyle.css" text="Salvar" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="384.0" layoutY="362.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="47.0" prefWidth="125.0" styleClass="registrarStyle" stylesheets="@loginStyle.css" text="Voltar" textFill="#141414">
+      <Button fx:id="btnVoltar" layoutX="438.0" layoutY="361.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="47.0" prefWidth="156.0" styleClass="registrarStyle" stylesheets="@loginStyle.css" text="Voltar" textFill="#141414">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="293.0" layoutY="41.0" text="Vídeos">
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="350.0" layoutY="34.0" text="Vídeos">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <ImageView fitHeight="442.0" fitWidth="11.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="460.0" fitWidth="11.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../resources/imagens/barra.png" />
          </image>

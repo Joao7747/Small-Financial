@@ -102,6 +102,7 @@ public class GastosInsertController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
                 window.show();
+                window.centerOnScreen();
             }
             else{
                 Gastos gasto = new Gastos();
@@ -119,6 +120,7 @@ public class GastosInsertController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
                 window.show();
+                window.centerOnScreen();
             }
             
         }
@@ -134,5 +136,6 @@ public class GastosInsertController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
 }

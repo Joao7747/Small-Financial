@@ -104,6 +104,7 @@ public class EducacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
     @FXML
     private void MenuCursos(ActionEvent event) throws IOException {
@@ -112,6 +113,7 @@ public class EducacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -121,6 +123,7 @@ public class EducacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.show();
+        window.centerOnScreen();
     }
 
     @FXML
@@ -130,6 +133,7 @@ public class EducacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.show();
+        window.centerOnScreen();
     }
 
     
@@ -140,6 +144,6 @@ public class EducacaoController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereVideoScene);
         window.show();
-        window.show();
+        window.centerOnScreen();
     }
 }

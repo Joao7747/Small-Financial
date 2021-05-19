@@ -104,6 +104,7 @@ public class MetasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -113,6 +114,7 @@ public class MetasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
     
     private void Listar(){
@@ -171,6 +173,7 @@ public class MetasController implements Initializable {
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(voltarScene);
             window.show();
+            window.centerOnScreen();
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma meta para poder editar!", ButtonType.OK);
             alerta.show();

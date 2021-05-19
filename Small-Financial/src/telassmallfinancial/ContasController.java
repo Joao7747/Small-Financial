@@ -114,6 +114,7 @@ public class ContasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -123,6 +124,7 @@ public class ContasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -133,6 +135,7 @@ public class ContasController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.show();
+        window.centerOnScreen();
     }
     @FXML
     public void deleta(){

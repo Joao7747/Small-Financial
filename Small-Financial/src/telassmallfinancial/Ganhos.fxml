@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.GanhosController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.GanhosController">
     <children>
       <TableView fx:id="tvGanhos" layoutX="272.0" layoutY="113.0" prefHeight="239.0" prefWidth="461.0" stylesheets="@TableStyle.css">
         <columns>
@@ -32,13 +32,13 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="610.0" layoutY="32.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="37.0" prefWidth="114.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="637.0" layoutY="26.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="37.0" prefWidth="114.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Line endX="-100.0" endY="-193.0" layoutX="870.0" layoutY="196.0" startX="-100.0" startY="205.0" stroke="#1231dd" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-172.0" layoutX="875.0" layoutY="175.0" startX="-100.0" startY="226.0" stroke="#f5f509" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-181.0" layoutX="880.0" layoutY="184.0" startX="-100.0" startY="217.0" stroke="#db3b14" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="899.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="904.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="909.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
       <Button fx:id="btnEditar" layoutX="272.0" layoutY="364.0" mnemonicParsing="false" onAction="#Editar" prefHeight="27.0" prefWidth="223.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Editar" textFill="WHITE" />
       <Button fx:id="btnExcluir" layoutX="510.0" layoutY="364.0" mnemonicParsing="false" onAction="#Deletar" prefHeight="27.0" prefWidth="223.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Excluir" textFill="WHITE" />
    </children> 

@@ -9,34 +9,42 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.ContasInsertController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@buttonStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telassmallfinancial.ContasInsertController">
    <children>
-      <Label layoutX="46.0" layoutY="91.0" text="Categoria" />
-      <Label layoutX="224.0" layoutY="26.0" text="Contas, dívidas e pendências" />
-      <ImageView fitHeight="108.0" fitWidth="123.0" layoutX="257.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+      <Label layoutX="99.0" layoutY="91.0" text="Categoria" />
+      <Label layoutX="297.0" layoutY="24.0" text="Contas, dívidas e pendências">
+         <font>
+            <Font size="17.0" />
+         </font></Label>
+      <ImageView fitHeight="108.0" fitWidth="123.0" layoutX="362.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Contas.PNG" />
          </image>
       </ImageView>
-      <Label layoutX="395.0" layoutY="91.0" text="Descreva" />
-      <TextField fx:id="txtDescricao" layoutX="394.0" layoutY="115.0" />
-      <Label layoutX="395.0" layoutY="192.0" text="Número de parcelas:" />
-      <TextField fx:id="txtNumParcela" layoutX="510.0" layoutY="188.0" prefHeight="25.0" prefWidth="42.0" />
-      <Label layoutX="47.0" layoutY="266.0" text="Observações" />
-      <Label layoutX="46.0" layoutY="157.0" text="Valor" />
-      <TextField fx:id="txtValor" layoutX="46.0" layoutY="176.0" />
-      <Label layoutX="47.0" layoutY="211.0" text="Vencimento" />
-      <Button fx:id="btnSalvar" layoutX="389.0" layoutY="323.0" mnemonicParsing="false" onAction="#inserir" prefHeight="39.0" prefWidth="86.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Salvar" textFill="WHITE" />
-      <Button fx:id="btnVoltar" layoutX="488.0" layoutY="323.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="39.0" prefWidth="86.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
-      <Pane layoutX="392.0" layoutY="143.0" prefHeight="39.0" prefWidth="177.0">
+      <Label layoutX="516.0" layoutY="91.0" text="Descreva" />
+      <TextField fx:id="txtDescricao" layoutX="518.0" layoutY="116.0" prefHeight="31.0" prefWidth="187.0" stylesheets="@loginStyle.css" />
+      <Label layoutX="518.0" layoutY="189.0" text="Número de parcelas:" />
+      <TextField fx:id="txtNumParcela" layoutX="633.0" layoutY="185.0" prefHeight="25.0" prefWidth="42.0" stylesheets="@loginStyle.css" />
+      <Label layoutX="518.0" layoutY="237.0" text="Observações" />
+      <Label layoutX="98.0" layoutY="152.0" text="Valor" />
+      <TextField fx:id="txtValor" layoutX="98.0" layoutY="174.0" prefHeight="31.0" prefWidth="187.0" stylesheets="@loginStyle.css" />
+      <Label layoutX="98.0" layoutY="208.0" text="Vencimento" />
+      <Button fx:id="btnSalvar" layoutX="254.0" layoutY="362.0" mnemonicParsing="false" onAction="#inserir" prefHeight="39.0" prefWidth="110.0" styleClass="buttonBlack" stylesheets="@buttonStyle.css" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="421.0" layoutY="362.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="39.0" prefWidth="110.0" styleClass="buttonWhite" stylesheets="@buttonStyle.css" text="Voltar" />
+      <Pane layoutX="507.0" layoutY="146.0" prefHeight="39.0" prefWidth="177.0">
          <children>
-            <RadioButton fx:id="rbParcelado" layoutX="19.0" layoutY="12.0" mnemonicParsing="false" text="Parcelado" />
-            <RadioButton fx:id="rbFixa" layoutX="102.0" layoutY="11.0" mnemonicParsing="false" text="Fixa" />
+            <RadioButton fx:id="rbParcelado" layoutX="19.0" layoutY="12.0" mnemonicParsing="false" stylesheets="@ComboBoxStyle.css" text="Parcelado" />
+            <RadioButton fx:id="rbFixa" layoutX="115.0" layoutY="12.0" mnemonicParsing="false" stylesheets="@ComboBoxStyle.css" text="Fixa" />
          </children>
       </Pane>
-      <TextField fx:id="cbCategoria" layoutX="45.0" layoutY="116.0" />
-      <DatePicker fx:id="txtVencimento" layoutX="40.0" layoutY="233.0" />
-      <TextField fx:id="txtObservacoes" layoutX="40.0" layoutY="284.0" />
+      <TextField fx:id="cbCategoria" layoutX="98.0" layoutY="116.0" prefHeight="31.0" prefWidth="187.0" stylesheets="@loginStyle.css" />
+      <DatePicker fx:id="txtVencimento" layoutX="98.0" layoutY="230.0" prefHeight="31.0" prefWidth="187.0" stylesheets="@ComboBoxStyle.css" />
+      <TextField fx:id="txtObservacoes" layoutX="518.0" layoutY="259.0" prefHeight="31.0" prefWidth="187.0" stylesheets="@loginStyle.css" />
+      <Line endX="-100.0" endY="-198.75" layoutX="103.0" layoutY="199.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="108.0" layoutY="199.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="113.0" layoutY="199.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
    </children>
 </AnchorPane>
