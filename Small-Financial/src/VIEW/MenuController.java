@@ -58,7 +58,7 @@ public class MenuController implements Initializable {
         Scene metasScene = new Scene(metas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(metasScene);
-        window.show();
+        window.centerOnScreen();
     }
 
     @FXML
@@ -73,7 +73,7 @@ public class MenuController implements Initializable {
         Scene gastosScene = new Scene(gastos);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(gastosScene);
-        window.show(); 
+        window.centerOnScreen(); 
     }
 
     @FXML
@@ -88,7 +88,7 @@ public class MenuController implements Initializable {
         Scene contasScene = new Scene(contas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(contasScene);
-        window.show(); 
+        window.centerOnScreen(); 
     }
     
     @FXML
@@ -103,7 +103,7 @@ public class MenuController implements Initializable {
         Scene ganhosScene = new Scene(ganhos);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(ganhosScene);
-        window.show(); 
+        window.centerOnScreen(); 
     }
     @FXML
     private void Educacao(ActionEvent event) throws IOException,InterruptedException{
@@ -117,7 +117,7 @@ public class MenuController implements Initializable {
         Scene educacaoScene = new Scene(educacao);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(educacaoScene);
-        window.show(); 
+        window.centerOnScreen(); 
     }
     
     @FXML
@@ -126,6 +126,6 @@ public class MenuController implements Initializable {
         Scene configScene = new Scene(config);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(configScene);
-        window.show(); 
+        window.centerOnScreen(); 
     }
 }

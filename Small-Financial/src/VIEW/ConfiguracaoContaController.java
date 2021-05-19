@@ -75,7 +75,7 @@ public class ConfiguracaoContaController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     
 //    private void Listagem(){

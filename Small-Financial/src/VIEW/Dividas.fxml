@@ -10,51 +10,51 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="716.0" styleClass="fundo" stylesheets="@CSS/buttonStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.DividasController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.DividasController">
     <children>
-        <Label fx:id="lblContas" layoutX="270.0" layoutY="15.0" minHeight="16" minWidth="69" text="Dividas e pendencias">
+        <Label fx:id="lblContas" layoutX="325.0" layoutY="26.0" minHeight="16" minWidth="69" text="Dividas e pendencias">
          <font>
             <Font size="17.0" />
          </font></Label>
-      <TableView fx:id="tvContas" editable="true" layoutX="28.0" layoutY="147.0" prefHeight="200.0" prefWidth="641.0" stylesheets="@CSS/TableStyle.css">
+      <TableView fx:id="tvContas" editable="true" layoutX="35.0" layoutY="153.0" prefHeight="200.0" prefWidth="738.0" stylesheets="@CSS/Dash.css">
         <columns>
           <TableColumn fx:id="tcCategoria" prefWidth="77.0" text="Categoria" />
           <TableColumn fx:id="tcDescricao" prefWidth="127.0" text="Descrição" />
             <TableColumn fx:id="tcValor" prefWidth="77.0" text="Valor(R$)" />
-            <TableColumn fx:id="tcParcelas" prefWidth="52.0" text="Parcelas" />
-            <TableColumn fx:id="tcVencimentos" prefWidth="132.0" text="Vencimento" />
-            <TableColumn fx:id="tcObservacao" prefWidth="175.0" text="Observação" />
+            <TableColumn fx:id="tcParcelas" prefWidth="94.0" text="Parcelas" />
+            <TableColumn fx:id="tcVencimentos" prefWidth="114.0" text="Vencimento" />
+            <TableColumn fx:id="tcObservacao" prefWidth="248.0" text="Observação" />
         </columns>
       </TableView>
-      <Label fx:id="lblTotal" layoutX="517.0" layoutY="122.0" text="Total: R$ 4200,00">
+      <Label fx:id="lblTotal" layoutX="648.0" layoutY="128.0" text="Total: R$ 4200,00">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbCategoria" layoutX="169.0" layoutY="110.0" prefWidth="150.0" promptText="Categoria" stylesheets="@CSS/ComboBoxStyle.css" />
-      <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="14.0" layoutY="110.0" promptText="Pesquisa..." stylesheets="@CSS/loginStyle.css" />
-      <Button layoutX="28.0" layoutY="28.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Inserir" textFill="WHITE">
+      <ComboBox fx:id="cbCategoria" layoutX="190.0" layoutY="109.0" prefWidth="150.0" promptText="Categoria" stylesheets="@CSS/Dash.css" />
+      <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="35.0" layoutY="109.0" promptText="Pesquisa..." stylesheets="@CSS/Dash.css" />
+      <Button layoutX="35.0" layoutY="32.0" mnemonicParsing="false" onAction="#Inserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="548.0" layoutY="28.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/buttonStyle.css" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="648.0" layoutY="32.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Line endX="-100.0" endY="-197.0" layoutX="803.0" layoutY="200.0" startX="-100.0" startY="200.5" stroke="#1231dd" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-179.0" layoutX="808.0" layoutY="179.0" startX="-100.0" startY="221.5" stroke="#f5f509" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-185.0" layoutX="813.0" layoutY="188.0" startX="-100.0" startY="213.0" stroke="#db3b14" strokeWidth="5.0" />
-      <Button fx:id="btnDeletar" layoutX="548.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleta" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Excluir" textFill="WHITE">
+      <Button fx:id="btnDeletar" layoutX="411.0" layoutY="374.0" mnemonicParsing="false" onAction="#deleta" prefHeight="40.0" prefWidth="358.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Excluir" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button fx:id="btnAlterar" layoutX="28.0" layoutY="350.0" mnemonicParsing="false" onAction="#Alterar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/buttonStyle.css" text="Alterar" textFill="WHITE">
+      <Button fx:id="btnAlterar" layoutX="25.0" layoutY="374.0" mnemonicParsing="false" onAction="#Alterar" prefHeight="40.0" prefWidth="358.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Editar" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
+      <Line endX="-100.0" endY="-203.0" layoutX="907.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-201.5" layoutX="912.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-200.75" layoutX="917.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
     </children>   
 </AnchorPane>

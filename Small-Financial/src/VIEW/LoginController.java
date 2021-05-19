@@ -58,7 +58,8 @@ public class LoginController implements Initializable {
         Scene cadastroScene = new Scene(cadastro);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(cadastroScene);
-        window.show();
+        window.centerOnScreen();
+        
     }
 
     @FXML
@@ -81,7 +82,7 @@ public class LoginController implements Initializable {
             Scene menuScene = new Scene(menu);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(menuScene);
-            window.show();
+            window.centerOnScreen();
         }
         else{
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Usuário e/ou senha incorretos!", ButtonType.OK);

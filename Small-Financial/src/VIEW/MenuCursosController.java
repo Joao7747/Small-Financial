@@ -103,7 +103,7 @@ public class MenuCursosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
 
     }
 
@@ -114,7 +114,7 @@ public class MenuCursosController implements Initializable {
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -176,7 +176,7 @@ public class MenuCursosController implements Initializable {
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
-        window.show();
+        window.centerOnScreen();
         
         /*
         String nome = selecionado.getNome();

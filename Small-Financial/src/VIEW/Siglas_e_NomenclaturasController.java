@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author arthu
  */
-public class Siglas_e_NomeclaturasController implements Initializable {
+public class Siglas_e_NomenclaturasController implements Initializable {
 
     @FXML
     private TableView<Siglas> tvSiglasNomeclaturas;
@@ -49,7 +49,7 @@ public class Siglas_e_NomeclaturasController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -57,6 +57,7 @@ public class InserirGastosController implements Initializable {
     private Button btnVoltar;
 
     GastosController menu = new GastosController();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (menu.validacaoEditar == true) {
@@ -101,7 +102,7 @@ public class InserirGastosController implements Initializable {
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
-                window.show();
+                window.centerOnScreen();
             }
             else{
                 Gastos gasto = new Gastos();
@@ -118,7 +119,7 @@ public class InserirGastosController implements Initializable {
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
-                window.show();
+                window.centerOnScreen();
             }
             
         }
@@ -133,6 +134,6 @@ public class InserirGastosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
 }

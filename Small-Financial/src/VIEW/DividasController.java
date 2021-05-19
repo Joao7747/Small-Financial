@@ -112,26 +112,26 @@ public class DividasController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
     private void Inserir(ActionEvent event) throws IOException {
-        Parent inserir = FXMLLoader.load(getClass().getResource("ContasInsert.fxml"));
+        Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
     private void Alterar(ActionEvent event) throws IOException {
         validacaoEditar = true;
-        Parent inserir = FXMLLoader.load(getClass().getResource("ContasInsert.fxml"));
+        Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
-        window.show();
+        window.centerOnScreen();
     }
     @FXML
     public void deleta(){
