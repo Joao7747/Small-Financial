@@ -85,7 +85,7 @@ public class GanhosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -94,7 +94,7 @@ public class GanhosController implements Initializable {
         Scene inserirganhoScene = new Scene(inserirganho);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirganhoScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -117,7 +117,7 @@ public class GanhosController implements Initializable {
         Scene inserirganhoScene = new Scene(inserirganho);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirganhoScene);
-        window.show();
+        window.centerOnScreen();
     }
 
     @FXML

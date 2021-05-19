@@ -89,16 +89,16 @@ public class GastosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
     private void Inserir(ActionEvent event) throws IOException {
-        Parent inserir = FXMLLoader.load(getClass().getResource("GastosInsert.fxml"));
+        Parent inserir = FXMLLoader.load(getClass().getResource("InserirGastos.fxml"));
         Scene inserirScene = new Scene(inserir);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     private void Listagem(){
@@ -149,10 +149,10 @@ public class GastosController implements Initializable {
     @FXML
     private void Alterar(ActionEvent event) throws IOException{
         validacaoEditar = true;
-        Parent inserir = FXMLLoader.load(getClass().getResource("GastosInsert.fxml"));
+        Parent inserir = FXMLLoader.load(getClass().getResource("InserirGastos.fxml"));
         Scene inserirScene = new Scene(inserir);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
-        window.show();
+        window.centerOnScreen();
     }
 }

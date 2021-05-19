@@ -84,7 +84,7 @@ public class InserirGanhoController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
         telaganho.validacaoEditarGanho = false;
     }
     
@@ -119,7 +119,7 @@ public class InserirGanhoController implements Initializable {
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
-                window.show();
+                window.centerOnScreen();
                 
             } else {
                 
@@ -139,7 +139,7 @@ public class InserirGanhoController implements Initializable {
                 Scene voltarScene = new Scene(voltar);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.setScene(voltarScene);
-                window.show();
+                window.centerOnScreen();
 
             }
         } else {

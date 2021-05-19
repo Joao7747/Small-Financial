@@ -103,7 +103,7 @@ public class EducacaoController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
-        window.show();
+        window.centerOnScreen();
     }
     @FXML
     private void MenuCursos(ActionEvent event) throws IOException {
@@ -111,7 +111,7 @@ public class EducacaoController implements Initializable {
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
-        window.show();
+        window.centerOnScreen();
     }
     
     @FXML
@@ -120,7 +120,7 @@ public class EducacaoController implements Initializable {
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
-        window.show();
+        window.centerOnScreen();
     }
 
     @FXML
@@ -129,17 +129,16 @@ public class EducacaoController implements Initializable {
         Scene insereScene = new Scene(insere);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
-        window.show();
+        window.centerOnScreen();
     }
 
     
     @FXML
     private void siglas(ActionEvent event) throws IOException {
-        Parent telaSiglas = FXMLLoader.load(getClass().getResource("Siglas_e_Nomeclaturas.fxml"));
+        Parent telaSiglas = FXMLLoader.load(getClass().getResource("Siglas_e_Nomenclaturas.fxml"));
         Scene insereVideoScene = new Scene(telaSiglas);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(insereVideoScene);
-        window.show();
-        window.show();
+        window.centerOnScreen();
     }
 }

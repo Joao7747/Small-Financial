@@ -25,6 +25,7 @@ public class TelasSmallFinancial extends Application {
         
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     /**
