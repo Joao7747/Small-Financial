@@ -33,7 +33,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import static VIEW.MenuPublicacoesController.selecionadoPubli;
 
 /**
  * FXML Controller class
@@ -146,7 +145,7 @@ public class DividasController implements Initializable {
 
                 Optional<ButtonType> result = alerta.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    dao.excluir(selecionadoPubli.getIdPublicacao());
+                    dao.excluir(selecionado.getIdDividas());
                     Listagem();
                 } else {
                     alerta.close();
