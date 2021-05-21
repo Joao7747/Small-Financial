@@ -5,10 +5,16 @@
  */
 package telassmallfinancial;
 
+import Classes.Categoria;
 import DAO.DAOCurso_Online;
 import MODEL.Curso_Online;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -25,8 +31,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -41,15 +49,29 @@ public class MenuCursosController implements Initializable {
      * Initializes the controller class.
      */
     
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         //LISTAR CURSO
         Listagem();
-        
+        //Chama Categoria
+        carregarCategoria();
         //EXCLUIR CURSO
+        
+        
+        txtPesquisaCurso.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (txtPesquisaCurso.getText().equals(""))
+                {
+                     Listagem();
+                }
+                else
+                {
+                    ListagemParametrizada();
+                } 
+            }
+        });
         
         tvCurso.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             
@@ -92,6 +114,16 @@ public class MenuCursosController implements Initializable {
     private Button btnVoltar;
     
     public static Curso_Online selecionado;
+    
+     private List<Categoria> cat = new ArrayList<>();
+     
+     private ObservableList<Categoria> obsCat;
+     
+     @FXML
+    private ComboBox<Categoria> cbCategoria;
+
+    @FXML
+    public TextField txtPesquisaCurso;
     
     public static boolean validacaoEditar = false;
 
@@ -168,6 +200,21 @@ public class MenuCursosController implements Initializable {
     }
     
     @FXML
+    public void ListagemParametrizada()
+    {
+        tcIdCurso.setCellValueFactory(new PropertyValueFactory<>("idCurso_Online"));
+        tcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcDataLimite.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
+        tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
+       
+        
+        DAOCurso_Online daoCurso = new DAOCurso_Online();
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.buscaParametrizada());
+        tvCurso.setItems(curso);
+    }
+    
+    @FXML
     void EditarCurso(ActionEvent event) throws IOException {
         
         validacaoEditar = true;
@@ -178,40 +225,23 @@ public class MenuCursosController implements Initializable {
         window.setScene(insereScene);
         window.show();
         
-        /*
-        String nome = selecionado.getNome();
-        String descricao = selecionado.getDescricao();
-        String link = selecionado.getLink();
-        Date data = selecionado.getDataLimite();
         
-        InserirCursoController i = new InserirCursoController();
-        
-        i.txtNomeCurso.setText(nome);
-        i.txtDescCurso.setText(descricao);
-        i.txtLinkDoCurso.setText(link);
-        i.dtDataCurso.setValue(data.toLocalDate());
-        i.verificaCaso = true;
-        
-        
-        i.initCurso(selecionado);
-        */
     }
    
-   /* @FXML
-    public Curso_Online Editar()
-    {
-        if(selecionado != null){
-      
-            return selecionado;
+  public void carregarCategoria() {
         
-        }
-        else
-        {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Curso!", ButtonType.OK);
-            alerta.show(); 
-        }
-            return selecionado;
-    }*/
+        Categoria cat1 = new Categoria("Id");
+        Categoria cat2 = new Categoria("Nome");
+        Categoria cat3 = new Categoria("Descrição");
 
+        cat.add(cat1);
+        cat.add(cat2);
+        cat.add(cat3);
+
+        obsCat = FXCollections.observableArrayList(cat);
+        cbCategoria.setItems(obsCat);
+    }
+  
+  
     
 }
