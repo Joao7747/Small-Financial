@@ -164,7 +164,8 @@ public class InserirDividasController implements Initializable {
                     divida.setObservacao(observacao);
                     divida.setValor(Double.parseDouble(valor));
                     dividas.inserir(divida);
-                    JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Divida salva com sucesso!", ButtonType.OK);
+                    alerta.show();
 
                     //Voltar para Contas
                     Parent voltar = FXMLLoader.load(getClass().getResource("Dividas.fxml"));

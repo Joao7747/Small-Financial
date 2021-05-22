@@ -31,7 +31,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -125,8 +124,9 @@ public class InserirGastosController implements Initializable {
                     gasto.setObservacao(txtObservacoes.getText());
                     gasto.setPreco(Double.parseDouble(txtValor.getText()));
                     gastos.inserir(gasto);
-                    JOptionPane.showConfirmDialog(null, "Cadastrado com sucesso!", "Alerta!", JOptionPane.DEFAULT_OPTION);
-
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Gasto salvo com sucesso!", ButtonType.OK);
+                    alerta.show();
+                    
                     //Voltar para Gastos
                     Parent voltar = FXMLLoader.load(getClass().getResource("Gastos.fxml"));
                     Scene voltarScene = new Scene(voltar);

@@ -31,8 +31,8 @@
       </Pane>
       <Label layoutX="497.0" layoutY="167.0" text="Saldo" />
       <Button fx:id="btnSaldo" layoutX="467.0" layoutY="190.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="R$" textFill="WHITE" />
-      <Button fx:id="btnSalvar" layoutX="574.0" layoutY="54.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="WHITE" />
-      <Button fx:id="btnVoltar" layoutX="469.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
+      <Button fx:id="btnSalvar" layoutX="475.0" layoutY="54.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="572.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
       <TextField fx:id="txtNome" layoutX="148.0" layoutY="228.0" stylesheets="@CSS/Dash.css" />
       <TextField fx:id="txtEmail" layoutX="148.0" layoutY="276.0" stylesheets="@CSS/Dash.css" />
       <TextField fx:id="txtSenha" layoutX="148.0" layoutY="328.0" stylesheets="@CSS/Dash.css" />

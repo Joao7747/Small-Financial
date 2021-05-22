@@ -58,8 +58,6 @@ public class MetasController implements Initializable {
     @FXML
     private TableColumn<Metas, Byte> tcStatus;
     @FXML
-    private TableColumn<Metas, Integer> tcId;
-    @FXML
     private TableColumn<Metas, Date> tcDataInserido;
     
     @FXML
@@ -121,7 +119,6 @@ public class MetasController implements Initializable {
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
-        tcId.setCellValueFactory(new PropertyValueFactory<>("idMetas"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
         
         DAOMetas dao = new DAOMetas();
