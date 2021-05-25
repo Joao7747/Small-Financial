@@ -43,10 +43,6 @@ public class LoginController implements Initializable {
     @FXML
     private Button btnCadastrar;
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -73,10 +69,10 @@ public class LoginController implements Initializable {
     @FXML
     public void menu(ActionEvent event) throws IOException, InterruptedException {
         if (verificaLogin()) {
-            MainThread auditoria = new MainThread();
-            auditoria.user = txtUser.getText();
-            auditoria.StartThread("Menu");
-            //fim do inicio a auditoria
+//            MainThread auditoria = new MainThread();
+//            auditoria.user = txtUser.getText();
+//            auditoria.StartThread("Menu");
+//            fim do inicio a auditoria
 
             Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene menuScene = new Scene(menu);

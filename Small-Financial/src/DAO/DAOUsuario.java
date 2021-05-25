@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class DAOUsuario implements DAOGenerica<Usuario> {
 
     private ConexaoBanco conexao;
-
+    private static Usuario user = new Usuario();
+    
     public DAOUsuario() {
         this.conexao = new ConexaoBanco();
     }
@@ -45,7 +46,7 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     @Override
     public void alterar(Usuario usuario) {
         String sql = "UPDATE Usuario SET Nome = ? , Email = ? , Senha = ?, "
-                + "Saldo = ?,Verif_ADM = ? WHERE idUsuario = ?";
+                + "Saldo = ? WHERE idUsuario = ?";
 
         try {
             if (this.conexao.conectar()) {
@@ -55,8 +56,7 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
                 sentenca.setString(2, usuario.getEmail());
                 sentenca.setString(3, usuario.getSenha());
                 sentenca.setDouble(4, usuario.getSaldo());
-                sentenca.setBoolean(5, usuario.getVerif_ADM());
-                sentenca.setInt(6, usuario.getIdUsuario());
+                sentenca.setInt(5, usuario.getIdUsuario());
 
                 sentenca.execute();
                 sentenca.close();
@@ -136,7 +136,7 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     public Boolean UsuarioLogado(String email, String senha)
     {
         Boolean retorno = false;
-        String sql = "select count(idUsuario) as total from Usuario where email = ? and senha = ?";
+        String sql = "select * from Usuario where email = ? and senha = ?";
         try
         {
             if(this.conexao.conectar())
@@ -148,7 +148,13 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
                 ResultSet resultadoSentenca = sentenca.executeQuery();
                 while(resultadoSentenca.next()) 
                 {
-                    if(resultadoSentenca.getInt("total") > 0){
+                    if(resultadoSentenca.getInt("idUsuario") > 0){
+                        user.setNome(resultadoSentenca.getString("Nome"));
+                        user.setIdUsuario(resultadoSentenca.getInt("idUsuario"));
+                        user.setEmail(resultadoSentenca.getString("Email"));
+                        user.setSaldo(resultadoSentenca.getDouble("Saldo"));
+                        user.setVerif_ADM(resultadoSentenca.getBoolean("Verif_ADM"));
+                        user.setSenha(resultadoSentenca.getString("Senha"));
                         retorno = true;
                     }
                 }
@@ -166,4 +172,16 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
 
     }
 
+    public Usuario IdNome(){
+        return user;
+    }
+    
+    public void Logoff(){
+        user.setIdUsuario(0);
+        user.setNome("");
+        user.setEmail("");
+        user.setSaldo(0);
+        user.setVerif_ADM(false);
+        user.setSenha("");
+    }
 }

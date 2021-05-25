@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuController">
    <children>
       <Label fx:id="lblSaudacao" layoutX="30.0" layoutY="20.0" prefHeight="22.0" prefWidth="81.0" text="Saudação" wrapText="true">
          <font>
@@ -90,7 +90,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Label fx:id="lblNome" layoutX="109.0" layoutY="20.0" prefHeight="22.0" prefWidth="46.0" text="nome" wrapText="true">
+      <Label fx:id="lblNome" layoutX="109.0" layoutY="20.0" prefHeight="22.0" prefWidth="238.0" text="nome" wrapText="true">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
