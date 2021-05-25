@@ -33,6 +33,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import static VIEW.MenuPublicacoesController.selecionadoPubli;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.TableRow;
+import javafx.scene.input.MouseEvent;
+
 
 /**
  * FXML Controller class
@@ -67,76 +73,109 @@ public class DividasController implements Initializable {
     private TextField txtPesquisa;
     @FXML
     private Button btnVoltar;
-     @FXML
+    @FXML
     private Button btnDeletar;
     @FXML
     private Button btnAlterar;
 
     public static Dividas selecionado;
-    
+    public static Dividas selectVisualization;
+
     public static boolean validacaoEditar = false;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Listagem();
-        
-        tvContas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
-            
-            @Override 
-            public void changed(ObservableValue observable, Object oldValue, Object newValue){
-            
-                selecionado = (Dividas)newValue;
-            }
-            });
-    }    
 
-    public void Listagem(){
+        tvContas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+
+                selecionado = (Dividas) newValue;
+            }
+        });
+
+        tvContas.setRowFactory(tv -> {
+            TableRow<Dividas> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    selectVisualization = row.getItem();
+//                    selecionado = row.getItem();
+                    try {
+                        chamarTelaVisualizacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DividasController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
+    }
+
+    public void Listagem() {
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
         tcValor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("numeroParcelas"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("Vencimento"));
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-        
+
         DAODividas dividas = new DAODividas();
         ObservableList<Dividas> divida = FXCollections.observableArrayList(dividas.consultar());
         tvContas.setItems(divida);
     }
-    
+
+
+    private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarDividas.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+
+
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene voltarScene = new Scene(voltar);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
     }
-    
+
+
     @FXML
     private void Inserir(ActionEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.centerOnScreen();
     }
-    
+
+
     @FXML
     private void Alterar(ActionEvent event) throws IOException {
         validacaoEditar = true;
         Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.centerOnScreen();
     }
+
     @FXML
-    public void deleta(){
-        if(selecionado != null){
-            try
-            {
+    public void deleta() {
+        if (selecionado != null) {
+            try {
+
                 DAODividas dao = new DAODividas();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
@@ -150,19 +189,16 @@ public class DividasController implements Initializable {
                 } else {
                     alerta.close();
                 }
-            
+
+            } catch (Exception e) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Divida NÃO deletada!", ButtonType.OK);
+                alerta.show();
             }
-            catch(Exception e)
-            {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Divida NÃO deletada!", ButtonType.OK);
-                    alerta.show(); 
-            }
-        }
-        else
-        {
+        } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma divida!", ButtonType.OK);
-            alerta.show(); 
+            alerta.show();
         }
-        
+
+
     }
 }

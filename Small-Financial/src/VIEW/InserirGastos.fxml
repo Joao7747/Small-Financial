@@ -12,6 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.InserirGastosController">
    <children>
       <Label layoutX="357.0" layoutY="34.0" text="Insira seu gasto">
@@ -22,7 +23,7 @@
       <Label layoutX="148.0" layoutY="220.0" text="Valor" />
       <TextField fx:id="txtValor" layoutX="150.0" layoutY="245.0" prefHeight="31.0" prefWidth="191.0" stylesheets="@CSS/Dash.css" />
       <Label layoutX="476.0" layoutY="107.0" text="Data" />
-      <TextArea fx:id="txtObservacoes" layoutX="474.0" layoutY="220.0" prefHeight="91.0" prefWidth="191.0" stylesheets="@CSS/Dash.css" />
+      <TextArea fx:id="txtObservacoes" layoutX="474.0" layoutY="220.0" prefHeight="91.0" prefWidth="191.0" stylesheets="@CSS/Dash.css" wrapText="true" />
       <Label layoutX="474.0" layoutY="190.0" text="Observações" />
       <ImageView fitHeight="104.0" fitWidth="124.0" layoutX="355.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
          <image>

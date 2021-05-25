@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+
 import Classes.Categoria;
 import DAO.DAOGanhos;
 import MODEL.Ganhos;
@@ -33,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+
 /**
  * FXML Controller class
  *
@@ -51,6 +53,7 @@ public class InserirGanhoController implements Initializable {
     @FXML
     private TextArea txtObservacoes;
     @FXML
+
     private ComboBox<Categoria> cbCategoria;
 
     //Variaveis
@@ -70,6 +73,7 @@ public class InserirGanhoController implements Initializable {
             Date datarecebimento = telaganho.selecionadoGanho.getDataGanho();
             Double valor = telaganho.selecionadoGanho.getValor();
             String observacao = telaganho.selecionadoGanho.getObservacao();
+
             Categoria cat = new Categoria(telaganho.selecionadoGanho.getCategoria());
 
             txtDataRecebimento.setValue(datarecebimento.toLocalDate());

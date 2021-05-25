@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+
 import Classes.Categoria;
 import DAO.DAOGastos;
 import MODEL.Gastos;
@@ -64,6 +65,7 @@ public class InserirGastosController implements Initializable {
     private Button btnVoltar;
 
     GastosController menu = new GastosController();
+
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
 

@@ -59,7 +59,6 @@ public class LoginController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(cadastroScene);
         window.centerOnScreen();
-        
     }
 
     @FXML
@@ -73,22 +72,21 @@ public class LoginController implements Initializable {
     @FXML
     public void menu(ActionEvent event) throws IOException, InterruptedException {
         if (verificaLogin()) {
+            //iniciar a auditoria
             MainThread auditoria = new MainThread();
             auditoria.user = txtUser.getText();
             auditoria.StartThread("Menu");
             //fim do inicio a auditoria
-
             Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene menuScene = new Scene(menu);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(menuScene);
             window.centerOnScreen();
-        }
-        else{
+        } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Usuário e/ou senha incorretos!", ButtonType.OK);
             alerta.show();
         }
-        //iniciar a auditoria
+
 
     }
 }

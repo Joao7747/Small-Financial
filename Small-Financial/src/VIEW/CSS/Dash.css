@@ -39,6 +39,20 @@
     
 }
 
+.fundoPreto {
+    -fx-background-color: black;
+}
+
+.textTransparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.textTransparent2 {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px !important;
+}
+
 .table-view .column-header-background {
     -fx-background-color: transparent;
     -fx-padding: 0 0 5px 0;
