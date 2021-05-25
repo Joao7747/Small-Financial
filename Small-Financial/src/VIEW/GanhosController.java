@@ -81,7 +81,7 @@ public class GanhosController implements Initializable {
                 selecionadoGanho = (Ganhos)newValue;
             }
         });
-        
+      
         tvGanhos.setRowFactory(tv -> {
             TableRow<Ganhos> row = new TableRow<>();
             row.setOnMouseClicked(event -> {

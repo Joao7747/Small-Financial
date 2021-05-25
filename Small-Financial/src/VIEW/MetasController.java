@@ -100,7 +100,7 @@ public class MetasController implements Initializable {
                 selecionado = (Metas)newValue;
             }
         });
-        
+
         tvContas.setRowFactory(tv -> {
             TableRow<Metas> row = new TableRow<>();
             row.setOnMouseClicked(event -> {

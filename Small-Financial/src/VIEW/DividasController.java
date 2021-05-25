@@ -39,6 +39,7 @@ import java.util.logging.Logger;
 import javafx.scene.control.TableRow;
 import javafx.scene.input.MouseEvent;
 
+
 /**
  * FXML Controller class
  *
@@ -128,6 +129,7 @@ public class DividasController implements Initializable {
         tvContas.setItems(divida);
     }
 
+
     private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
@@ -136,23 +138,28 @@ public class DividasController implements Initializable {
         window.centerOnScreen();
     }
 
+
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene voltarScene = new Scene(voltar);
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
     }
 
+
     @FXML
     private void Inserir(ActionEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
         Scene inserirScene = new Scene(inserir);
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.centerOnScreen();
     }
+
 
     @FXML
     private void Alterar(ActionEvent event) throws IOException {
@@ -168,6 +175,7 @@ public class DividasController implements Initializable {
     public void deleta() {
         if (selecionado != null) {
             try {
+
                 DAODividas dao = new DAODividas();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
@@ -190,6 +198,7 @@ public class DividasController implements Initializable {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma divida!", ButtonType.OK);
             alerta.show();
         }
+
 
     }
 }

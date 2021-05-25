@@ -109,6 +109,7 @@ public class GastosController implements Initializable {
         window.centerOnScreen();
     }
     
+
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
@@ -131,6 +132,7 @@ public class GastosController implements Initializable {
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         tcPreco.setCellValueFactory(new PropertyValueFactory<>("Preco"));
         tcData.setCellValueFactory(new PropertyValueFactory<>("dataGasto"));
+
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("Observacao"));
         
         DAOGastos gastos = new DAOGastos();
@@ -148,6 +150,7 @@ public class GastosController implements Initializable {
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
                 alerta.setHeaderText("O dado será permanentemente excluido!!");
+
                 alerta.setContentText("tem certeza que deseja excluir?");
 
                 Optional<ButtonType> result = alerta.showAndWait();

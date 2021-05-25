@@ -8,19 +8,19 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuPublicacoesController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuPublicacoesController">
    <children>
-      <Button fx:id="btnInserir" layoutX="44.0" layoutY="29.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
+      <Button fx:id="btnInserir" layoutX="135.0" layoutY="61.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="627.0" layoutY="29.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="552.0" layoutY="61.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Label layoutX="348.0" layoutY="37.0" minHeight="16" minWidth="69" prefHeight="48.0" prefWidth="130.0" text="Publicações">
+      <Label layoutX="339.0" layoutY="69.0" minHeight="16" minWidth="69" prefHeight="48.0" prefWidth="130.0" text="Publicações">
          <font>
             <Font size="24.0" />
          </font>
