@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.LoginController">
    <children>
-      <TextField fx:id="txtUser" alignment="CENTER" layoutX="528.0" layoutY="107.0" prefHeight="43.0" prefWidth="230.0" promptText="Usuário" stylesheets="@CSS/Dash.css">
+      <TextField fx:id="txtUser" alignment="CENTER" layoutX="528.0" layoutY="107.0" prefHeight="43.0" prefWidth="230.0" promptText="E-mail" stylesheets="@CSS/Dash.css">
          <font>
             <Font name="Book Antiqua" size="14.0" />
          </font>
