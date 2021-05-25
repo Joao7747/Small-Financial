@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -27,8 +29,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -77,6 +81,20 @@ public class GanhosController implements Initializable {
                 selecionadoGanho = (Ganhos)newValue;
             }
         });
+      
+        tvGanhos.setRowFactory(tv -> {
+            TableRow<Ganhos> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())){
+                    try {
+                        chamarTelaVisualizacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DividasController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
     }    
 
     @FXML
@@ -85,6 +103,14 @@ public class GanhosController implements Initializable {
         Scene voltarScene = new Scene(voltar);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
+        window.centerOnScreen();
+    }
+    
+    private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarGanhos.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
         window.centerOnScreen();
     }
     

@@ -12,6 +12,8 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -28,8 +30,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 
@@ -80,8 +84,31 @@ public class GastosController implements Initializable {
             
                 selecionado = (Gastos)newValue;
             }
+        });
+        
+        tvGastos.setRowFactory(tv -> {
+            TableRow<Gastos> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())){
+                    try {
+                        chamarTelaVisualizacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DividasController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             });
+            return row;
+        });
     }   
+    
+    private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarGastos.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+    
 
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
@@ -104,7 +131,8 @@ public class GastosController implements Initializable {
     private void Listagem(){
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         tcPreco.setCellValueFactory(new PropertyValueFactory<>("Preco"));
-        tcData.setCellValueFactory(new PropertyValueFactory<>("Data_Gasto"));
+        tcData.setCellValueFactory(new PropertyValueFactory<>("dataGasto"));
+
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("Observacao"));
         
         DAOGastos gastos = new DAOGastos();
@@ -121,7 +149,8 @@ public class GastosController implements Initializable {
                 
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
-                alerta.setHeaderText("O dado sera prmanentemente excluido!!");
+                alerta.setHeaderText("O dado será permanentemente excluido!!");
+
                 alerta.setContentText("tem certeza que deseja excluir?");
 
                 Optional<ButtonType> result = alerta.showAndWait();

@@ -10,23 +10,22 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MetasController">
     <children>
-        <Label fx:id="lblContas" layoutX="339.0" layoutY="41.0" minHeight="16" minWidth="69" text="Metas e Desejos">
+        <Label fx:id="lblContas" layoutX="356.0" layoutY="41.0" minHeight="16" minWidth="69" text="Metas e Desejos">
             <font>
                 <Font size="17.0" />
             </font>
         </Label>
-        <TableView fx:id="tvContas" editable="true" layoutX="39.0" layoutY="176.0" prefHeight="203.0" prefWidth="733.0" stylesheets="@CSS/Dash.css">
+        <TableView fx:id="tvContas" editable="true" layoutX="39.0" layoutY="176.0" prefHeight="203.0" prefWidth="732.0" stylesheets="@CSS/Dash.css">
             <columns>
-                <TableColumn fx:id="tcId" prefWidth="64.0" text="Id" />
                 <TableColumn fx:id="tcCategoria" minWidth="0.0" prefWidth="121.0" text="Categoria" />
                 <TableColumn fx:id="tcDescricao" minWidth="0.0" prefWidth="86.0" text="Descrição" />
-                <TableColumn fx:id="tcValor" prefWidth="81.0" text="Preço(R$)" />
-                <TableColumn fx:id="tcParcelas" prefWidth="95.0" text="Realização" />
-                <TableColumn fx:id="tcVencimentos" prefWidth="182.0" text="Observação" />
-                <TableColumn fx:id="tcStatus" prefWidth="104.0" text="Status" />
+                <TableColumn fx:id="tcValor" prefWidth="96.0" text="Preço(R$)" />
+                <TableColumn fx:id="tcParcelas" prefWidth="120.0" text="Realização" />
                 <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
+                <TableColumn fx:id="tcVencimentos" prefWidth="156.0" text="Observação" />
+                <TableColumn fx:id="tcStatus" prefWidth="152.0" text="Status" />
             </columns>
         </TableView>
         <ComboBox fx:id="cbCategoria" layoutX="200.0" layoutY="136.0" prefWidth="150.0" promptText="Categoria" stylesheets="@CSS/Dash.css" />
@@ -35,12 +34,12 @@
                 <Font name="Book Antiqua" size="12.0" />
             </font>
         </TextField>
-        <Button fx:id="btnInserir" layoutX="50.0" layoutY="54.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
+        <Button fx:id="btnInserir" layoutX="50.0" layoutY="34.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button fx:id="btnVoltar" layoutX="643.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
+        <Button fx:id="btnVoltar" layoutX="645.0" layoutY="34.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
             <font>
                 <Font size="17.0" />
             </font>

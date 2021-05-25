@@ -12,14 +12,17 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.GastosController">
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.GastosController">
+
     <children>
       <TableView fx:id="tvGastos" layoutX="284.0" layoutY="145.0" prefHeight="200.0" prefWidth="440.0" stylesheets="@CSS/Dash.css">
         <columns>
           <TableColumn fx:id="tcCategoria" prefWidth="96.0" text="Categoria" />
           <TableColumn fx:id="tcPreco" prefWidth="73.0" text="Preço(R$)" />
-            <TableColumn fx:id="tcData" prefWidth="71.0" text="Data" />
-            <TableColumn fx:id="tcObservacao" prefWidth="199.0" text="Observação" />
+            <TableColumn fx:id="tcData" prefWidth="102.0" text="Data" />
+            <TableColumn fx:id="tcObservacao" prefWidth="168.0" text="Observação" />
+
         </columns>
       </TableView>
       <ComboBox fx:id="cbCategoria" layoutX="439.0" layoutY="109.0" prefWidth="150.0" promptText="Categoria" stylesheets="@CSS/Dash.css" />

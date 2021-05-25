@@ -10,7 +10,8 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.DividasController">
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.DividasController">
     <children>
         <Label fx:id="lblContas" layoutX="325.0" layoutY="26.0" minHeight="16" minWidth="69" text="Dividas e pendencias">
          <font>
@@ -53,8 +54,10 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Line endX="-100.0" endY="-203.0" layoutX="907.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-201.5" layoutX="912.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
-      <Line endX="-100.0" endY="-200.75" layoutX="917.0" layoutY="203.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
+
+      <Line endX="-100.0" endY="-198.75" layoutX="898.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="903.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="908.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
+
     </children>   
 </AnchorPane>

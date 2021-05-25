@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuPublicacoesController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuPublicacoesController">
    <children>
       <Button fx:id="btnInserir" layoutX="135.0" layoutY="61.0" mnemonicParsing="false" onAction="#telaInserir" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
          <font>

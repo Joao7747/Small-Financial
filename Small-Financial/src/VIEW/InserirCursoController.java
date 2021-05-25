@@ -25,6 +25,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.DatePicker;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -72,60 +73,63 @@ public class InserirCursoController implements Initializable {
 
     @FXML
     private void InserirCurso(ActionEvent event) throws IOException, SQLException {
+        
+        try {
+            if (txtNomeCurso.getText() != null && txtLinkDoCurso.getText() != null && txtDescCurso.getText() != null && dtDataCurso.getValue() != null) {
 
-        DAOCurso_Online dao = new DAOCurso_Online();
+                DAOCurso_Online dao = new DAOCurso_Online();
 
-        String nome = txtNomeCurso.getText();
-        String link = txtLinkDoCurso.getText();
-        String descricao = txtDescCurso.getText();
+                String nome = txtNomeCurso.getText();
+                String link = txtLinkDoCurso.getText();
+                String descricao = txtDescCurso.getText();
+                LocalDate localDataAux = dtDataCurso.getValue();
+                Date dataAux = Date.valueOf(localDataAux);
 
-        LocalDate localDataAux = dtDataCurso.getValue();
-        Date dataAux = Date.valueOf(localDataAux);
+                if (menu.validacaoEditar == true) {
 
-        if (!nome.equals("") && !link.equals("") && !descricao.equals("") && dataAux != null) {
+                    menu.selecionado.setNome(nome);
+                    menu.selecionado.setLink(link);
+                    menu.selecionado.setDataLimite(dataAux);
+                    menu.selecionado.setDescricao(descricao);
 
-            if (menu.validacaoEditar == true) {
+                    dao.alterar(menu.selecionado);
+                    menu.validacaoEditar = false;
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
+                    alerta.show();
 
-                menu.selecionado.setNome(nome);
-                menu.selecionado.setLink(link);
-                menu.selecionado.setDataLimite(dataAux);
-                menu.selecionado.setDescricao(descricao);
+                    //Voltar para Curso
+                    Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
+                    Scene voltarScene = new Scene(voltar);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(voltarScene);
+                    window.centerOnScreen();
 
-                dao.alterar(menu.selecionado);
-                menu.validacaoEditar = false;
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso atualizado com sucesso!", ButtonType.OK);
-                alerta.show();
-                
-                //Voltar para Curso
-                Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
-                Scene voltarScene = new Scene(voltar);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(voltarScene);
-                window.centerOnScreen();
-                
+                } else {
+                    Curso_Online c = new Curso_Online();
+
+                    c.setNome(nome);
+                    c.setLink(link);
+                    c.setDataLimite(dataAux);
+                    c.setDescricao(descricao);
+                    dao.inserir(c);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso salvo com sucesso!", ButtonType.OK);
+                    alerta.show();
+
+                    //Voltar para Curso
+                    Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
+                    Scene voltarScene = new Scene(voltar);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(voltarScene);
+                    window.centerOnScreen();
+
+                }
             } else {
-                Curso_Online c = new Curso_Online();
-
-                c.setNome(nome);
-                c.setLink(link);
-                c.setDataLimite(dataAux);
-                c.setDescricao(descricao);
-                dao.inserir(c);
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Curso salvo com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
                 alerta.show();
-                
-                //Voltar para Curso
-                Parent voltar = FXMLLoader.load(getClass().getResource("MenuCursos.fxml"));
-                Scene voltarScene = new Scene(voltar);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(voltarScene);
-                window.centerOnScreen();
-
             }
-        } else {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
-            alerta.show();
-
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e.toString(), "Ops, algo deu errado", JOptionPane.DEFAULT_OPTION);
+            System.out.println(e);
         }
 
     }

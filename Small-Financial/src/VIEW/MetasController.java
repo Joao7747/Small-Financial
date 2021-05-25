@@ -6,6 +6,7 @@
 package VIEW;
 
 import DAO.DAOMetas;
+import MODEL.Gastos;
 import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import static VIEW.MenuPublicacoesController.selecionadoPubli;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.control.TableRow;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -58,8 +63,6 @@ public class MetasController implements Initializable {
     private TableColumn<Metas, String> tcVencimentos;
     @FXML
     private TableColumn<Metas, Byte> tcStatus;
-    @FXML
-    private TableColumn<Metas, Integer> tcId;
     @FXML
     private TableColumn<Metas, Date> tcDataInserido;
     
@@ -95,7 +98,29 @@ public class MetasController implements Initializable {
                 selecionado = (Metas)newValue;
             }
         });
+
+        tvContas.setRowFactory(tv -> {
+            TableRow<Metas> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())){
+                    try {
+                        chamarTelaVisualizacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(DividasController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
     }    
+    
+    private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarMetas.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
 
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
@@ -122,7 +147,6 @@ public class MetasController implements Initializable {
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
-        tcId.setCellValueFactory(new PropertyValueFactory<>("idMetas"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
         
         DAOMetas dao = new DAOMetas();
@@ -138,12 +162,12 @@ public class MetasController implements Initializable {
                 DAOMetas dao = new DAOMetas();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
-                alerta.setHeaderText("O dado sera prmanentemente excluido!!");
+                alerta.setHeaderText("O dado será permanentemente excluido!!");
                 alerta.setContentText("tem certeza que deseja excluir?");
 
                 Optional<ButtonType> result = alerta.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    dao.excluir(selecionadoPubli.getIdPublicacao());
+                    dao.excluir(selecionado.getIdMetas());
                     Listar();
                 } else {
                     alerta.close();

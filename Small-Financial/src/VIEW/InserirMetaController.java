@@ -39,6 +39,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -77,6 +78,7 @@ public class InserirMetaController implements Initializable {
     @FXML
     private TextArea txtValorGuardado;
 
+    //Variaveis
     private List<Categoria> cat = new ArrayList<>();
 
     private ObservableList<Categoria> obsCat;
@@ -143,6 +145,7 @@ public class InserirMetaController implements Initializable {
                 }
             }
         });
+
         if (cont.verificaEditar == true) {
             lblDesejo.setText("Altere sua meta ou desejo");
             Categoria cat = new Categoria(cont.selecionado.getCategoria());
@@ -176,65 +179,73 @@ public class InserirMetaController implements Initializable {
 
     @FXML
     private void inserir(ActionEvent event) throws ParseException, IOException, SQLException {
-        LocalDate localDataAux = txtDataRealizacao.getValue();
-        Date dataAux = Date.valueOf(localDataAux);
-        Categoria cat = cbCategoria.getSelectionModel().getSelectedItem();
-        if (!txtDescricao.getText().equals("") && !cat.getCategoria().equals("")
-                && !txtCusto.getText().substring(3).equals("") && dataAux != null
-                && !txtObservacao.getText().equals("")) {
+        try {
+            
+            if (!txtDescricao.getText().equals("") && cbCategoria.getSelectionModel().getSelectedItem() != null
+                    && !txtCusto.getText().substring(3).equals("") && Date.valueOf(txtDataRealizacao.getValue()) != null
+                    && !txtObservacao.getText().equals("")) {
 
-            Metas m = new Metas();
-            DAOMetas dao = new DAOMetas();
-            m.setDescricao(txtDescricao.getText());
-            m.setCategoria(cat.getCategoria());
-            m.setCustoTotal(Double.parseDouble(txtCusto.getText().substring(3)));
-            Date datasql = Date.valueOf(txtDataRealizacao.getValue());
-            m.setDataRealizacao(datasql);
-            m.setObservacao(txtObservacao.getText());
-            LocalDate tes = txtDataRealizacao.getValue();
-            LocalDate hoje = LocalDate.now();
-            long diferencaMes = ChronoUnit.MONTHS.between(hoje, tes);
-            double valorPoupar = Double.parseDouble(txtCusto.getText().substring(3)) / diferencaMes;
-            m.setValorIdealPoupar(valorPoupar);
-            byte b = 1;
-            m.setStatusMeta(b);
-            double valorGuardado = 100.90;
-            m.setValorGuardado(valorGuardado);
-            int usuario = 1;
-            m.setIdUsuario(usuario);
-            if (cont.verificaEditar == true) {
-                m.setIdMetas(cont.selecionado.getIdMetas());
-                Date data = Date.valueOf(dataInserido);
-                m.setDataPrevista(data);
-                dao.alterar(m);
-                cont.verificaEditar = false;
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta atualizado com sucesso!", ButtonType.OK);
-                alerta.show();
-                
-                //Voltar para Metas
-                Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
-                Scene voltarScene = new Scene(voltar);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(voltarScene);
-                window.centerOnScreen();
+                LocalDate localDataAux = txtDataRealizacao.getValue();
+                Date dataAux = Date.valueOf(localDataAux);
+                Categoria cat = cbCategoria.getSelectionModel().getSelectedItem();
+
+                Metas m = new Metas();
+                DAOMetas dao = new DAOMetas();
+                m.setDescricao(txtDescricao.getText());
+                m.setCategoria(cat.getCategoria());
+                m.setCustoTotal(Double.parseDouble(txtCusto.getText().substring(3)));
+                Date datasql = Date.valueOf(txtDataRealizacao.getValue());
+                m.setDataRealizacao(datasql);
+                m.setObservacao(txtObservacao.getText());
+                LocalDate tes = txtDataRealizacao.getValue();
+                LocalDate hoje = LocalDate.now();
+                long diferencaMes = ChronoUnit.MONTHS.between(hoje, tes);
+                double valorPoupar = Double.parseDouble(txtCusto.getText().substring(3)) / diferencaMes;
+                m.setValorIdealPoupar(valorPoupar);
+                byte b = 1;
+                m.setStatusMeta(b);
+                double valorGuardado = 100.90;
+                m.setValorGuardado(valorGuardado);
+                int usuario = 1;
+                m.setIdUsuario(usuario);
+                if (cont.verificaEditar == true) {
+                    m.setIdMetas(cont.selecionado.getIdMetas());
+                    Date data = Date.valueOf(dataInserido);
+                    m.setDataPrevista(data);
+                    dao.alterar(m);
+                    cont.verificaEditar = false;
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta atualizado com sucesso!", ButtonType.OK);
+                    alerta.show();
+
+                    //Voltar para Metas
+                    Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
+                    Scene voltarScene = new Scene(voltar);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(voltarScene);
+                    window.centerOnScreen();
+                } else {
+                    Date data = Date.valueOf(hoje);
+                    m.setDataPrevista(data);
+                    dao.inserir(m);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta salva com sucesso!", ButtonType.OK);
+                    alerta.show();
+
+                    //Voltar para Metas
+                    Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
+                    Scene voltarScene = new Scene(voltar);
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.setScene(voltarScene);
+                    window.centerOnScreen();
+                }
+
             } else {
-                Date data = Date.valueOf(hoje);
-                m.setDataPrevista(data);
-                dao.inserir(m);
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta salva com sucesso!", ButtonType.OK);
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
                 alerta.show();
-                
-                //Voltar para Metas
-                Parent voltar = FXMLLoader.load(getClass().getResource("Metas.fxml"));
-                Scene voltarScene = new Scene(voltar);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(voltarScene);
-                window.centerOnScreen();
             }
 
-        } else {
-            Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
-            alerta.show();
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e.toString(), "Ops, algo deu errado", JOptionPane.DEFAULT_OPTION);
+            System.out.println(e);
         }
 
     }
