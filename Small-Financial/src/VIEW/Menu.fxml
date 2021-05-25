@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuController">
+   <children>
+      <Label fx:id="lblSaudacao" layoutX="30.0" layoutY="20.0" prefHeight="22.0" prefWidth="81.0" text="Saudação" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+      <Button id="btnSaldo" layoutX="382.0" layoutY="18.0" mnemonicParsing="false" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Saldo" textFill="WHITE" textOverrun="CLIP" />
+      <Label layoutX="524.0" layoutY="23.0" prefHeight="22.0" prefWidth="166.0" text="Dollar - 5,76 | Euro - 6,67" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnMetas" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="20.0" layoutX="53.0" layoutY="105.0" mnemonicParsing="false" onAction="#Metas" prefHeight="179.0" prefWidth="329.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Metas" textFill="WHITE" textOverrun="CLIP">
+         <graphic>
+            <ProgressBar prefWidth="200.0" />
+         </graphic></Button>
+      <Button fx:id="btnRelatorios" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="436.0" layoutY="105.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="329.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Relatorios e Dicas" textFill="WHITE">
+         <graphic>
+            <BarChart prefHeight="133.0" prefWidth="200.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" tickLabelFill="WHITE" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+              </yAxis>
+            </BarChart>
+         </graphic></Button>
+      <Button fx:id="btnGastos" contentDisplay="BOTTOM" layoutX="225.0" layoutY="308.0" mnemonicParsing="false" onAction="#Gastos" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Gastos" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
+               <image>
+                  <Image url="@../Resources/Gastost.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnGanhos" contentDisplay="BOTTOM" layoutX="436.0" layoutY="308.0" mnemonicParsing="false" onAction="#Ganhos" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Ganhos" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
+               <image>
+                  <Image url="@../Resources/Ganhos%20.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnEducacao" contentDisplay="BOTTOM" layoutX="612.0" layoutY="308.0" mnemonicParsing="false" onAction="#Educacao" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Educação" textFill="#fcf9f9">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
+               <image>
+                  <Image url="@../Resources/Educação.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnContas" contentDisplay="BOTTOM" layoutX="53.0" layoutY="308.0" mnemonicParsing="false" onAction="#Contas" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Dividas" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
+               <image>
+                  <Image url="@../Resources/Dividas.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button id="btnSaldo" fx:id="btnConfig" layoutX="723.0" layoutY="14.0" minHeight="15.0" mnemonicParsing="false" onAction="#Configuracao" prefHeight="32.0" prefWidth="54.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="CONFIG" textFill="WHITE" textOverrun="CLIP">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblNome" layoutX="109.0" layoutY="20.0" prefHeight="22.0" prefWidth="46.0" text="nome" wrapText="true">
+         <font>
+            <Font name="Bell MT" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-100.0" endY="-198.75" layoutX="898.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="903.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="908.0" layoutY="200.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

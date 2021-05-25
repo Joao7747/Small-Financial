@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuCursosController">
+   <children>
+      <TableView fx:id="tvCurso" editable="true" layoutX="80.0" layoutY="165.0" prefHeight="185.0" prefWidth="646.0" stylesheets="@CSS/Dash.css">
+         <columns>
+            <TableColumn fx:id="tcIdCurso" prefWidth="33.0" text="Id" />
+            <TableColumn fx:id="tcNome" prefWidth="139.0" text="Nome" />
+            <TableColumn fx:id="tcDescricao" prefWidth="126.0" text="Descrição" />
+            <TableColumn fx:id="tcDataLimite" prefWidth="191.0" text="Data de Encerramento" />
+            <TableColumn fx:id="tcLink" prefWidth="155.0" text="Link" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnInserir" layoutX="73.0" layoutY="29.0" mnemonicParsing="false" onAction="#TelaInserirCurso" prefHeight="38.0" prefWidth="121.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Inserir" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVoltar" layoutX="605.0" layoutY="29.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="38.0" prefWidth="121.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblContas" layoutX="368.0" layoutY="69.0" minHeight="16" minWidth="69" prefHeight="48.0" prefWidth="83.0" text="Cursos">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnEditar" layoutX="80.0" layoutY="359.0" mnemonicParsing="false" onAction="#EditarCurso" prefHeight="27.0" prefWidth="315.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Editar" textFill="WHITE" />
+      <Button fx:id="btnExcluir" layoutX="410.0" layoutY="359.0" mnemonicParsing="false" onAction="#deleta" prefHeight="27.0" prefWidth="315.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Excluir" textFill="WHITE" />
+      <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

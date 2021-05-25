@@ -5,12 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DAOUsuario implements DAOGenerica<Usuario> {
 
@@ -139,27 +133,36 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     
     
     }
-    public void UsuarioLogado(String email)
+    public Boolean UsuarioLogado(String email, String senha)
     {
-        String sql = email;
-//        try
-//        {
-//            if(this.conexao.conectar())
-//            {
-//                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-//                
-//                
-//                ResultSet resultadoSentenca = sentenca.executeQuery();
-//                System.out.println(resultadoSentenca);
-//
-//                sentenca.close();
-//                this.conexao.getConnection().close();
-//            }
-//        }
-//        catch(SQLException ex)
-//        {
-//           throw new RuntimeException(ex);
-//        }
+        Boolean retorno = false;
+        String sql = "select count(idUsuario) as total from Usuario where email = ? and senha = ?";
+        try
+        {
+            if(this.conexao.conectar())
+            {
+                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
+                sentenca.setString(1, email);
+                sentenca.setString(2, senha);
+                
+                ResultSet resultadoSentenca = sentenca.executeQuery();
+                while(resultadoSentenca.next()) 
+                {
+                    if(resultadoSentenca.getInt("total") > 0){
+                        retorno = true;
+                    }
+                }
+                
+                sentenca.close();
+                this.conexao.getConnection().close();
+            }
+            
+            return retorno;
+        }
+        catch(SQLException ex)
+        {
+           throw new RuntimeException(ex);
+        }
 
     }
 

@@ -1,0 +1,135 @@
+.combo-box {
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+
+.combo-box .cell{
+    -fx-font: 12px "Book Antiqua";
+    -fx-alignment: center;
+}
+
+.date-picker {
+    -fx-background-insets: 0px;
+}
+
+.date-picker .text-field {
+    -fx-background-radius: 0px;
+    -fx-border-style: solid;
+    -fx-border-width: 3 0 3 3;
+}
+
+.date-picker .arrow-button {
+    -fx-background-radius: 0px;
+    -fx-background-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 3 3 3 0;
+}
+
+.radio-button .radio{
+    -fx-background-color: white;
+    -fx-border-radius: 11px;
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+
+.table {
+    -fx-border-color: transparent;
+    
+}
+
+.fundoPreto {
+    -fx-background-color: black;
+}
+
+.textTransparent {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.textTransparent2 {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px !important;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 5px 0;
+    
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+   
+}
+
+.column-header{
+    -fx-background-color: black;
+}
+.buttonWhite {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
+}
+
+.buttonBlack {
+    -fx-background-color: black;
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
+}
+
+.buttonWhite:hover{
+    -fx-background-color: lightgray;
+}
+
+.buttonBlack:hover{
+    -fx-background-color: #302E2D;
+}
+
+.buttonWhite:pressed{
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.buttonBlack:pressed{
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.fundo {
+    -fx-background-color: white;
+}
+
+.text-field, .text-area {
+    -fx-border-style: solid;
+    -fx-border-width: 3px;
+}
+.input[type=text]:focus {
+    -fx-background-color: lightblue;
+}
+
+.registrarStyle {
+    -fx-background-color: white;
+    -fx-background-radius: 40px;
+    -fx-border-radius: 40px;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 3, 4);
+}
+
+.registrarStyle:hover{
+    -fx-background-color: lightgray;
+}
+
+.registrarStyle:pressed{
+    -fx-translate-x: 2;
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}

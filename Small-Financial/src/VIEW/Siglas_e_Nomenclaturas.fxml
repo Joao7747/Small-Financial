@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.Siglas_e_NomenclaturasController">
+   <children>
+      <Label layoutX="307.0" layoutY="61.0" text="Siglas e Nomenclaturas">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvSiglasNomeclaturas" layoutX="60.0" layoutY="117.0" prefHeight="287.0" prefWidth="691.0" stylesheets="@CSS/Dash.css">
+        <columns>
+          <TableColumn fx:id="tcSiglas" prefWidth="170.0" text="Siglas e Nomenclaturas" />
+          <TableColumn fx:id="tcDescricao" prefWidth="520.0" text="Descrição" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnVoltar" layoutX="629.0" layoutY="56.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="40.0" prefWidth="122.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
+      <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

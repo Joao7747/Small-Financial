@@ -19,7 +19,7 @@ public class Metas {
     private String categoria;
     private String observacao;
     private double valorGuardado;
-    private boolean statusMeta;
+    private byte statusMeta;
     private double valorIdealPoupar;
     private int idUsuario;
 
@@ -138,14 +138,14 @@ public class Metas {
     /**
      * @return the status
      */
-    public boolean isStatusMeta() {
+    public byte isStatusMeta() {
         return statusMeta;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatusMeta(boolean statusMeta) {
+    public void setStatusMeta(byte statusMeta) {
         this.statusMeta = statusMeta;
     }
 
