@@ -75,6 +75,7 @@ public class InserirDividasController implements Initializable {
     private RadioButton rbFixa;
 
     DividasController menu = new DividasController();
+
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
 
@@ -178,7 +179,6 @@ public class InserirDividasController implements Initializable {
             } else {
                 Alert alerta = new Alert(Alert.AlertType.WARNING, "Todos os campos precisam estar preenchidos", ButtonType.OK);
                 alerta.show();
-
             }
 
         } catch (Exception e) {

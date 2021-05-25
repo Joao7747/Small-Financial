@@ -179,7 +179,6 @@ public class InserirMetaController implements Initializable {
 
     @FXML
     private void inserir(ActionEvent event) throws ParseException, IOException, SQLException {
-
         try {
             
             if (!txtDescricao.getText().equals("") && cbCategoria.getSelectionModel().getSelectedItem() != null

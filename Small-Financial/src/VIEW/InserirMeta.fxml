@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.InserirMetaController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.InserirMetaController">
    <children>
-      <Label fx:id="lblDesejo" layoutX="280.0" layoutY="23.0" text="Insira sua meta ou desejo">
+      <Label fx:id="lblDesejo" layoutX="307.0" layoutY="21.0" text="Insira sua meta ou desejo">
          <font>
             <Font size="20.0" />
          </font>
@@ -46,12 +46,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnSalvar" layoutX="205.0" layoutY="386.0" mnemonicParsing="false" onAction="#inserir" prefHeight="37.0" prefWidth="129.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="#f8f7f7">
+      <Button fx:id="btnSalvar" layoutX="262.0" layoutY="373.0" mnemonicParsing="false" onAction="#inserir" prefHeight="37.0" prefWidth="129.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="#f8f7f7">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnVoltar" layoutX="441.0" layoutY="386.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="37.0" prefWidth="129.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="441.0" layoutY="373.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="37.0" prefWidth="129.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar">
          <font>
             <Font size="16.0" />
          </font>
@@ -60,9 +60,9 @@
       <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
-      <TextArea fx:id="txtValorGuardado" disable="true" layoutX="101.0" layoutY="268.0" prefHeight="100.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" wrapText="true">
+      <TextArea fx:id="txtValorGuardado" disable="true" editable="false" layoutX="101.0" layoutY="268.0" prefHeight="86.0" prefWidth="225.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css" wrapText="true">
          <font>
-            <Font size="15.0" />
+            <Font size="16.0" />
          </font>
       </TextArea>
    </children>
