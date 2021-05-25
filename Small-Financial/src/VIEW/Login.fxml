@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.LoginController">
+   <children>
+      <TextField fx:id="txtUser" alignment="CENTER" layoutX="528.0" layoutY="107.0" prefHeight="43.0" prefWidth="230.0" promptText="E-mail" stylesheets="@CSS/Dash.css">
+         <font>
+            <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtSenha" alignment="CENTER" layoutX="529.0" layoutY="208.0" prefHeight="43.0" prefWidth="230.0" promptText="Senha" stylesheets="@CSS/Dash.css">
+         <font>
+            <Font name="Book Antiqua" size="14.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="btnCadastrar" layoutX="510.0" layoutY="315.0" mnemonicParsing="false" onAction="#changeScreen" prefHeight="51.0" prefWidth="119.0" stylesheets="@CSS/Dash.css" text="Registre-se" textAlignment="CENTER" textFill="#171616">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <styleClass>
+            <String fx:value="registrarStyle" />
+            <String fx:value="buttonWhite" />
+         </styleClass></Button>
+      <Button fx:id="btnLogin" layoutX="657.0" layoutY="315.0" mnemonicParsing="false" onAction="#menu" prefHeight="51.0" prefWidth="119.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Login" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="460.0" fitWidth="485.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/Login.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
