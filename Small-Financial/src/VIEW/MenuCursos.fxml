@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuCursosController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuCursosController">
    <children>
       <TableView fx:id="tvCurso" editable="true" layoutX="82.0" layoutY="172.0" prefHeight="185.0" prefWidth="646.0" stylesheets="@CSS/Dash.css">
          <columns>
@@ -41,7 +41,7 @@
       <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
-      <ComboBox fx:id="cbCategoria" layoutX="247.0" layoutY="134.0" prefWidth="150.0" promptText="Id" stylesheets="@../telassmallfinancial/ComboBoxStyle.css" visibleRowCount="3" />
+      <ComboBox fx:id="cbCategoria" layoutX="247.0" layoutY="134.0" prefWidth="150.0" promptText="Selecione" stylesheets="@../telassmallfinancial/ComboBoxStyle.css" visibleRowCount="3" />
       <TextField fx:id="txtPesquisaCurso" alignment="CENTER" layoutX="83.0" layoutY="134.0" promptText="Pesquisa..." stylesheets="@../telassmallfinancial/loginStyle.css">
          <font>
             <Font name="Book Antiqua" size="12.0" />
