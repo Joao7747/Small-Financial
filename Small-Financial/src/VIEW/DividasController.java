@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+import Classes.Categoria;
 import DAO.DAODividas;
 import MODEL.Dividas;
 import java.io.IOException;
@@ -33,12 +34,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import static VIEW.MenuPublicacoesController.selecionadoPubli;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TableRow;
 import javafx.scene.input.MouseEvent;
-
 
 /**
  * FXML Controller class
@@ -64,11 +65,9 @@ public class DividasController implements Initializable {
     @FXML
     private TableColumn<Dividas, String> tcObservacao;
     @FXML
-    private TableColumn<Dividas, String> tcStatus;
-    @FXML
     private Label lblTotal;
     @FXML
-    private ComboBox<?> cbCategoria;
+    private ComboBox<Categoria> cbCategoria;
     @FXML
     private TextField txtPesquisa;
     @FXML
@@ -77,18 +76,36 @@ public class DividasController implements Initializable {
     private Button btnDeletar;
     @FXML
     private Button btnAlterar;
+    
+    public static int selectedIndex;
+    //Listagem Parametrizada
+    public ObservableList<Dividas> model;
+    public ObservableList<Dividas> modelParametrizado;
+    public List<Dividas> listaAux = new ArrayList<Dividas>();
 
+    private List<Categoria> cat = new ArrayList<>();
+    private ObservableList<Categoria> obsCat;
     public static Dividas selecionado;
     public static Dividas selectVisualization;
-
     public static boolean validacaoEditar = false;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Listagem();
+        //Chama Categoria
+        carregarCategoria();
+
+        txtPesquisa.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (txtPesquisa.getText().equals("")) {
+                    Listagem();
+                } else {
+                    ListagemParametrizada();
+                }
+            }
+        });
 
         tvContas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
 
@@ -125,10 +142,9 @@ public class DividasController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
 
         DAODividas dividas = new DAODividas();
-        ObservableList<Dividas> divida = FXCollections.observableArrayList(dividas.consultar());
-        tvContas.setItems(divida);
+        model = FXCollections.observableArrayList(dividas.consultar());
+        tvContas.setItems(model);
     }
-
 
     private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarDividas.fxml"));
@@ -138,6 +154,60 @@ public class DividasController implements Initializable {
         window.centerOnScreen();
     }
 
+    public void ListagemParametrizada() {    
+        listaAux.clear();
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
+        tcValor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
+        tcParcelas.setCellValueFactory(new PropertyValueFactory<>("numeroParcelas"));
+        tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("Vencimento"));
+        tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+        if (!txtPesquisa.getText().equals("")) {
+            cbCategoria.setOnAction((event) -> {
+                selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
+            });
+
+            for (Dividas var : model) {
+                if (selectedIndex == 0) {
+                    if (var.getCategoria().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 1) {
+                    String valor = Double.toString(var.getValor());
+                    if (valor.equals(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 2) {
+                    if (var.getDescricao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 3) {
+                    if (var.getNumeroParcelas()== Integer.parseInt(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 4) {
+                    
+                    if (var.getVencimento().toString().contains(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 5) {
+                    if (var.getObservacao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+            }
+
+        }
+
+        modelParametrizado = FXCollections.observableArrayList(listaAux);
+        tvContas.setItems(modelParametrizado);
+    }
 
     @FXML
     private void Voltar(ActionEvent event) throws IOException {
@@ -149,7 +219,6 @@ public class DividasController implements Initializable {
         window.centerOnScreen();
     }
 
-
     @FXML
     private void Inserir(ActionEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("InserirDividas.fxml"));
@@ -159,7 +228,6 @@ public class DividasController implements Initializable {
         window.setScene(inserirScene);
         window.centerOnScreen();
     }
-
 
     @FXML
     private void Alterar(ActionEvent event) throws IOException {
@@ -199,6 +267,26 @@ public class DividasController implements Initializable {
             alerta.show();
         }
 
-
     }
+
+    public void carregarCategoria() {
+
+        Categoria cat1 = new Categoria("Categoria");
+        Categoria cat2 = new Categoria("Valor");
+        Categoria cat3 = new Categoria("Descrição");
+        Categoria cat4 = new Categoria("Parcelas");
+        Categoria cat5 = new Categoria("Vencimento");
+        Categoria cat6 = new Categoria("Observação");
+
+        cat.add(cat1);
+        cat.add(cat2);
+        cat.add(cat3);
+        cat.add(cat4);
+        cat.add(cat5);
+        cat.add(cat6);
+
+        obsCat = FXCollections.observableArrayList(cat);
+        cbCategoria.setItems(obsCat);
+    }
+
 }

@@ -5,12 +5,14 @@
  */
 package VIEW;
 
+import Classes.Categoria;
 import DAO.DAOMetas;
-import MODEL.Gastos;
 import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -34,7 +36,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import static VIEW.MenuPublicacoesController.selecionadoPubli;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TableRow;
@@ -48,9 +49,9 @@ import javafx.scene.input.MouseEvent;
 public class MetasController implements Initializable {
 
     @FXML
-    private Label lblContas;
+    private Label lblMetas;
     @FXML
-    private TableView<Metas> tvContas;
+    private TableView<Metas> tvMetas;
     @FXML
     private TableColumn<Metas, String> tcCategoria;
     @FXML
@@ -65,44 +66,62 @@ public class MetasController implements Initializable {
     private TableColumn<Metas, Byte> tcStatus;
     @FXML
     private TableColumn<Metas, Date> tcDataInserido;
-    
     @FXML
     private Button btnEditar;
-
     @FXML
     private Button btnExcluir;
-    
     @FXML
-    private ComboBox<?> cbCategoria;
+    private ComboBox<Categoria> cbCategoria;
     @FXML
     private TextField txtPesquisa;
     @FXML
     private Button btnVoltar;
     @FXML
     private Button btnInserir;
-    
+
+    public static int selectedIndex;
+    //Listagem Parametrizada
+    public ObservableList<Metas> model;
+    public ObservableList<Metas> modelParametrizado;
+    public List<Metas> listaAux = new ArrayList<Metas>();
+
+    private List<Categoria> cat = new ArrayList<>();
+    private ObservableList<Categoria> obsCat;
     public static boolean verificaEditar = false;
-    
     public static Metas selecionado;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         Listar();
-        
-        tvContas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+        carregarCategoria();
+
+        tvMetas.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
-            public void changed(ObservableValue observable, Object oldValue, Object newValue){
-                selecionado = (Metas)newValue;
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                selecionado = (Metas) newValue;
             }
         });
 
-        tvContas.setRowFactory(tv -> {
+        txtPesquisa.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (txtPesquisa.getText().equals("")) {
+                    Listar();
+                } else {
+                    ListagemParametrizada();
+                }
+            }
+        });
+
+        tvMetas.setRowFactory(tv -> {
             TableRow<Metas> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())){
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     try {
                         chamarTelaVisualizacao(event);
                     } catch (IOException ex) {
@@ -112,8 +131,9 @@ public class MetasController implements Initializable {
             });
             return row;
         });
-    }    
+    }
     
+    @FXML
     private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarMetas.fxml"));
         Scene inserirScene = new Scene(inserir);
@@ -126,21 +146,21 @@ public class MetasController implements Initializable {
     private void Voltar(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene voltarScene = new Scene(voltar);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
     }
-    
+
     @FXML
     private void telaInserir(ActionEvent event) throws IOException {
         Parent voltar = FXMLLoader.load(getClass().getResource("InserirMeta.fxml"));
         Scene voltarScene = new Scene(voltar);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
     }
-    
-    private void Listar(){
+
+    private void Listar() {
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
@@ -148,17 +168,66 @@ public class MetasController implements Initializable {
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
         tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
-        
+
         DAOMetas dao = new DAOMetas();
-        ObservableList<Metas> metas = FXCollections.observableArrayList(dao.consultar());
-        tvContas.setItems(metas);
+        model = FXCollections.observableArrayList(dao.consultar());
+        tvMetas.setItems(model);
     }
-    
+
+    public void ListagemParametrizada() {
+        listaAux.clear();
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
+        tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
+        tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
+
+        if (!txtPesquisa.getText().equals("")) {
+            cbCategoria.setOnAction((event) -> {
+                selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
+            });
+
+            for (Metas var : model) {
+                if (selectedIndex == 0) {
+                    if (var.getCategoria().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 1) {
+                    if (var.getDescricao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 2) {
+                    String valor = Double.toString(var.getCustoTotal());
+                    if (valor.equals(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 3) {
+                    if (var.getDataRealizacao().toString().contains(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 4) {
+                    if (var.getObservacao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+            }
+
+        }
+
+        modelParametrizado = FXCollections.observableArrayList(listaAux);
+        tvMetas.setItems(modelParametrizado);
+    }
+
     @FXML
     private void excluir(ActionEvent event) {
-        if(selecionado != null){
-            try
-            {
+        if (selecionado != null) {
+            try {
                 DAOMetas dao = new DAOMetas();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
@@ -172,27 +241,25 @@ public class MetasController implements Initializable {
                 } else {
                     alerta.close();
                 }
-            
-            }
-            catch(Exception e)
-            {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Meta NÃO deletada!", ButtonType.OK);
-                    alerta.show(); 
+
+            } catch (Exception e) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Meta NÃO deletada!", ButtonType.OK);
+                alerta.show();
             }
         } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione uma meta para excluir!", ButtonType.OK);
             alerta.show();
         }
     }
-    
+
     @FXML
     public void editar(ActionEvent event) throws IOException {
-        if(selecionado != null){
+        if (selecionado != null) {
             verificaEditar = true;
-            
+
             Parent voltar = FXMLLoader.load(getClass().getResource("InserirMeta.fxml"));
             Scene voltarScene = new Scene(voltar);
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(voltarScene);
             window.centerOnScreen();
         } else {
@@ -201,4 +268,23 @@ public class MetasController implements Initializable {
         }
     }
     
+    public void carregarCategoria() {
+
+        Categoria cat1 = new Categoria("Categoria");
+        Categoria cat2 = new Categoria("Descrição");
+        Categoria cat3 = new Categoria("Preço");
+        Categoria cat4 = new Categoria("Realização");   
+        Categoria cat5 = new Categoria("Observação");
+
+        cat.add(cat1);
+        cat.add(cat2);
+        cat.add(cat3);
+        cat.add(cat4);
+        cat.add(cat5);
+
+
+        obsCat = FXCollections.observableArrayList(cat);
+        cbCategoria.setItems(obsCat);
+    }
+
 }
