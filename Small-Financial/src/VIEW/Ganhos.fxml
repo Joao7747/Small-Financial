@@ -22,8 +22,8 @@
             <TableColumn fx:id="tcObservacao" prefWidth="163.0" text="Observação" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cbCategoria" layoutX="427.0" layoutY="76.0" prefWidth="150.0" promptText="Categoria" stylesheets="@CSS/Dash.css" />
-      <TextField alignment="CENTER" layoutX="272.0" layoutY="76.0" promptText="Pesquise..." stylesheets="@CSS/Dash.css" />
+      <ComboBox fx:id="cbCategoria" layoutX="427.0" layoutY="76.0" prefWidth="150.0" promptText="Selecione" stylesheets="@CSS/Dash.css" />
+      <TextField fx:id="txtPesquisa" alignment="CENTER" layoutX="272.0" layoutY="76.0" promptText="Pesquise..." stylesheets="@CSS/Dash.css" />
       <Label layoutX="361.0" layoutY="14.0" text="Ganhos">
          <font>
             <Font size="20.0" />
