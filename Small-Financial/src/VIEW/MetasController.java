@@ -38,6 +38,8 @@ import static VIEW.MenuPublicacoesController.selecionadoPubli;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TableRow;
+import javafx.scene.control.cell.ProgressBarTableCell;
+import static javafx.scene.control.cell.ProgressBarTableCell.forTableColumn;
 import javafx.scene.input.MouseEvent;
 
 /**
