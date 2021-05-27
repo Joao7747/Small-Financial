@@ -8,6 +8,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOGanhos;
+import DAO.DAOUsuario;
 import MODEL.Ganhos;
 import java.io.IOException;
 import java.net.URL;
@@ -60,6 +61,7 @@ public class InserirGanhoController implements Initializable {
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
     GanhosController telaganho = new GanhosController();
+    DAOUsuario user = new DAOUsuario();
 
     /**
      * Initializes the controller class.
@@ -136,7 +138,7 @@ public class InserirGanhoController implements Initializable {
                     telaganho.selecionadoGanho.setDataGanho(data);
                     telaganho.selecionadoGanho.setValor(valor);
                     telaganho.selecionadoGanho.setObservacao(observacao);
-                    telaganho.selecionadoGanho.setIdUsuario(1);
+                    telaganho.selecionadoGanho.setIdUsuario(user.IdNome().getIdUsuario());
                     telaganho.selecionadoGanho.setCategoria(categoria);
 
                     inserirganho.alterar(telaganho.selecionadoGanho);
@@ -153,7 +155,7 @@ public class InserirGanhoController implements Initializable {
 
                 } else {
 
-                    ganho.setIdUsuario(1);
+                    ganho.setIdUsuario(user.IdNome().getIdUsuario());
                     ganho.setCategoria(cbCategoria.getSelectionModel().getSelectedItem().toString());
                     Date dataganho = java.sql.Date.valueOf(txtDataRecebimento.getValue());
                     ganho.setDataGanho(dataganho);

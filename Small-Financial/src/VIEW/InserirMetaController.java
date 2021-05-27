@@ -91,8 +91,9 @@ public class InserirMetaController implements Initializable {
     private LocalDate dataAuxChange2;
 
     private String custoAux;
-
+    
     MetasController cont = new MetasController();
+    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -207,8 +208,10 @@ public class InserirMetaController implements Initializable {
                 m.setStatusMeta(b);
                 double valorGuardado = 100.90;
                 m.setValorGuardado(valorGuardado);
-                DAOUsuario user = new DAOUsuario();
-                m.setIdUsuario(user.IdNome().getIdUsuario());
+              
+                int usuario = user.IdNome().getIdUsuario();
+                m.setIdUsuario(usuario);
+
                 if (cont.verificaEditar == true) {
                     m.setIdMetas(cont.selecionado.getIdMetas());
                     Date data = Date.valueOf(dataInserido);

@@ -7,6 +7,7 @@ package VIEW;
 
 import Auditoria.MainThread;
 import DAO.DAOUsuario;
+import MODEL.Usuario;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +53,12 @@ public class MenuController implements Initializable {
     private Button btnEducacao;
     @FXML
     private Button btnConfig;
+    @FXML
+    private Button btnSaldo;
+    @FXML
+    private Button btnContas;
+    
+    DAOUsuario user = new DAOUsuario();
 
     /**
      * Initializes the controller class.
@@ -81,7 +89,6 @@ public class MenuController implements Initializable {
         else{
             lblSaudacao.setText("Boa noite");
         }
-        DAOUsuario user = new DAOUsuario();
         lblNome.setText(user.IdNome().getNome());
     }
 
@@ -168,4 +175,18 @@ public class MenuController implements Initializable {
         window.setScene(configScene);
         window.centerOnScreen();
     }
+    
+    @FXML
+    private void Saldo(ActionEvent event) throws IOException, InterruptedException {
+        
+        List<Usuario> pegarsalario = user.consultar(user.IdNome().getIdUsuario());
+        
+        if (btnSaldo.getText().equals("Saldo")) {
+            btnSaldo.setText(String.valueOf(pegarsalario.get(0).getSaldo()));
+        }
+        else
+            btnSaldo.setText("Saldo");
+    }
+    
+    
 }
