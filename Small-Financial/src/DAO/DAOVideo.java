@@ -79,11 +79,11 @@ public class DAOVideo implements DAOGenerica<Video> {
     }
 
     @Override
-    public ArrayList<Video> consultar(int id)
+    public ArrayList<Video> consultar()
     {
     ArrayList<Video> listaVideo = new ArrayList<Video>();
     
-        String sql = "SELECT * FROM Video WHERE idVideo = ?";
+        String sql = "SELECT * FROM Video ORDER BY idVideo";
         
         try
         {
@@ -91,7 +91,6 @@ public class DAOVideo implements DAOGenerica<Video> {
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
                 
-                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 

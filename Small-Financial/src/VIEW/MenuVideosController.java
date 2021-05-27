@@ -6,7 +6,6 @@
 package VIEW;
 
 import Classes.Categoria;
-import DAO.DAOUsuario;
 import DAO.DAOVideo;
 import MODEL.Video;
 import java.io.IOException;
@@ -88,7 +87,6 @@ public class MenuVideosController implements Initializable {
 
     public static Video selecionadoVideo;
     public static boolean validacaoEditarVideo = false;
-    DAOUsuario user = new DAOUsuario();
 
     /**
      * Initializes the controller class.
@@ -144,7 +142,7 @@ public class MenuVideosController implements Initializable {
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
 
         DAOVideo daoVideo = new DAOVideo();
-        model = FXCollections.observableArrayList(daoVideo.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(daoVideo.consultar());
         tvVideos.setItems(model);
 
     }
