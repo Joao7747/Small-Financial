@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package VIEW;
-
+//teste
 import Classes.Categoria;
 import MODEL.Gastos;
 import DAO.DAOGastos;
