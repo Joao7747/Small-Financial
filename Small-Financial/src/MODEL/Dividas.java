@@ -1,8 +1,6 @@
 package MODEL;
 
 import java.sql.Date;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 
 
@@ -22,26 +20,7 @@ public class Dividas {
     private boolean fixa;
     private String observacao;
     private int idUsuario;
-    private ImageView img;
-    private Image imagem;
 
-    public ImageView getImg() {
-        return img;
-    }
-
-    public void setImg(ImageView img) {
-        this.img = img;
-    }
-
-    public Image getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(Image imagem) {
-        this.imagem = imagem;
-    }
-
-    
     /**
      * @return the idDividas
      */
