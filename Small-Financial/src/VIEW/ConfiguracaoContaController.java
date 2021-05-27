@@ -23,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -51,10 +52,10 @@ public class ConfiguracaoContaController implements Initializable {
     private TextField txtEmail;
 
     @FXML
-    private TextField txtSenha;
+    private PasswordField txtSenha;
 
     @FXML
-    private TextField txtConfirmSenha;
+    private PasswordField txtConfirmSenha;
 
     @FXML
     private RadioButton rbEuro;
