@@ -185,7 +185,7 @@ public class MenuCursosController implements Initializable {
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
 
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        model = FXCollections.observableArrayList(daoCurso.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(daoCurso.consultaCurso());
 
         tvCurso.setItems(model);
     }

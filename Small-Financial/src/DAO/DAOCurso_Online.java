@@ -86,20 +86,18 @@ public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
         }
     }
 
-    @Override
-    public ArrayList<Curso_Online> consultar(int id)
+    
+    public ArrayList<Curso_Online> consultaCurso()
     {
     ArrayList<Curso_Online> listaCurso_Online = new ArrayList<Curso_Online>();
     
-        String sql = "SELECT * FROM Curso_Online WHERE idCurso_Online = ?";
+        String sql = "SELECT * FROM Curso_Online";
         
         try
         {
             if(this.conexao.conectar())
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-                
-                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 
@@ -132,6 +130,11 @@ public class DAOCurso_Online implements DAOGenerica<Curso_Online> {
     
     
     
+    }
+
+    @Override
+    public ArrayList<Curso_Online> consultar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

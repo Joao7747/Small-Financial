@@ -115,7 +115,7 @@ public class EducacaoController implements Initializable {
         tcPrazo.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
        
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar(user.IdNome().getIdUsuario()));
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultaCurso());
         tvCursos.setItems(curso);
         
         //LISTAR VÍDEO
@@ -124,7 +124,7 @@ public class EducacaoController implements Initializable {
        
        
         DAOVideo daoVideo = new DAOVideo();
-        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar(user.IdNome().getIdUsuario()));
+        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultaVideo());
         tvVideos.setItems(video);
         
         
