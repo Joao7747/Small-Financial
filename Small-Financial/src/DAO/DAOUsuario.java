@@ -88,11 +88,11 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
     }
 
     @Override
-    public ArrayList<Usuario> consultar(int id)
+    public ArrayList<Usuario> consultar()
     {
     ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
     
-        String sql = "SELECT * FROM Usuario WHERE idUsuario = ?";
+        String sql = "SELECT * FROM Usuario ORDER BY idUsuario";
         
         try
         {
@@ -100,7 +100,6 @@ public class DAOUsuario implements DAOGenerica<Usuario> {
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
                 
-                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 

@@ -7,7 +7,6 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOMetas;
-import DAO.DAOUsuario;
 import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
@@ -92,7 +91,6 @@ public class MetasController implements Initializable {
     private ObservableList<Categoria> obsCat;
     public static boolean verificaEditar = false;
     public static Metas selecionado;
-    DAOUsuario user = new DAOUsuario();
     
 
     /**
@@ -174,7 +172,7 @@ public class MetasController implements Initializable {
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
 
         DAOMetas dao = new DAOMetas();
-        model = FXCollections.observableArrayList(dao.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(dao.consultar());
         tvMetas.setItems(model);
     }
 

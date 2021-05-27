@@ -8,7 +8,6 @@ package VIEW;
 import Classes.CustomImage;
 import Classes.Categoria;
 import DAO.DAODividas;
-import DAO.DAOUsuario;
 import MODEL.Dividas;
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import static VIEW.MenuPublicacoesController.selecionadoPubli;
 import java.io.FileInputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -98,7 +98,6 @@ public class DividasController implements Initializable {
     public static Dividas selecionado;
     public static Dividas selectVisualization;
     public static boolean validacaoEditar = false;
-    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -146,7 +145,7 @@ public class DividasController implements Initializable {
 
     public void Listagem() {
         DAODividas dividas = new DAODividas();
-        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(dividas.consultar());
         LocalDate hoje = LocalDate.now();
         Date hojeAux = Date.valueOf(hoje);
         Double Total = 0.0;
