@@ -8,7 +8,6 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOGastos;
-import DAO.DAOUsuario;
 import MODEL.Gastos;
 import java.io.IOException;
 import java.net.URL;
@@ -68,7 +67,6 @@ public class InserirGastosController implements Initializable {
 
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
-    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,7 +103,7 @@ public class InserirGastosController implements Initializable {
 
                     menu.selecionado.setCategoria(categoria);
                     menu.selecionado.setDataGasto(dataAux);
-                    menu.selecionado.setIdUsuario(user.IdNome().getIdUsuario());
+                    menu.selecionado.setIdUsuario(1);
                     menu.selecionado.setObservacao(observacao);
                     menu.selecionado.setPreco(Double.parseDouble(preco));
 
@@ -124,7 +122,7 @@ public class InserirGastosController implements Initializable {
                     Gastos gasto = new Gastos();
                     gasto.setCategoria(cbCategoria.getSelectionModel().getSelectedItem().toString());
                     gasto.setDataGasto(dataAux);
-                    gasto.setIdUsuario(user.IdNome().getIdUsuario());
+                    gasto.setIdUsuario(1);
                     gasto.setObservacao(txtObservacoes.getText());
                     gasto.setPreco(Double.parseDouble(txtValor.getText()));
                     gastos.inserir(gasto);

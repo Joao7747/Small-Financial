@@ -7,7 +7,6 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOGanhos;
-import DAO.DAOUsuario;
 import MODEL.Ganhos;
 import java.io.IOException;
 import java.net.URL;
@@ -67,8 +66,6 @@ public class GanhosController implements Initializable {
     private Button btnEditar;
     @FXML
     private Button btnExcluir;
-    @FXML
-    private TextField txtPesquisa;
     
     public static int selectedIndex;
     //Listagem Parametrizada
@@ -80,8 +77,8 @@ public class GanhosController implements Initializable {
     private ObservableList<Categoria> obsCat;
     public static Ganhos selecionadoGanho;
     public static boolean validacaoEditarGanho = false;
-    DAOUsuario user = new DAOUsuario();
-    
+    @FXML
+    private TextField txtPesquisa;
 
     /**
      * Initializes the controller class.
@@ -161,7 +158,7 @@ public class GanhosController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
 
         DAOGanhos ganho = new DAOGanhos();
-        model = FXCollections.observableArrayList(ganho.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(ganho.consultar());
         tvGanhos.setItems(model);
     }
     
