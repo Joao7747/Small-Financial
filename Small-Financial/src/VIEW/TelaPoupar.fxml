@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="321.0" prefWidth="484.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="VIEW.TelaPouparController">
+   <children>
+      <Label layoutX="114.0" layoutY="57.0" text="Informe quanto você irá poupar:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPoupar" layoutX="123.0" layoutY="136.0" prefHeight="31.0" prefWidth="239.0" />
+      <Button fx:id="btnPoupar" layoutX="187.0" layoutY="237.0" mnemonicParsing="false" onAction="#pouparMeta" prefHeight="41.0" prefWidth="111.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Poupar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltar" prefHeight="31.0" prefWidth="103.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
+   </children>
+</AnchorPane>

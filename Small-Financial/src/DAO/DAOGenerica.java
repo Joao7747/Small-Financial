@@ -12,6 +12,6 @@ public interface DAOGenerica<ObjetoGenerico> {
     
     public void excluir(int id);
     
-    public ArrayList<ObjetoGenerico> consultar();
+    public ArrayList<ObjetoGenerico> consultar(int id);
     
 }

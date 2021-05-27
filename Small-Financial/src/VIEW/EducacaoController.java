@@ -50,10 +50,8 @@ public class EducacaoController implements Initializable {
     private TableColumn<Video, String> tcDescricaoVideo;
     @FXML
     private TableColumn<Video, String> tcLinkVideo;
-
     @FXML
-    private Button btnVoltar;
-    
+    private Button btnVoltar; 
     @FXML
     private Button btnSiglas;
     
@@ -68,7 +66,7 @@ public class EducacaoController implements Initializable {
     
     
     
-      @FXML
+    @FXML
     public Button btnMenuPublicacao;
 
     @FXML
@@ -76,10 +74,12 @@ public class EducacaoController implements Initializable {
 
     @FXML
     public Button btnMenuVideo;
-
-    
+  
     public static Curso_Online cursoSelecionado;
+  
     public static Video videoSelecionado;
+    
+    DAOUsuario user = new DAOUsuario();
 
 
     /**
@@ -89,16 +89,15 @@ public class EducacaoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         //VERIFICAR SE É ADM OU USUÁRIO
-        
-        DAOUsuario daoUser = new DAOUsuario();
-        if(daoUser.IdNome().getVerif_ADM() == false)
+      
+        if(user.IdNome().getVerif_ADM() == false)
         {
             btnMenuPublicacao.setVisible(false);
             btnMenuCurso.setVisible(false);
             btnMenuVideo.setVisible(false);
         
         }
-        if(daoUser.IdNome().getVerif_ADM() == true)
+        if(user.IdNome().getVerif_ADM() == true)
         {
             btnMenuPublicacao.setDisable(false);
             btnMenuCurso.setDisable(false);
@@ -116,7 +115,7 @@ public class EducacaoController implements Initializable {
         tcPrazo.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
        
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar());
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar(user.IdNome().getIdUsuario()));
         tvCursos.setItems(curso);
         
         //LISTAR VÍDEO
@@ -125,7 +124,7 @@ public class EducacaoController implements Initializable {
        
        
         DAOVideo daoVideo = new DAOVideo();
-        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
+        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar(user.IdNome().getIdUsuario()));
         tvVideos.setItems(video);
         
         

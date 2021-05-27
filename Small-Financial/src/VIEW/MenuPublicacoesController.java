@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOPublicacao;
+import DAO.DAOUsuario;
 import MODEL.Publicacao;
 import java.io.IOException;
 import java.net.URL;
@@ -75,6 +76,7 @@ public class MenuPublicacoesController implements Initializable {
     private ObservableList<Categoria> obsCat;
     public static Publicacao selecionadoPubli;
     public static boolean validacaoEditarPubli = false;
+    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -139,7 +141,7 @@ public class MenuPublicacoesController implements Initializable {
         tcDataPubli.setCellValueFactory(new PropertyValueFactory<>("dataPublicacao"));
 
         DAOPublicacao daoPubli = new DAOPublicacao();
-        model = FXCollections.observableArrayList(daoPubli.consultar());
+        model = FXCollections.observableArrayList(daoPubli.consultar(user.IdNome().getIdUsuario()));
         tvPublicacao.setItems(model);
     }
     
