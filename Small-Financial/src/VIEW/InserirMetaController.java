@@ -181,7 +181,7 @@ public class InserirMetaController implements Initializable {
     @FXML
     private void inserir(ActionEvent event) throws ParseException, IOException, SQLException {
         try {
-            
+
             if (!txtDescricao.getText().equals("") && cbCategoria.getSelectionModel().getSelectedItem() != null
                     && !txtCusto.getText().substring(3).equals("") && Date.valueOf(txtDataRealizacao.getValue()) != null
                     && !txtObservacao.getText().equals("")) {
@@ -205,14 +205,15 @@ public class InserirMetaController implements Initializable {
                 m.setValorIdealPoupar(valorPoupar);
                 byte b = 1;
                 m.setStatusMeta(b);
-                double valorGuardado = 100.90;
-                m.setValorGuardado(valorGuardado);
+
                 DAOUsuario user = new DAOUsuario();
                 m.setIdUsuario(user.IdNome().getIdUsuario());
                 if (cont.verificaEditar == true) {
                     m.setIdMetas(cont.selecionado.getIdMetas());
                     Date data = Date.valueOf(dataInserido);
                     m.setDataPrevista(data);
+                    double valorPoupado = cont.selecionado.getValorGuardado();
+                    m.setValorGuardado(valorPoupado);
                     dao.alterar(m);
                     cont.verificaEditar = false;
                     Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta atualizado com sucesso!", ButtonType.OK);
@@ -227,6 +228,8 @@ public class InserirMetaController implements Initializable {
                 } else {
                     Date data = Date.valueOf(hoje);
                     m.setDataPrevista(data);
+                    double valorGuardado = 0.0;
+                    m.setValorGuardado(valorGuardado);
                     dao.inserir(m);
                     Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, "Meta salva com sucesso!", ButtonType.OK);
                     alerta.show();

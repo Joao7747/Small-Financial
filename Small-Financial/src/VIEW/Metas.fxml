@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MetasController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MetasController">
     <children>
         <Label fx:id="lblMetas" layoutX="356.0" layoutY="41.0" minHeight="16" minWidth="69" text="Metas e Desejos">
             <font>
@@ -25,7 +25,7 @@
                 <TableColumn fx:id="tcParcelas" prefWidth="120.0" text="Realização" />
                 <TableColumn fx:id="tcDataInserido" prefWidth="75.0" text="Column X" visible="false" />
                 <TableColumn fx:id="tcVencimentos" prefWidth="156.0" text="Observação" />
-                <TableColumn fx:id="tcStatus" prefWidth="152.0" text="Status" />
+                <TableColumn fx:id="tcStatus" prefWidth="152.0" text="Status (%)" />
             </columns>
         </TableView>
         <ComboBox fx:id="cbCategoria" layoutX="200.0" layoutY="136.0" prefWidth="150.0" promptText="Selecione" stylesheets="@CSS/Dash.css" />
