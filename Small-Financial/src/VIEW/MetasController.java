@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOMetas;
+import DAO.DAOUsuario;
 import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
@@ -93,6 +94,10 @@ public class MetasController implements Initializable {
     public static boolean verificaEditar = false;
     public static Metas selecionado;
 
+    DAOUsuario user = new DAOUsuario();
+    
+
+
     /**
      * Initializes the controller class.
      */
@@ -164,7 +169,7 @@ public class MetasController implements Initializable {
 
     private void Listar() {
         DAOMetas dao = new DAOMetas();
-        model = FXCollections.observableArrayList(dao.consultar());
+        model = FXCollections.observableArrayList(dao.consultar(user.IdNome().getIdUsuario()));
         DecimalFormat decimal = new DecimalFormat("0.00");
 
         for (Metas meta : model) {
@@ -193,6 +198,10 @@ public class MetasController implements Initializable {
         tcStatus.setCellValueFactory(new PropertyValueFactory<>("percent"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
 
+
+        
+
+
         tvMetas.setItems(model);
     }
 
@@ -203,7 +212,7 @@ public class MetasController implements Initializable {
         tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("percent"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
 
         if (!txtPesquisa.getText().equals("")) {

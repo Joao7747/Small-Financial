@@ -6,6 +6,7 @@
 package VIEW;
 
 import DAO.DAOCurso_Online;
+import DAO.DAOUsuario;
 import DAO.DAOVideo;
 import MODEL.Curso_Online;
 import MODEL.Video;
@@ -41,10 +42,8 @@ public class EducacaoController implements Initializable {
     private TableColumn<Video, String> tcDescricaoVideo;
     @FXML
     private TableColumn<Video, String> tcLinkVideo;
-
     @FXML
-    private Button btnVoltar;
-    
+    private Button btnVoltar; 
     @FXML
     private Button btnSiglas;
     
@@ -70,6 +69,8 @@ public class EducacaoController implements Initializable {
     private Button btnMenuVideo;
     @FXML
     private Button btnMenuPublicacoes;
+    
+    DAOUsuario user = new DAOUsuario();
 
     /**
      * Initializes the controller class.
@@ -83,7 +84,7 @@ public class EducacaoController implements Initializable {
         tcPrazo.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
        
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar());
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar(user.IdNome().getIdUsuario()));
         tvCursos.setItems(curso);
         
         //LISTAR VÍDEO
@@ -92,7 +93,7 @@ public class EducacaoController implements Initializable {
        
        
         DAOVideo daoVideo = new DAOVideo();
-        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
+        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar(user.IdNome().getIdUsuario()));
         tvVideos.setItems(video);
         // TODO
     }    
