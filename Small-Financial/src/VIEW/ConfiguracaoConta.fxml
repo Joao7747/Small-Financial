@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ConfiguracaoContaController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ConfiguracaoContaController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="149.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,8 +31,8 @@
       </Pane>
       <Label layoutX="497.0" layoutY="167.0" text="Saldo" />
       <Button fx:id="btnSaldo" layoutX="467.0" layoutY="190.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="R$" textFill="WHITE" />
-      <Button fx:id="btnSalvar" layoutX="475.0" layoutY="54.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="WHITE" />
-      <Button fx:id="btnVoltar" layoutX="572.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
+      <Button fx:id="btnSalvar" layoutX="594.0" layoutY="54.0" mnemonicParsing="false" onAction="#UserUpdate" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="469.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
       <TextField fx:id="txtNome" layoutX="148.0" layoutY="228.0" stylesheets="@CSS/Dash.css" />
       <TextField fx:id="txtEmail" layoutX="148.0" layoutY="276.0" stylesheets="@CSS/Dash.css" />
       <TextField fx:id="txtSenha" layoutX="148.0" layoutY="328.0" stylesheets="@CSS/Dash.css" />
@@ -40,5 +40,6 @@
       <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
+      <Button fx:id="btnLogoff" layoutX="707.0" layoutY="54.0" mnemonicParsing="false" onAction="#Logoff" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Logoff" />
    </children>
 </AnchorPane>
