@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="VIEW\CSS\Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.VisualizarCurso_OnlineController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="VIEW.VisualizarPublicacaoController">
     <stylesheets>
         <URL value="@/VIEW/CSS/Dash.css" />
     </stylesheets>
@@ -31,29 +31,28 @@
             </Label>
          </children>
       </Pane>
-      <TextField fx:id="txtNomeDoCurso" alignment="CENTER" editable="false" layoutX="289.0" layoutY="261.0" prefHeight="25.0" prefWidth="166.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css" />
-      <TextField fx:id="txtNomeDoCurso" alignment="CENTER" editable="false" layoutX="175.0" layoutY="179.0" prefHeight="16.0" prefWidth="442.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css">
+      <TextField fx:id="txtTitulo" alignment="CENTER" editable="false" layoutX="175.0" layoutY="179.0" prefHeight="16.0" prefWidth="442.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtDataDeTermino" alignment="BOTTOM_LEFT" editable="false" layoutX="201.0" layoutY="101.0" pickOnBounds="false" prefHeight="39.0" prefWidth="121.0" styleClass="textTransparent2">
+      <TextField fx:id="txtDataDePublicacao" alignment="BOTTOM_LEFT" editable="false" layoutX="181.0" layoutY="101.0" pickOnBounds="false" prefHeight="39.0" prefWidth="121.0" styleClass="textTransparent2">
          <font>
             <Font size="11.0" />
          </font>
       </TextField>
-      <Label layoutX="80.0" layoutY="120.0" text="Data Limite de Inscrição:">
+      <Label layoutX="80.0" layoutY="120.0" text="Data de Publicação:">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <TextField fx:id="txtDescrição" alignment="TOP_LEFT" editable="false" layoutX="102.0" layoutY="230.0" prefHeight="163.0" prefWidth="588.0" style="-fx-border-color: black; -fx-border-style: double; -fx-border-width: 3; -fx-border-radius: 0 0 12 12;" stylesheets="@CSS/Dash.css" />
-      <Label layoutX="93.0" layoutY="414.0" text="Link de Acesso:">
+      <TextField fx:id="txtConteudo" alignment="TOP_LEFT" editable="false" layoutX="102.0" layoutY="230.0" prefHeight="163.0" prefWidth="588.0" style="-fx-border-color: black; -fx-border-style: double; -fx-border-width: 3; -fx-border-radius: 0 0 12 12;" stylesheets="@CSS/Dash.css" />
+      <Label layoutX="106.0" layoutY="414.0" text="Autor:">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
-      <TextField fx:id="txtLink" alignment="BOTTOM_LEFT" editable="false" layoutX="175.0" layoutY="395.0" prefHeight="39.0" prefWidth="514.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css">
+      <TextField fx:id="txtAutor" alignment="BOTTOM_LEFT" editable="false" layoutX="138.0" layoutY="395.0" prefHeight="39.0" prefWidth="514.0" styleClass="textTransparent2" stylesheets="@CSS/Dash.css">
          <font>
             <Font size="11.0" />
          </font>

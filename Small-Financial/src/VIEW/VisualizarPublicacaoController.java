@@ -15,38 +15,42 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.web.WebView;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Dell
- */
-public class VisualizarVideoController implements Initializable {
 
+   
+
+public class VisualizarPublicacaoController implements Initializable {
+
+    
     @FXML
     private Button btnVoltar;
 
     @FXML
-    private WebView wvVideo;
+    private TextField txtTitulo;
 
     @FXML
-    private Label lblDesc;
+    private TextField txtDataDePublicacao;
 
-    
+    @FXML
+    private TextField txtConteudo;
+
+    @FXML
+    private TextField txtAutor;
+
     EducacaoController educ = new EducacaoController();
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        wvVideo.setVisible(true);
-        wvVideo.getEngine().load(educ.videoSelecionado.getLink());
-        lblDesc.setText(educ.videoSelecionado.getDescricao());
-        
-    }    
+        txtTitulo.setText(educ.PublicacaoSelecionado.getTitulo());
+        txtDataDePublicacao.setText(educ.PublicacaoSelecionado.getDataPublicacao().toLocalDate().toString());
+        txtConteudo.setText(educ.PublicacaoSelecionado.getConteudo());
+        txtAutor.setText(educ.PublicacaoSelecionado.getAutor());
+    }   
+    
     
     @FXML
     void Voltar(ActionEvent event) throws IOException {
@@ -56,8 +60,6 @@ public class VisualizarVideoController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
-        wvVideo.setVisible(false);
 
     }
-    
 }
