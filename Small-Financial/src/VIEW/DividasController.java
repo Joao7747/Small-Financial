@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAODividas;
+import DAO.DAOUsuario;
 import MODEL.Dividas;
 import java.io.IOException;
 import java.net.URL;
@@ -88,6 +89,7 @@ public class DividasController implements Initializable {
     public static Dividas selecionado;
     public static Dividas selectVisualization;
     public static boolean validacaoEditar = false;
+    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -134,6 +136,8 @@ public class DividasController implements Initializable {
     }
 
     public void Listagem() {
+        
+        
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
         tcValor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
@@ -142,7 +146,7 @@ public class DividasController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
 
         DAODividas dividas = new DAODividas();
-        model = FXCollections.observableArrayList(dividas.consultar());
+        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
         tvContas.setItems(model);
     }
 

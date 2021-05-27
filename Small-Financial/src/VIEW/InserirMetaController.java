@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOMetas;
+import DAO.DAOUsuario;
 import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
@@ -90,8 +91,9 @@ public class InserirMetaController implements Initializable {
     private LocalDate dataAuxChange2;
 
     private String custoAux;
-
+    
     MetasController cont = new MetasController();
+    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -206,7 +208,7 @@ public class InserirMetaController implements Initializable {
                 m.setStatusMeta(b);
                 double valorGuardado = 100.90;
                 m.setValorGuardado(valorGuardado);
-                int usuario = 1;
+                int usuario = user.IdNome().getIdUsuario();
                 m.setIdUsuario(usuario);
                 if (cont.verificaEditar == true) {
                     m.setIdMetas(cont.selecionado.getIdMetas());
