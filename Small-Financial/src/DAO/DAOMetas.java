@@ -78,6 +78,26 @@ public class DAOMetas implements DAOGenerica<Metas> {
         }
 
     }
+    
+    
+    public void poupar(Metas metas){
+        String sql = "UPDATE Metas Set ValorGuardado = ? WHERE idMetas = ?";
+        
+        try {
+            if (this.conexao.conectar()) {
+                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
+
+                sentenca.setDouble(1, metas.getValorGuardado());
+                sentenca.setInt(2, metas.getIdMetas());
+
+                sentenca.execute();
+                sentenca.close();
+                this.conexao.getConnection().close();
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     @Override
     public void excluir(int id) {

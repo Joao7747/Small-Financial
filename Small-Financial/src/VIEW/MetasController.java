@@ -12,6 +12,7 @@ import MODEL.Metas;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -66,7 +67,7 @@ public class MetasController implements Initializable {
     @FXML
     private TableColumn<Metas, String> tcVencimentos;
     @FXML
-    private TableColumn<Metas, Byte> tcStatus;
+    private TableColumn<Metas, Double> tcStatus;
     @FXML
     private TableColumn<Metas, Date> tcDataInserido;
     @FXML
@@ -92,8 +93,10 @@ public class MetasController implements Initializable {
     private ObservableList<Categoria> obsCat;
     public static boolean verificaEditar = false;
     public static Metas selecionado;
+
     DAOUsuario user = new DAOUsuario();
     
+
 
     /**
      * Initializes the controller class.
@@ -136,7 +139,7 @@ public class MetasController implements Initializable {
             return row;
         });
     }
-    
+
     @FXML
     private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarMetas.fxml"));
@@ -165,16 +168,40 @@ public class MetasController implements Initializable {
     }
 
     private void Listar() {
+        DAOMetas dao = new DAOMetas();
+        model = FXCollections.observableArrayList(dao.consultar(user.IdNome().getIdUsuario()));
+        DecimalFormat decimal = new DecimalFormat("0.00");
+
+        for (Metas meta : model) {
+
+            try {
+                double porcentagem = (meta.getValorGuardado() * 100) / meta.getCustoTotal();
+                if (porcentagem > 100.0) {
+                    meta.setPercent(100.0);
+                } else {
+                    String duasCasas = decimal.format(porcentagem).replace(',', '.');
+                    double percento = Double.parseDouble(duasCasas);
+                    meta.setPercent(percento);
+                }
+            } catch (Exception e) {
+                String erro = e.toString();
+                String tal = "";
+            }
+
+        }
+
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("percent"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
 
-        DAOMetas dao = new DAOMetas();
-        model = FXCollections.observableArrayList(dao.consultar(user.IdNome().getIdUsuario()));
+
+        
+
+
         tvMetas.setItems(model);
     }
 
@@ -185,7 +212,7 @@ public class MetasController implements Initializable {
         tcValor.setCellValueFactory(new PropertyValueFactory<>("custoTotal"));
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("dataRealizacao"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-        tcStatus.setCellValueFactory(new PropertyValueFactory<>("statusMeta"));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("percent"));
         tcDataInserido.setCellValueFactory(new PropertyValueFactory<>("dataPrevista"));
 
         if (!txtPesquisa.getText().equals("")) {
@@ -271,13 +298,13 @@ public class MetasController implements Initializable {
             alerta.show();
         }
     }
-    
+
     public void carregarCategoria() {
 
         Categoria cat1 = new Categoria("Categoria");
         Categoria cat2 = new Categoria("Descrição");
         Categoria cat3 = new Categoria("Preço");
-        Categoria cat4 = new Categoria("Realização");   
+        Categoria cat4 = new Categoria("Realização");
         Categoria cat5 = new Categoria("Observação");
 
         cat.add(cat1);
@@ -285,7 +312,6 @@ public class MetasController implements Initializable {
         cat.add(cat3);
         cat.add(cat4);
         cat.add(cat5);
-
 
         obsCat = FXCollections.observableArrayList(cat);
         cbCategoria.setItems(obsCat);

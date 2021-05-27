@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -52,6 +53,9 @@ public class VisualizarMetasController implements Initializable {
     private Button btnVoltar;
 
     @FXML
+    private Button btnPoupar;
+
+    @FXML
     private TextArea txtObservacao;
 
     @FXML
@@ -59,6 +63,15 @@ public class VisualizarMetasController implements Initializable {
 
     @FXML
     private TextArea txtValorPoupar;
+    
+    @FXML
+    private Label lblPorcentagem;
+    
+    @FXML
+    private Label lblValorGuardado;
+    
+    @FXML
+    private ProgressBar pbStatus;
 
     MetasController cont = new MetasController();
 
@@ -71,10 +84,21 @@ public class VisualizarMetasController implements Initializable {
         txtPreco.setText(preco.toString());
         txtDescricao.setText(cont.selecionado.getDescricao());
         txtObservacao.setText(cont.selecionado.getObservacao());
+        lblValorGuardado.setText("R$ " + cont.selecionado.getValorGuardado());
 
         txtValorPoupar.setText("Para alcançar a meta na data de "
                 + cont.selecionado.getDataRealizacao().toLocalDate().toString() + ", você deverá guardar "
                 + decimal.format(cont.selecionado.getValorIdealPoupar()) + " por mês.");
+        
+        double progress = cont.selecionado.getValorGuardado() / cont.selecionado.getCustoTotal();
+        double porcento = (cont.selecionado.getValorGuardado() * 100) / cont.selecionado.getCustoTotal();
+        
+        String duasCasas = decimal.format(porcento);
+        String duasCasasProgress = decimal.format(progress).replace(',', '.');
+        double progressValue = Double.parseDouble(duasCasasProgress);
+        lblPorcentagem.setText(duasCasas + " %");
+        pbStatus.setProgress(progressValue);
+        
     }
 
     @FXML
@@ -126,4 +150,12 @@ public class VisualizarMetasController implements Initializable {
         }
     }
 
+    @FXML
+    private void telaPoupar(ActionEvent event) throws IOException {
+        Parent voltar = FXMLLoader.load(getClass().getResource("TelaPoupar.fxml"));
+        Scene voltarScene = new Scene(voltar);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(voltarScene);
+        window.centerOnScreen();
+    }
 }
