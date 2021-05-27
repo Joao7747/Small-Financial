@@ -5,6 +5,7 @@
  */
 package VIEW;
 
+import Classes.CustomImage;
 import Classes.Categoria;
 import DAO.DAODividas;
 import DAO.DAOUsuario;
@@ -35,11 +36,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import static VIEW.MenuPublicacoesController.selecionadoPubli;
+import java.io.FileInputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.TableRow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -65,6 +71,10 @@ public class DividasController implements Initializable {
     private TableColumn<Dividas, Date> tcVencimentos;
     @FXML
     private TableColumn<Dividas, String> tcObservacao;
+    @FXML
+    private TableColumn<Dividas, ImageView> tcStatus;
+    @FXML
+    private TableColumn<Dividas, Image> tcImage;
     @FXML
     private Label lblTotal;
     @FXML
@@ -136,17 +146,49 @@ public class DividasController implements Initializable {
     }
 
     public void Listagem() {
-        
-        
+        DAODividas dividas = new DAODividas();
+        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
+        LocalDate hoje = LocalDate.now();
+        Date hojeAux = Date.valueOf(hoje);
+        Double Total = 0.0;
+        for (Dividas div : model) {
+            if (hojeAux.compareTo(div.getVencimento()) <= 0) {
+                try {
+                    div.setImagem(new Image(new FileInputStream("src/Resources/yellow_ball.PNG")));
+                    CustomImage item_1 = new CustomImage(new ImageView(new Image(new FileInputStream("src/Resources/yellow_ball.PNG"))));
+                    div.setImg(item_1.getImage());
+                } catch (Exception e) {
+                    String tente = e.toString();
+                    
+                }
+
+            } else if (hojeAux.compareTo(div.getVencimento()) > 0) {
+                try {
+                    div.setImagem(new Image(new FileInputStream("src/Resources/red_ball.PNG")));
+                    CustomImage item_1 = new CustomImage(new ImageView(new Image(new FileInputStream("src/Resources/red_ball.PNG"))));
+                    div.setImg(item_1.getImage());
+                } catch (Exception e) {
+                    String tente = e.toString();
+                    
+                }
+                Total += div.getValor();
+            }
+            
+        }
+        if (Total <= 0.0){
+            lblTotal.setText("Total: R$ 0");
+        } else {
+            lblTotal.setText("Total: R$ " + Total);
+        }
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
         tcValor.setCellValueFactory(new PropertyValueFactory<>("Valor"));
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("numeroParcelas"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("Vencimento"));
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-
-        DAODividas dividas = new DAODividas();
-        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
+        tcStatus.setCellValueFactory(new PropertyValueFactory<>("img"));
+        tcImage.setCellValueFactory(new PropertyValueFactory<>("imagem"));
+        
         tvContas.setItems(model);
     }
 
