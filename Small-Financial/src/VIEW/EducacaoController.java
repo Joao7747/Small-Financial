@@ -7,9 +7,11 @@ package VIEW;
 
 import DAO.DAOCurso_Online;
 import DAO.DAOUsuario;
+import DAO.DAOPublicacao;
 import DAO.DAOVideo;
 import MODEL.Curso_Online;
 import MODEL.Metas;
+import MODEL.Publicacao;
 import MODEL.Video;
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +66,15 @@ public class EducacaoController implements Initializable {
     @FXML
     public TableColumn<Curso_Online, Date> tcPrazo;
     
+    @FXML
+    private TableView<Publicacao> tvPublicacao;
+
+    @FXML
+    private TableColumn<Publicacao,String> tcTituloPublicacao;
+
+    @FXML
+    private TableColumn<Publicacao,String> tcAutorPublicacao;
+
     
     
     @FXML
@@ -79,7 +90,11 @@ public class EducacaoController implements Initializable {
   
     public static Video videoSelecionado;
     
+    public static Publicacao PublicacaoSelecionado;
+    
+    
     DAOUsuario user = new DAOUsuario();
+    ObservableList<Publicacao> publi;
 
 
     /**
@@ -89,7 +104,6 @@ public class EducacaoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         //VERIFICAR SE É ADM OU USUÁRIO
-      
         if(user.IdNome().getVerif_ADM() == false)
         {
             btnMenuPublicacao.setVisible(false);
@@ -107,6 +121,14 @@ public class EducacaoController implements Initializable {
             btnMenuVideo.setVisible(true);
         
         }
+        
+        //LISTAR PUBLICAÇÃO
+        tcTituloPublicacao.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        tcAutorPublicacao.setCellValueFactory(new PropertyValueFactory<>("autor"));
+
+        DAOPublicacao daoPubli = new DAOPublicacao();
+        publi = FXCollections.observableArrayList(daoPubli.consultaPublicacao());
+        tvPublicacao.setItems(publi);
         
         
         //LISTAR CURSO
@@ -126,6 +148,31 @@ public class EducacaoController implements Initializable {
         DAOVideo daoVideo = new DAOVideo();
         ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultaVideo());
         tvVideos.setItems(video);
+        
+        
+        //AÇÃO CLICANDO NA PUBLICAÇÃO
+        
+        tvPublicacao.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                PublicacaoSelecionado = (Publicacao) newValue;
+            }
+        });
+        
+        tvPublicacao.setRowFactory(tv -> {
+            TableRow<Publicacao> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        chamarTelaVisualizacaoPublicacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EducacaoController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
+        
         
         
         //AÇÃO CLICANDO NO VIDEO
@@ -234,6 +281,14 @@ public class EducacaoController implements Initializable {
     @FXML
     private void chamarTelaVisualizacaoVideo(MouseEvent event) throws IOException {
         Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarVideo.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+    @FXML
+    private void chamarTelaVisualizacaoPublicacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarPublicacao.fxml"));
         Scene inserirScene = new Scene(inserir);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);

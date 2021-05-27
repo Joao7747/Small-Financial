@@ -98,9 +98,6 @@ public class DAOPublicacao implements DAOGenerica<Publicacao> {
             if(this.conexao.conectar())
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-                
-                
-                
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 
                 

@@ -12,11 +12,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.EducacaoController">
     <children>
-      <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="116.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
+      <TableView fx:id="tvPublicacao" layoutX="34.0" layoutY="116.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
-          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
-            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
+          <TableColumn fx:id="tcTituloPublicacao" prefWidth="180.0" text="Título" />
+          <TableColumn fx:id="tcAutorPublicacao" prefWidth="149.0" text="Autor" />
         </columns>
       </TableView>
       <Label layoutX="363.0" layoutY="29.0" text="Educação">
