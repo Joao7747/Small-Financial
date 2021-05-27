@@ -208,8 +208,10 @@ public class InserirMetaController implements Initializable {
                 m.setStatusMeta(b);
                 double valorGuardado = 100.90;
                 m.setValorGuardado(valorGuardado);
+              
                 int usuario = user.IdNome().getIdUsuario();
                 m.setIdUsuario(usuario);
+
                 if (cont.verificaEditar == true) {
                     m.setIdMetas(cont.selecionado.getIdMetas());
                     Date data = Date.valueOf(dataInserido);
