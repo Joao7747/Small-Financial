@@ -171,9 +171,9 @@ public class DividasController implements Initializable {
                     String tente = e.toString();
                     
                 }
-                Total += div.getValor();
+                
             }
-            
+            Total += div.getValor();
         }
         if (Total <= 0.0){
             lblTotal.setText("Total: R$ 0");

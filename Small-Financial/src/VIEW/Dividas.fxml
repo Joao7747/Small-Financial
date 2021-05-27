@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.DividasController">
     <children>
-        <Label fx:id="lblContas" layoutX="325.0" layoutY="26.0" minHeight="16" minWidth="69" text="Dividas e pendencias">
+        <Label fx:id="lblContas" layoutX="325.0" layoutY="26.0" minHeight="16" minWidth="69" text="Dívidas e pendências">
          <font>
             <Font size="17.0" />
          </font></Label>
