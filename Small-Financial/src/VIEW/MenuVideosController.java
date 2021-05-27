@@ -144,7 +144,7 @@ public class MenuVideosController implements Initializable {
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
 
         DAOVideo daoVideo = new DAOVideo();
-        model = FXCollections.observableArrayList(daoVideo.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(daoVideo.consultaVideo());
         tvVideos.setItems(model);
 
     }

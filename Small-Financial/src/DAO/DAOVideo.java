@@ -78,21 +78,18 @@ public class DAOVideo implements DAOGenerica<Video> {
         }
     }
 
-    @Override
-    public ArrayList<Video> consultar(int id)
+    
+    public ArrayList<Video> consultaVideo()
     {
     ArrayList<Video> listaVideo = new ArrayList<Video>();
     
-        String sql = "SELECT * FROM Video WHERE idVideo = ?";
+        String sql = "SELECT * FROM Video";
         
         try
         {
             if(this.conexao.conectar())
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-                
-                sentenca.setInt(1, id);
-                
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 
                 
@@ -122,5 +119,11 @@ public class DAOVideo implements DAOGenerica<Video> {
     
     
     }
+
+    @Override
+    public ArrayList<Video> consultar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
 }

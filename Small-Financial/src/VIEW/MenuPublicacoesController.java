@@ -141,7 +141,7 @@ public class MenuPublicacoesController implements Initializable {
         tcDataPubli.setCellValueFactory(new PropertyValueFactory<>("dataPublicacao"));
 
         DAOPublicacao daoPubli = new DAOPublicacao();
-        model = FXCollections.observableArrayList(daoPubli.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(daoPubli.consultaPublicacao());
         tvPublicacao.setItems(model);
     }
     
