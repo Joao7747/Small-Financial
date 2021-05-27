@@ -84,7 +84,7 @@ public class VisualizarMetasController implements Initializable {
         txtPreco.setText(preco.toString());
         txtDescricao.setText(cont.selecionado.getDescricao());
         txtObservacao.setText(cont.selecionado.getObservacao());
-        lblValorGuardado.setText("R$ " + cont.selecionado.getValorGuardado());
+        lblValorGuardado.setText("R$ " + decimal.format(cont.selecionado.getValorGuardado()));
 
         txtValorPoupar.setText("Para alcançar a meta na data de "
                 + cont.selecionado.getDataRealizacao().toLocalDate().toString() + ", você deverá guardar "
@@ -93,10 +93,16 @@ public class VisualizarMetasController implements Initializable {
         double progress = cont.selecionado.getValorGuardado() / cont.selecionado.getCustoTotal();
         double porcento = (cont.selecionado.getValorGuardado() * 100) / cont.selecionado.getCustoTotal();
         
-        String duasCasas = decimal.format(porcento);
+        if (porcento > 100.0){
+            lblPorcentagem.setText("100 %");
+        } else {
+            String duasCasas = decimal.format(porcento);
+            lblPorcentagem.setText(duasCasas + " %");
+        }
+        
         String duasCasasProgress = decimal.format(progress).replace(',', '.');
         double progressValue = Double.parseDouble(duasCasasProgress);
-        lblPorcentagem.setText(duasCasas + " %");
+        
         pbStatus.setProgress(progressValue);
         
     }
