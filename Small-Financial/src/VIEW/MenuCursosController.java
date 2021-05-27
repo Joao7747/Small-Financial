@@ -7,7 +7,6 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOCurso_Online;
-import DAO.DAOUsuario;
 import MODEL.Curso_Online;
 import java.io.IOException;
 import java.net.URL;
@@ -94,7 +93,6 @@ public class MenuCursosController implements Initializable {
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
     public static boolean validacaoEditar = false;
-    DAOUsuario user = new DAOUsuario();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -185,7 +183,7 @@ public class MenuCursosController implements Initializable {
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
 
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        model = FXCollections.observableArrayList(daoCurso.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(daoCurso.consultar());
 
         tvCurso.setItems(model);
     }

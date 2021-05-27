@@ -8,7 +8,6 @@ package VIEW;
 import Classes.Categoria;
 import MODEL.Gastos;
 import DAO.DAOGastos;
-import DAO.DAOUsuario;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -90,7 +89,6 @@ public class GastosController implements Initializable {
     private ObservableList<Categoria> obsCat;
     public static Gastos selecionado;
     public static boolean validacaoEditar = false;
-    DAOUsuario user = new DAOUsuario();
     /**
      * Initializes the controller class.
      */
@@ -170,7 +168,7 @@ public class GastosController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("Observacao"));
         
         DAOGastos gastos = new DAOGastos();
-        model = FXCollections.observableArrayList(gastos.consultar(user.IdNome().getIdUsuario()));
+        model = FXCollections.observableArrayList(gastos.consultar());
         tvGastos.setItems(model);
     }
     

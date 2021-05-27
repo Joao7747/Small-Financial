@@ -5,6 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class DAOMetas implements DAOGenerica<Metas> {
@@ -99,11 +105,11 @@ public class DAOMetas implements DAOGenerica<Metas> {
     }
 
     @Override
-    public ArrayList<Metas> consultar(int id)
+    public ArrayList<Metas> consultar()
     {
     ArrayList<Metas> listaMetas = new ArrayList<Metas>();
     
-        String sql = "SELECT * FROM Metas WHERE idUsuario = ?";
+        String sql = "SELECT * FROM Metas ORDER BY idMetas";
         
         try
         {
@@ -111,7 +117,6 @@ public class DAOMetas implements DAOGenerica<Metas> {
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
                 
-                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 

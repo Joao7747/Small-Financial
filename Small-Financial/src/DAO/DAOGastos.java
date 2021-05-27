@@ -87,11 +87,11 @@ public class DAOGastos implements DAOGenerica<Gastos> {
     }
 
     @Override
-    public ArrayList<Gastos> consultar(int id)
+    public ArrayList<Gastos> consultar()
     {
     ArrayList<Gastos> listaGastos = new ArrayList<Gastos>();
     
-        String sql = "SELECT * FROM Gastos WHERE idUsuario = ?";
+        String sql = "SELECT * FROM Gastos ORDER BY idGastos";
         
         try
         {
@@ -99,7 +99,6 @@ public class DAOGastos implements DAOGenerica<Gastos> {
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
                 
-                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 
