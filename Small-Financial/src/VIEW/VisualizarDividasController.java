@@ -5,10 +5,13 @@
  */
 package VIEW;
 
+import Classes.CustomImage;
 import DAO.DAODividas;
 import static VIEW.MenuPublicacoesController.selecionadoPubli;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -58,6 +63,12 @@ public class VisualizarDividasController implements Initializable {
 
     @FXML
     private TextArea txtObservacao;
+    
+    @FXML
+    private ImageView ivStatus;
+
+    @FXML
+    private TextField txtStatus;
 
     DividasController menu = new DividasController();
 
@@ -71,6 +82,16 @@ public class VisualizarDividasController implements Initializable {
         txtVencimento.setText(menu.selectVisualization.getVencimento().toLocalDate().toString());
         txtParcelas.setText(parcela.toString());
         txtObservacao.setText(menu.selectVisualization.getObservacao());
+        ivStatus.setImage(menu.selectVisualization.getImagem());
+        
+        LocalDate hoje = LocalDate.now();
+        Date hojeAux = Date.valueOf(hoje);
+        if (hojeAux.compareTo(menu.selectVisualization.getVencimento()) <= 0){
+            txtStatus.setText("Em Prazo");
+        } else if (hojeAux.compareTo(menu.selectVisualization.getVencimento()) > 0){
+            txtStatus.setText("Vencido");
+        }
+        
     }
 
     @FXML
