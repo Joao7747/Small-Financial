@@ -36,7 +36,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import static VIEW.MenuPublicacoesController.selecionadoPubli;
 import java.io.FileInputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -147,7 +146,7 @@ public class DividasController implements Initializable {
 
     public void Listagem() {
         DAODividas dividas = new DAODividas();
-        model = FXCollections.observableArrayList(dividas.consultar());
+        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
         LocalDate hoje = LocalDate.now();
         Date hojeAux = Date.valueOf(hoje);
         Double Total = 0.0;
@@ -186,10 +185,6 @@ public class DividasController implements Initializable {
         tcParcelas.setCellValueFactory(new PropertyValueFactory<>("numeroParcelas"));
         tcVencimentos.setCellValueFactory(new PropertyValueFactory<>("Vencimento"));
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
-
-        DAODividas dividas = new DAODividas();
-        model = FXCollections.observableArrayList(dividas.consultar(user.IdNome().getIdUsuario()));
-
         tcStatus.setCellValueFactory(new PropertyValueFactory<>("img"));
         tcImage.setCellValueFactory(new PropertyValueFactory<>("imagem"));
         
