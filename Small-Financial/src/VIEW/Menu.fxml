@@ -13,14 +13,21 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.MenuController">
    <children>
       <Label fx:id="lblSaudacao" layoutX="30.0" layoutY="20.0" prefHeight="22.0" prefWidth="81.0" text="Saudação" wrapText="true">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>
       </Label>
-      <Button id="btnSaldo" layoutX="382.0" layoutY="18.0" mnemonicParsing="false" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Saldo" textFill="WHITE" textOverrun="CLIP" />
+      <Button id="btnSaldo" fx:id="btnSaldo" alignment="TOP_CENTER" layoutX="382.0" layoutY="18.0" mnemonicParsing="false" onAction="#Saldo" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Saldo" textFill="WHITE" textOverrun="CLIP">
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/Olho.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Label layoutX="524.0" layoutY="23.0" prefHeight="22.0" prefWidth="166.0" text="Dollar - 5,76 | Euro - 6,67" wrapText="true">
          <font>
             <Font name="Bell MT" size="14.0" />
@@ -30,7 +37,7 @@
          <graphic>
             <ProgressBar prefWidth="200.0" />
          </graphic></Button>
-      <Button fx:id="btnRelatorios" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="436.0" layoutY="105.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="329.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Relatorios e Dicas" textFill="WHITE">
+      <Button fx:id="btnRelatorios" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="436.0" layoutY="105.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="329.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Relatórios e Dicas" textFill="WHITE">
          <graphic>
             <BarChart prefHeight="133.0" prefWidth="200.0">
               <xAxis>
@@ -74,7 +81,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="btnContas" contentDisplay="BOTTOM" layoutX="53.0" layoutY="308.0" mnemonicParsing="false" onAction="#Contas" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Dividas" textFill="WHITE">
+      <Button fx:id="btnContas" contentDisplay="BOTTOM" layoutX="53.0" layoutY="308.0" mnemonicParsing="false" onAction="#Contas" prefHeight="112.0" prefWidth="157.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Dívidas" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                <cursor>
@@ -90,7 +97,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Label fx:id="lblNome" layoutX="109.0" layoutY="20.0" prefHeight="22.0" prefWidth="46.0" text="nome" wrapText="true">
+      <Label fx:id="lblNome" layoutX="109.0" layoutY="20.0" prefHeight="22.0" prefWidth="238.0" text="nome" wrapText="true">
          <font>
             <Font name="Bell MT" size="18.0" />
          </font>

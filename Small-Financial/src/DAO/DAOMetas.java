@@ -5,12 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class DAOMetas implements DAOGenerica<Metas> {
@@ -84,6 +78,26 @@ public class DAOMetas implements DAOGenerica<Metas> {
         }
 
     }
+    
+    
+    public void poupar(Metas metas){
+        String sql = "UPDATE Metas Set ValorGuardado = ? WHERE idMetas = ?";
+        
+        try {
+            if (this.conexao.conectar()) {
+                PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
+
+                sentenca.setDouble(1, metas.getValorGuardado());
+                sentenca.setInt(2, metas.getIdMetas());
+
+                sentenca.execute();
+                sentenca.close();
+                this.conexao.getConnection().close();
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     @Override
     public void excluir(int id) {
@@ -105,11 +119,11 @@ public class DAOMetas implements DAOGenerica<Metas> {
     }
 
     @Override
-    public ArrayList<Metas> consultar()
+    public ArrayList<Metas> consultar(int id)
     {
     ArrayList<Metas> listaMetas = new ArrayList<Metas>();
     
-        String sql = "SELECT * FROM Metas ORDER BY idMetas";
+        String sql = "SELECT * FROM Metas WHERE idUsuario = ?";
         
         try
         {
@@ -117,6 +131,7 @@ public class DAOMetas implements DAOGenerica<Metas> {
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
                 
+                sentenca.setInt(1, id);
                 
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 

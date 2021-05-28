@@ -5,10 +5,14 @@
  */
 package VIEW;
 
+import Classes.Categoria;
 import DAO.DAOGanhos;
+import DAO.DAOUsuario;
 import MODEL.Ganhos;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -31,6 +35,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -53,7 +58,7 @@ public class GanhosController implements Initializable {
     @FXML
     private TableColumn<Ganhos, String> tcObservacao;
     @FXML
-    private ComboBox<?> cbCategoria;
+    private ComboBox<Categoria> cbCategoria;
     @FXML
     private Button btnVoltar;
     @FXML
@@ -62,9 +67,21 @@ public class GanhosController implements Initializable {
     private Button btnEditar;
     @FXML
     private Button btnExcluir;
+    @FXML
+    private TextField txtPesquisa;
     
+    public static int selectedIndex;
+    //Listagem Parametrizada
+    public ObservableList<Ganhos> model;
+    public ObservableList<Ganhos> modelParametrizado;
+    public List<Ganhos> listaAux = new ArrayList<Ganhos>();
+    
+    private List<Categoria> cat = new ArrayList<>();
+    private ObservableList<Categoria> obsCat;
     public static Ganhos selecionadoGanho;
     public static boolean validacaoEditarGanho = false;
+    DAOUsuario user = new DAOUsuario();
+    
 
     /**
      * Initializes the controller class.
@@ -73,12 +90,25 @@ public class GanhosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         ListarGanho();
+        carregarCategoria();
+        
         tvGanhos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             
             @Override 
             public void changed(ObservableValue observable, Object oldValue, Object newValue){
             
                 selecionadoGanho = (Ganhos)newValue;
+            }
+        });
+        
+        txtPesquisa.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (txtPesquisa.getText().equals("")) {
+                    ListarGanho();
+                } else {
+                    ListagemParametrizada();
+                }
             }
         });
       
@@ -123,7 +153,6 @@ public class GanhosController implements Initializable {
         window.centerOnScreen();
     }
     
-    @FXML
     public void ListarGanho()
     {
         tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
@@ -132,8 +161,52 @@ public class GanhosController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
 
         DAOGanhos ganho = new DAOGanhos();
-        ObservableList<Ganhos> ganhos = FXCollections.observableArrayList(ganho.consultar());
-        tvGanhos.setItems(ganhos);
+        model = FXCollections.observableArrayList(ganho.consultar(user.IdNome().getIdUsuario()));
+        tvGanhos.setItems(model);
+    }
+    
+    public void ListagemParametrizada() {    
+        listaAux.clear();
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcPreco.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        tcData.setCellValueFactory(new PropertyValueFactory<>("dataGanho"));
+        tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+
+        if (!txtPesquisa.getText().equals("")) {
+            cbCategoria.setOnAction((event) -> {
+                selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
+            });
+
+            for (Ganhos var : model) {
+                if (selectedIndex == 0) {
+                    if (var.getCategoria().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 1) {
+                    String valor = Double.toString(var.getValor());
+                    if (valor.equals(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 2) {
+                    
+                    if (var.getDataGanho().toString().contains(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 3) {
+                    if (var.getObservacao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+            }
+
+        }
+
+        modelParametrizado = FXCollections.observableArrayList(listaAux);
+        tvGanhos.setItems(modelParametrizado);
     }
 
     @FXML
@@ -179,4 +252,20 @@ public class GanhosController implements Initializable {
         }
     }
     
+    public void carregarCategoria() {
+
+        Categoria cat1 = new Categoria("Categoria");
+        Categoria cat2 = new Categoria("Valor");
+        Categoria cat3 = new Categoria("Data");
+        Categoria cat4 = new Categoria("Observação");
+
+        cat.add(cat1);
+        cat.add(cat2);
+        cat.add(cat3);
+        cat.add(cat4);
+
+
+        obsCat = FXCollections.observableArrayList(cat);
+        cbCategoria.setItems(obsCat);
+    }
 }

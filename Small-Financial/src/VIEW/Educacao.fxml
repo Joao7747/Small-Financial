@@ -10,13 +10,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.EducacaoController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.EducacaoController">
     <children>
-      <TableView fx:id="tvGanhos" layoutX="34.0" layoutY="116.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
+      <TableView fx:id="tvPublicacao" layoutX="34.0" layoutY="116.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
         <columns>
-          <TableColumn fx:id="tcCategoria" prefWidth="134.0" text="Artigo" />
-          <TableColumn fx:id="tcPreco" prefWidth="88.33334350585938" text="Autor" />
-            <TableColumn fx:id="tcData" prefWidth="104.66665649414062" text="Publicação" />
+          <TableColumn fx:id="tcTituloPublicacao" prefWidth="180.0" text="Título" />
+          <TableColumn fx:id="tcAutorPublicacao" prefWidth="149.0" text="Autor" />
         </columns>
       </TableView>
       <Label layoutX="363.0" layoutY="29.0" text="Educação">
@@ -48,21 +47,6 @@
          </font>
       </Label>
       <Line endX="321.3333435058594" endY="274.3333435058594" layoutX="438.0" layoutY="-25.0" startX="-3.333343505859375" startY="274.33331298828125" strokeWidth="2.0" />
-      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="215.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="201.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="32.0" layoutX="622.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../TelasSmallFinancial/resources/imagens/Add.jpg" />
-         </image>
-      </ImageView>
       <TableView fx:id="tvCursos" layoutX="32.0" layoutY="298.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
          <columns>
             <TableColumn fx:id="tcCurso" prefWidth="328.0" styleClass="TableStyle" text="Curso" />
@@ -70,22 +54,61 @@
             <TableColumn fx:id="tcPrazo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Prazo de Inscrição" />
          </columns>
       </TableView>
-      <Label layoutX="543.0" layoutY="82.0" text="Vídeos">
+      <Label layoutX="447.0" layoutY="84.0" text="Vídeos">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="btnMenuVideo" layoutX="673.0" layoutY="85.0" mnemonicParsing="false" onAction="#MenuVideos" text="MENU VIDEO" />
-      <Button fx:id="btnInserirCurso" layoutX="262.0" layoutY="266.0" mnemonicParsing="false" onAction="#MenuCursos" text="MENU CURSOS" />
       <TableView fx:id="tvVideos" layoutX="432.0" layoutY="118.0" prefHeight="116.0" prefWidth="330.0" stylesheets="@CSS/Dash.css">
          <columns>
             <TableColumn fx:id="tcDescricaoVideo" prefWidth="329.0" text="Descrição" />
             <TableColumn fx:id="tcLinkVideo" minWidth="0.0" prefWidth="0.0" styleClass="TableStyle" text="Link" />
          </columns>
       </TableView>
-      <Button fx:id="btnMenuPublicacoes" layoutX="237.0" layoutY="85.0" mnemonicParsing="false" onAction="#MenuPublicacao" text="MENU PUBLICAÇÃO" />
       <Line endX="-100.0" endY="-198.75" layoutX="907.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="912.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="917.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#db3b14" strokeWidth="5.0" />
+      <Button fx:id="btnMenuPublicacao" layoutX="209.0" layoutY="84.0" mnemonicParsing="false" onAction="#MenuPublicacao" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent; -fx-cursor: pointer;" stylesheets="@CSS/Dash.css">
+         <graphic>
+            <ImageView fx:id="img1" fitHeight="33.0" fitWidth="19.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/mais.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="33.0" fitWidth="19.0" layoutX="-18.0" layoutY="177.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/mais.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnMenuCurso" layoutX="189.0" layoutY="264.0" mnemonicParsing="false" onAction="#MenuCursos" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent; -fx-cursor: pointer;" stylesheets="@CSS/Dash.css">
+         <graphic>
+            <ImageView fx:id="img2" fitHeight="33.0" fitWidth="19.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/mais.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="33.0" fitWidth="19.0" layoutX="-18.0" layoutY="178.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/mais.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnMenuVideo" layoutX="509.0" layoutY="90.0" mnemonicParsing="false" onAction="#MenuVideos" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent; -fx-cursor: pointer;" stylesheets="@CSS/Dash.css">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="19.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/mais.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="33.0" fitWidth="19.0" layoutX="320.0" layoutY="-174.0" onMouseClicked="#MenuPublicacao" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/mais.png" />
+         </image>
+      </ImageView>
    </children> 
 </AnchorPane>

@@ -86,20 +86,18 @@ public class DAOPublicacao implements DAOGenerica<Publicacao> {
         }
     }
 
-    @Override
-    public ArrayList<Publicacao> consultar()
+    
+    public ArrayList<Publicacao> consultaPublicacao()
     {
     ArrayList<Publicacao> listaPublicacao = new ArrayList<Publicacao>();
     
-        String sql = "SELECT * FROM Publicacao ORDER BY idPublicacao";
+        String sql = "SELECT * FROM Publicacao";
         
         try
         {
             if(this.conexao.conectar())
             {
                 PreparedStatement sentenca = this.conexao.getConnection().prepareStatement(sql);
-                
-                
                 ResultSet resultadoSentenca = sentenca.executeQuery();
 
                 
@@ -130,6 +128,11 @@ public class DAOPublicacao implements DAOGenerica<Publicacao> {
     
     
     
+    }
+
+    @Override
+    public ArrayList<Publicacao> consultar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

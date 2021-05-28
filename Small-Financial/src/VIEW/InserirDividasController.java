@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAODividas;
+import DAO.DAOUsuario;
 import MODEL.Dividas;
 import java.io.IOException;
 import java.net.URL;
@@ -75,9 +76,11 @@ public class InserirDividasController implements Initializable {
     private RadioButton rbFixa;
 
     DividasController menu = new DividasController();
+    DAOUsuario user = new DAOUsuario();
 
     private List<Categoria> cat = new ArrayList<>();
     private ObservableList<Categoria> obsCat;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,7 +124,7 @@ public class InserirDividasController implements Initializable {
                 if (menu.validacaoEditar == true) {
                     menu.selecionado.setCategoria(categoria);
                     menu.selecionado.setVencimento(dataAux);
-                    menu.selecionado.setIdUsuario(1);
+                    menu.selecionado.setIdUsuario(user.IdNome().getIdUsuario());
                     menu.selecionado.setDescricao(descricao);
                     menu.selecionado.setValor(Double.parseDouble(valor));
                     menu.selecionado.setObservacao(observacao);
@@ -151,7 +154,7 @@ public class InserirDividasController implements Initializable {
                     Dividas divida = new Dividas();
                     divida.setCategoria(categoria);
                     divida.setDescricao(descricao);
-                    divida.setIdUsuario(1);
+                    divida.setIdUsuario(user.IdNome().getIdUsuario());
                     divida.setVencimento(dataAux);
                     if (rbFixa.isSelected()) {
                         divida.setFixa(true);

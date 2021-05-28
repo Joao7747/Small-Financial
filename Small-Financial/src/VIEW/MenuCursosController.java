@@ -7,6 +7,7 @@ package VIEW;
 
 import Classes.Categoria;
 import DAO.DAOCurso_Online;
+import DAO.DAOUsuario;
 import MODEL.Curso_Online;
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +44,7 @@ import javafx.stage.Stage;
  */
 public class MenuCursosController implements Initializable {
 
-     @FXML
+    @FXML
     public TableView<Curso_Online> tvCurso;
 
     @FXML
@@ -60,47 +61,41 @@ public class MenuCursosController implements Initializable {
 
     @FXML
     public TableColumn<Curso_Online, String> tcLink;
-    
+
     @FXML
     private Button btnEditar;
 
     @FXML
     private Button btnExcluir;
-    
+
     @FXML
     private Button btnInserir;
 
     @FXML
     private Button btnVoltar;
-    
-     @FXML
+
+    @FXML
     public ComboBox<Categoria> cbCategoria;
 
     @FXML
     public TextField txtPesquisaCurso;
-    
-     @FXML
+
+    @FXML
     private Label lblContas;
-     
+    
+
     public static int selectedIndex;
-    
-    public ObservableList<Curso_Online> curso;
-    
-    public ObservableList<Curso_Online> cursoParametrizado;
-    
+    //Listagem Parametrizada
+    public ObservableList<Curso_Online> model;
+    public ObservableList<Curso_Online> modelParametrizado;
     public List<Curso_Online> listaAux = new ArrayList<Curso_Online>();
-     
     
-     
-     
-     
     public static Curso_Online selecionado;
     private List<Categoria> cat = new ArrayList<>();
-    private ObservableList<Categoria> obsCat; 
+    private ObservableList<Categoria> obsCat;
     public static boolean validacaoEditar = false;
+    DAOUsuario user = new DAOUsuario();
 
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -109,40 +104,34 @@ public class MenuCursosController implements Initializable {
         //Chama Categoria
         carregarCategoria();
         //EXCLUIR CURSO
-        
-        
+
         txtPesquisaCurso.textProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (txtPesquisaCurso.getText().equals(""))
-                {
-                     Listagem();
-                }
-                else
-                {
+                if (txtPesquisaCurso.getText().equals("")) {
+                    Listagem();
+                } else {
                     ListagemParametrizada();
-                } 
+                }
             }
         });
-        
-        tvCurso.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
-            
-            @Override 
-            public void changed(ObservableValue observable, Object oldValue, Object newValue){
-            
-                selecionado = (Curso_Online)newValue;
+
+        tvCurso.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+
+                selecionado = (Curso_Online) newValue;
             }
-            });
-    }    
-    
-   
-    
+        });
+    }
+
     @FXML
     void Voltar(ActionEvent event) throws IOException {
-        
+
         Parent voltar = FXMLLoader.load(getClass().getResource("Educacao.fxml"));
         Scene voltarScene = new Scene(voltar);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(voltarScene);
         window.centerOnScreen();
 
@@ -150,19 +139,18 @@ public class MenuCursosController implements Initializable {
 
     @FXML
     void TelaInserirCurso(ActionEvent event) throws IOException {
-        
+
         Parent insere = FXMLLoader.load(getClass().getResource("InserirCurso.fxml"));
         Scene insereScene = new Scene(insere);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.centerOnScreen();
     }
-    
+
     @FXML
-    public void deleta(){
-        if(selecionado != null){
-            try
-            {
+    public void deleta() {
+        if (selecionado != null) {
+            try {
                 DAOCurso_Online dao = new DAOCurso_Online();
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Confirmação");
@@ -177,107 +165,85 @@ public class MenuCursosController implements Initializable {
                 } else {
                     alerta.close();
                 }
-            
+
+            } catch (Exception e) {
+                Alert alerta = new Alert(Alert.AlertType.WARNING, "Curso NÃO deletado!", ButtonType.OK);
+                alerta.show();
             }
-            catch(Exception e)
-            {
-                    Alert alerta = new Alert(Alert.AlertType.WARNING, "Curso NÃO deletado!", ButtonType.OK);
-                    alerta.show(); 
-            }
-        }
-        else
-        {
+        } else {
             Alert alerta = new Alert(Alert.AlertType.WARNING, "Selecione um Curso!", ButtonType.OK);
-            alerta.show(); 
+            alerta.show();
         }
-        
+
     }
-    
-    @FXML
-    public void Listagem()
-    {
+
+    public void Listagem() {
         tcIdCurso.setCellValueFactory(new PropertyValueFactory<>("idCurso_Online"));
         tcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcDataLimite.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
-       
-        
+
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        curso = FXCollections.observableArrayList(daoCurso.consultar());
-        
-        tvCurso.setItems(curso);
+        model = FXCollections.observableArrayList(daoCurso.consultaCurso());
+
+        tvCurso.setItems(model);
     }
-    
-    
-    @FXML
-    public void ListagemParametrizada()
-    {
+
+    public void ListagemParametrizada() {
         listaAux.clear();
         tcIdCurso.setCellValueFactory(new PropertyValueFactory<>("idCurso_Online"));
         tcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tcDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
         tcDataLimite.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
-        
-        
-        if(!txtPesquisaCurso.getText().equals(""))
-        {
+
+        if (!txtPesquisaCurso.getText().equals("")) {
             cbCategoria.setOnAction((event) -> {
-            selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
-             // Object selectedItem = menu.cbCategoria.getSelectionModel().getSelectedItem();
+                selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
             });
-            
-            
-            for(Curso_Online varCurso : curso)
-            {   
-                if(selectedIndex == 0)    
-                {
-                    if(varCurso.getIdCurso_Online() == Integer.parseInt(txtPesquisaCurso.getText()))
-                    {
-                        listaAux.add(varCurso);
+
+            for (Curso_Online var : model) {
+                if (selectedIndex == 0) {
+                    if (var.getIdCurso_Online() == Integer.parseInt(txtPesquisaCurso.getText())) {
+                        listaAux.add(var);
                     }
                 }
-                if(selectedIndex == 1)    
-                {
-                    if(varCurso.getNome().toUpperCase().contains(txtPesquisaCurso.getText().toUpperCase()))
-                    {
-                        listaAux.add(varCurso);
+                if (selectedIndex == 1) {
+                    if (var.getNome().toUpperCase().contains(txtPesquisaCurso.getText().toUpperCase())) {
+                        listaAux.add(var);
                     }
-                
+
                 }
-                if(selectedIndex == 2)    
-                {
-                    if(varCurso.getDescricao().toUpperCase().contains(txtPesquisaCurso.getText().toUpperCase()))
-                    {
-                        listaAux.add(varCurso);
+                if (selectedIndex == 2) {
+                    if (var.getDescricao().toUpperCase().contains(txtPesquisaCurso.getText().toUpperCase())) {
+                        listaAux.add(var);
                     }
-                
+
                 }
             }
-        
+
         }
-        
-        cursoParametrizado = FXCollections.observableArrayList(listaAux);
-        tvCurso.setItems(cursoParametrizado);
+
+        modelParametrizado = FXCollections.observableArrayList(listaAux);
+        tvCurso.setItems(modelParametrizado);
     }
-    
+
     @FXML
     void EditarCurso(ActionEvent event) throws IOException {
-        
+
         validacaoEditar = true;
-        
+
         Parent insere = FXMLLoader.load(getClass().getResource("InserirCurso.fxml"));
         Scene insereScene = new Scene(insere);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(insereScene);
         window.centerOnScreen();
-        
-        
+
     }
-   
-  public void carregarCategoria() {
-        
+
+    public void carregarCategoria() {
+
         Categoria cat1 = new Categoria("Id");
         Categoria cat2 = new Categoria("Nome");
         Categoria cat3 = new Categoria("Descrição");
@@ -289,7 +255,5 @@ public class MenuCursosController implements Initializable {
         obsCat = FXCollections.observableArrayList(cat);
         cbCategoria.setItems(obsCat);
     }
-  
-  
-    
+
 }

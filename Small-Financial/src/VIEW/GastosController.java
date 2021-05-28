@@ -5,11 +5,15 @@
  */
 package VIEW;
 
+import Classes.Categoria;
 import MODEL.Gastos;
 import DAO.DAOGastos;
+import DAO.DAOUsuario;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,6 +36,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -51,9 +56,6 @@ public class GastosController implements Initializable {
     private TableColumn<Gastos, String> tcCategoria;
     
     @FXML
-    private TableColumn<Gastos, Integer> tcidGastos;
-
-    @FXML
     private TableColumn<Gastos, Double> tcPreco;
 
     @FXML
@@ -63,19 +65,40 @@ public class GastosController implements Initializable {
     private TableColumn<Gastos, String> tcObservacao;
     
     @FXML
-    private ComboBox<String> cbCategoria;
+    private ComboBox<Categoria> cbCategoria;
     
     @FXML
     private Button btnVoltar;
-
+    
+    @FXML
+    private TextField txtPesquisa;
+    
+    @FXML
+    private Button btnRemover;
+    
+    @FXML
+    private Button btnAlterar;
+    
+    
+    public static int selectedIndex;
+    //Listagem Parametrizada
+    public ObservableList<Gastos> model;
+    public ObservableList<Gastos> modelParametrizado;
+    public List<Gastos> listaAux = new ArrayList<Gastos>();
+    
+    private List<Categoria> cat = new ArrayList<>();
+    private ObservableList<Categoria> obsCat;
     public static Gastos selecionado;
     public static boolean validacaoEditar = false;
+    DAOUsuario user = new DAOUsuario();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         Listagem();
+        carregarCategoria();
         
         tvGastos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             
@@ -83,6 +106,17 @@ public class GastosController implements Initializable {
             public void changed(ObservableValue observable, Object oldValue, Object newValue){
             
                 selecionado = (Gastos)newValue;
+            }
+        });
+        
+        txtPesquisa.textProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (txtPesquisa.getText().equals("")) {
+                    Listagem();
+                } else {
+                    ListagemParametrizada();
+                }
             }
         });
         
@@ -136,8 +170,52 @@ public class GastosController implements Initializable {
         tcObservacao.setCellValueFactory(new PropertyValueFactory<>("Observacao"));
         
         DAOGastos gastos = new DAOGastos();
-        ObservableList<Gastos> gasto = FXCollections.observableArrayList(gastos.consultar());
-        tvGastos.setItems(gasto);
+        model = FXCollections.observableArrayList(gastos.consultar(user.IdNome().getIdUsuario()));
+        tvGastos.setItems(model);
+    }
+    
+    public void ListagemParametrizada() {    
+        listaAux.clear();
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcPreco.setCellValueFactory(new PropertyValueFactory<>("valor"));
+        tcData.setCellValueFactory(new PropertyValueFactory<>("dataGanho"));
+        tcObservacao.setCellValueFactory(new PropertyValueFactory<>("observacao"));
+
+
+        if (!txtPesquisa.getText().equals("")) {
+            cbCategoria.setOnAction((event) -> {
+                selectedIndex = cbCategoria.getSelectionModel().getSelectedIndex();
+            });
+
+            for (Gastos var : model) {
+                if (selectedIndex == 0) {
+                    if (var.getCategoria().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 1) {
+                    String valor = Double.toString(var.getPreco());
+                    if (valor.equals(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 2) {
+                    
+                    if (var.getDataGasto().toString().contains(txtPesquisa.getText())) {
+                        listaAux.add(var);
+                    }
+                }
+                if (selectedIndex == 3) {
+                    if (var.getObservacao().toUpperCase().contains(txtPesquisa.getText().toUpperCase())) {
+                        listaAux.add(var);
+                    }
+                }
+            }
+
+        }
+
+        modelParametrizado = FXCollections.observableArrayList(listaAux);
+        tvGastos.setItems(modelParametrizado);
     }
     
     @FXML
@@ -183,5 +261,22 @@ public class GastosController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(inserirScene);
         window.centerOnScreen();
+    }
+    
+    public void carregarCategoria() {
+
+        Categoria cat1 = new Categoria("Categoria");
+        Categoria cat2 = new Categoria("Preco");
+        Categoria cat3 = new Categoria("Data");
+        Categoria cat4 = new Categoria("Observação");
+
+        cat.add(cat1);
+        cat.add(cat2);
+        cat.add(cat3);
+        cat.add(cat4);
+
+
+        obsCat = FXCollections.observableArrayList(cat);
+        cbCategoria.setItems(obsCat);
     }
 }

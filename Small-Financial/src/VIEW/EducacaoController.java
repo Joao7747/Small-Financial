@@ -6,13 +6,21 @@
 package VIEW;
 
 import DAO.DAOCurso_Online;
+import DAO.DAOUsuario;
+import DAO.DAOPublicacao;
 import DAO.DAOVideo;
 import MODEL.Curso_Online;
+import MODEL.Metas;
+import MODEL.Publicacao;
 import MODEL.Video;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,8 +32,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -41,10 +52,8 @@ public class EducacaoController implements Initializable {
     private TableColumn<Video, String> tcDescricaoVideo;
     @FXML
     private TableColumn<Video, String> tcLinkVideo;
-
     @FXML
-    private Button btnVoltar;
-    
+    private Button btnVoltar; 
     @FXML
     private Button btnSiglas;
     
@@ -56,20 +65,37 @@ public class EducacaoController implements Initializable {
     public TableColumn<Curso_Online, String> tcLink;
     @FXML
     public TableColumn<Curso_Online, Date> tcPrazo;
+    
     @FXML
-    private TableView<?> tvGanhos;
+    private TableView<Publicacao> tvPublicacao;
+
     @FXML
-    private TableColumn<?, ?> tcCategoria;
+    private TableColumn<Publicacao,String> tcTituloPublicacao;
+
     @FXML
-    private TableColumn<?, ?> tcPreco;
+    private TableColumn<Publicacao,String> tcAutorPublicacao;
+
+    
+    
     @FXML
-    private TableColumn<?, ?> tcData;
+    public Button btnMenuPublicacao;
+
     @FXML
-    private Button btnInserirCurso;
+    public Button btnMenuCurso;
+
     @FXML
-    private Button btnMenuVideo;
-    @FXML
-    private Button btnMenuPublicacoes;
+    public Button btnMenuVideo;
+  
+    public static Curso_Online cursoSelecionado;
+  
+    public static Video videoSelecionado;
+    
+    public static Publicacao PublicacaoSelecionado;
+    
+    
+    DAOUsuario user = new DAOUsuario();
+    ObservableList<Publicacao> publi;
+
 
     /**
      * Initializes the controller class.
@@ -77,13 +103,41 @@ public class EducacaoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        //VERIFICAR SE É ADM OU USUÁRIO
+        if(user.IdNome().getVerif_ADM() == false)
+        {
+            btnMenuPublicacao.setVisible(false);
+            btnMenuCurso.setVisible(false);
+            btnMenuVideo.setVisible(false);
+        
+        }
+        if(user.IdNome().getVerif_ADM() == true)
+        {
+            btnMenuPublicacao.setDisable(false);
+            btnMenuCurso.setDisable(false);
+            btnMenuVideo.setDisable(false);
+            btnMenuPublicacao.setVisible(true);
+            btnMenuCurso.setVisible(true);
+            btnMenuVideo.setVisible(true);
+        
+        }
+        
+        //LISTAR PUBLICAÇÃO
+        tcTituloPublicacao.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        tcAutorPublicacao.setCellValueFactory(new PropertyValueFactory<>("autor"));
+
+        DAOPublicacao daoPubli = new DAOPublicacao();
+        publi = FXCollections.observableArrayList(daoPubli.consultaPublicacao());
+        tvPublicacao.setItems(publi);
+        
+        
         //LISTAR CURSO
         tcCurso.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tcLink.setCellValueFactory(new PropertyValueFactory<>("link"));
         tcPrazo.setCellValueFactory(new PropertyValueFactory<>("dataLimite"));
        
         DAOCurso_Online daoCurso = new DAOCurso_Online();
-        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultar());
+        ObservableList<Curso_Online> curso = FXCollections.observableArrayList(daoCurso.consultaCurso());
         tvCursos.setItems(curso);
         
         //LISTAR VÍDEO
@@ -92,9 +146,82 @@ public class EducacaoController implements Initializable {
        
        
         DAOVideo daoVideo = new DAOVideo();
-        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultar());
+        ObservableList<Video> video = FXCollections.observableArrayList(daoVideo.consultaVideo());
         tvVideos.setItems(video);
-        // TODO
+        
+        
+        //AÇÃO CLICANDO NA PUBLICAÇÃO
+        
+        tvPublicacao.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                PublicacaoSelecionado = (Publicacao) newValue;
+            }
+        });
+        
+        tvPublicacao.setRowFactory(tv -> {
+            TableRow<Publicacao> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        chamarTelaVisualizacaoPublicacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EducacaoController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
+        
+        
+        
+        //AÇÃO CLICANDO NO VIDEO
+        
+        tvVideos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                videoSelecionado = (Video) newValue;
+            }
+        });
+        
+        tvVideos.setRowFactory(tv -> {
+            TableRow<Video> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        chamarTelaVisualizacaoVideo(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EducacaoController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
+        
+        
+        //AÇÃO CLICANDO NO CURSO
+        tvCursos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                cursoSelecionado = (Curso_Online) newValue;
+            }
+        });
+        
+        tvCursos.setRowFactory(tv -> {
+            TableRow<Curso_Online> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    try {
+                        chamarTelaVisualizacao(event);
+                    } catch (IOException ex) {
+                        Logger.getLogger(EducacaoController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+            return row;
+        });
+        
+        
     }    
 
     @FXML
@@ -141,4 +268,35 @@ public class EducacaoController implements Initializable {
         window.setScene(insereVideoScene);
         window.centerOnScreen();
     }
-}
+    
+    @FXML
+    private void chamarTelaVisualizacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarCurso_Online.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+    
+    @FXML
+    private void chamarTelaVisualizacaoVideo(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarVideo.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+    @FXML
+    private void chamarTelaVisualizacaoPublicacao(MouseEvent event) throws IOException {
+        Parent inserir = FXMLLoader.load(getClass().getResource("VisualizarPublicacao.fxml"));
+        Scene inserirScene = new Scene(inserir);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(inserirScene);
+        window.centerOnScreen();
+    }
+
+   
+    }
+    
+    
+

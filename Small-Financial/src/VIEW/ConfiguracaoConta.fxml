@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ConfiguracaoContaController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="810.0" styleClass="fundo" stylesheets="@CSS/Dash.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VIEW.ConfiguracaoContaController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="149.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,9 +20,9 @@
       </ImageView>
       <Label fx:id="lblNome" layoutX="206.0" layoutY="208.0" text="Nome" />
       <Label layoutX="204.0" layoutY="259.0" text="E-mail:" />
-      <Label layoutX="205.0" layoutY="311.0" text="Senha:" />
-      <Label layoutX="177.0" layoutY="359.0" text="Confirmar Senha:" />
-      <Pane layoutX="389.0" layoutY="269.0" prefHeight="108.0" prefWidth="249.0">
+      <Label fx:id="lblSenha" layoutX="205.0" layoutY="311.0" text="Senha:" />
+      <Label fx:id="lblConfirmarSenha" layoutX="177.0" layoutY="359.0" text="Confirmar Senha:" />
+      <Pane layoutX="455.0" layoutY="290.0" prefHeight="108.0" prefWidth="249.0">
          <children>
             <Label layoutX="22.0" layoutY="6.0" text="Moedas a serem visualizadas no menu:" />
             <RadioButton fx:id="rbEuro" layoutX="14.0" layoutY="46.0" mnemonicParsing="false" text="Euro" />
@@ -29,16 +30,26 @@
             <RadioButton fx:id="rbLibras" layoutX="178.0" layoutY="46.0" mnemonicParsing="false" text="Libras" />
          </children>
       </Pane>
-      <Label layoutX="497.0" layoutY="167.0" text="Saldo" />
-      <Button fx:id="btnSaldo" layoutX="467.0" layoutY="190.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="R$" textFill="WHITE" />
-      <Button fx:id="btnSalvar" layoutX="475.0" layoutY="54.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Salvar" textFill="WHITE" />
-      <Button fx:id="btnVoltar" layoutX="572.0" layoutY="54.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
+      <Label fx:id="lblSaldo" layoutX="484.0" layoutY="177.0" text="Saldo" />
+      <Button fx:id="btnSaldo" layoutX="601.0" layoutY="196.0" mnemonicParsing="false" onAction="#Saldo" prefHeight="43.0" prefWidth="91.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Saldo" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/Olho.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnSalvar" layoutX="571.0" layoutY="47.0" mnemonicParsing="false" onAction="#UserUpdate" prefHeight="43.0" prefWidth="89.0" styleClass="buttonBlack" stylesheets="@CSS/Dash.css" text="Editar" textFill="WHITE" />
+      <Button fx:id="btnVoltar" layoutX="675.0" layoutY="47.0" mnemonicParsing="false" onAction="#Voltar" prefHeight="43.0" prefWidth="89.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Voltar" />
       <TextField fx:id="txtNome" layoutX="148.0" layoutY="228.0" stylesheets="@CSS/Dash.css" />
       <TextField fx:id="txtEmail" layoutX="148.0" layoutY="276.0" stylesheets="@CSS/Dash.css" />
-      <TextField fx:id="txtSenha" layoutX="148.0" layoutY="328.0" stylesheets="@CSS/Dash.css" />
-      <TextField fx:id="txtConfirmSenha" layoutX="148.0" layoutY="376.0" stylesheets="@CSS/Dash.css" />
       <Line endX="-100.0" endY="-198.75" layoutX="102.0" layoutY="201.0" startX="-100.0" startY="256.2" stroke="#1231dd" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="107.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#f5f509" strokeWidth="5.0" />
       <Line endX="-100.0" endY="-198.75" layoutX="112.0" layoutY="201.0" startX="-100.0" startY="256.0" stroke="#db3b14" strokeWidth="5.0" />
+      <Button fx:id="btnLogoff" layoutX="387.0" layoutY="27.0" mnemonicParsing="false" onAction="#Logoff" prefHeight="22.0" prefWidth="58.0" styleClass="buttonWhite" stylesheets="@CSS/Dash.css" text="Logoff" />
+      <TextField fx:id="txtSaldo" layoutX="424.0" layoutY="202.0" stylesheets="@CSS/Dash.css" />
+      <Label fx:id="lblAviso" layoutX="551.0" layoutY="252.0" text="Clique em editar para alterar seu saldo" textFill="#fc3d3d" />
+      <PasswordField fx:id="txtSenha" layoutX="148.0" layoutY="329.0" />
+      <PasswordField fx:id="txtConfirmSenha" layoutX="148.0" layoutY="376.0" />
    </children>
 </AnchorPane>
